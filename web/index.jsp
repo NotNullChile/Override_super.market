@@ -22,6 +22,9 @@
         <link href='http://fonts.googleapis.com/css?family=Quicksand:700' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Syncopate:700' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="w3.css">
+
     </head>
     <body class="body">
         <!--header-->
@@ -84,7 +87,6 @@
             </div>
         </nav>
         
-        <div>
             <div class="row">
                 <div class="col-sm-1"></div>
                 <div class="col-sm-2">
@@ -146,8 +148,70 @@
                             </a>
                         </div>      
                     </div>
+                    <br>
+                    
+                    <div class="w3-container red">
+                        
+                        <h1>Ofertas impactantes&nbsp;&nbsp;<i class="material-icons w3-opennav">feedback</i> </h1>
+                    </div>
+
+                    <div class="w3-row-margin">
+                        <div class="w3-third">
+                            <div class="w3-card-2">
+                                <img src="http://www.lider.cl/dys/productImages/g/5466382ga.jpg" style="width:100%">
+                                <div class="w3-container">
+                                    <h5>Producto 1</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w3-third">
+                            <div class="w3-card-2">
+                                <img src="http://www.lider.cl/dys/productImages/g/172325ga.jpg" style="width:100%">
+                                <div class="w3-container">
+                                    <h5>Producto 2</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w3-third">
+                            <div class="w3-card-2">
+                            <img src="http://www.lider.cl/dys/productImages/g/5934782ga.jpg" style="width:100%">
+                                <div class="w3-container">
+                                    <h5>Producto 3</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w3-row-margin">
+                        <div class="w3-third">
+                            <div class="w3-card-2">
+                                <img src="http://www.lider.cl/dys/productImages/g/134880ga.jpg" style="width:100%">
+                                <div class="w3-container">
+                                    <h5>Producto 4</h5>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="w3-third">
+                        <div class="w3-card-2">
+                            <img src="http://www.lider.cl/dys/productImages/g/5434633ga.jpg" style="width:100%">
+                            <div class="w3-container">
+                                <h5>Producto 5</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w3-third">
+                        <div class="w3-card-2">
+                            <img src="http://www.lider.cl/dys/productImages/g/5586646ga.jpg" style="width:100%">
+                            <div class="w3-container">
+                                <h5>Producto 6</h5>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                    
+                    <br>                
+                    
             </div>
         </div>
+    
     </body>
 </html>
