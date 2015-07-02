@@ -24,7 +24,7 @@
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="w3.css">
-
+        <link rel="icon" type="image/ico" href="images/override.ico">
     </head>
     <body class="body">
         <!--header-->
@@ -207,11 +207,35 @@
                         </div>
                     </div>
                 </div>
-                    
-                    <br>                
-                    
+                <br>                      
             </div>
-        </div>
-    
+        </div>    
+        <footer class="footer">
+            <div class="container">
+                <!--Creative Commons License-->
+                <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-1">
+                        <br>
+                        <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
+                            <img alt="Licencia Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-nc-nd/4.0/88x31.png"/>
+                        </a>
+                    </div>
+                    <div class="col-sm-8 text-left">
+                        <h6>
+                            <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">@Override super.market(<i class="fa fa-shopping-cart"></i>)</span> por 
+                                <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.notnull.cl" property="cc:attributionName" rel="cc:attributionURL">
+                                notNull Chile</a> <br>Se distribuye bajo una <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"> Licencia Creative
+                                    Commons Atribución-NoComercial-SinDerivar 4.0 Internacional</a>.<br /> Basada en una obra en 
+                                <a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/NotNullChile/Override_super.market" rel="dct:source">
+                                https://github.com/NotNullChile/Override_super.market</a>.
+                            
+                        </h6>
+                    </div>
+                    <div class="col-sm-2"></div>
+                </div>
+                <!--End of creative Commons License-->
+            </div>
+        </footer>      
     </body>
 </html>
