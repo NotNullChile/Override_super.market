@@ -49,14 +49,14 @@
                                class="form-control" 
                                id="busqueda">
                     </div>
-                    <div class="col-sm-1 busqueda btn btn-warning">
+                    <div class="col-sm-1 busqueda btn btn-success">
                         <h3>buscar</h3>
                         <h1><i class="fa fa-search"></i></h1>
                     </div>
                 </form>
                 <div class="col-sm-1"></div>
                 <!--Inicio de sesión.-->
-                <div class="col-sm-2 user btn btn-success">
+                <div class="col-sm-2 user btn btn-info">
                     <h3>iniciar Sesión:</h3>
                     <h1><i class="fa fa-user"></i></h1>
                 </div>
