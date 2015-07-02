@@ -32,11 +32,13 @@
             <div class="row">
                 <br>
                 <div class="col-sm-1"></div>
-                <div class="col-sm-3">
+                <div class="col-sm-2">
+                    <img src="images/Override_logo.png" width="200" height="200" alt="Override_logo"/>
+<!--
                     <h1>@Override</h1>
                     <h2 class="sublogo">
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;super.market(<i class="fa fa-shopping-cart"></i>)
-                    </h2>
+                    </h2>-->
                 </div>
                 <!--Formulario de búsqueda general en el sitio.-->
                 <form>
@@ -52,6 +54,7 @@
                         <h1><i class="fa fa-search"></i></h1>
                     </div>
                 </form>
+                <div class="col-sm-1"></div>
                 <!--Inicio de sesión.-->
                 <div class="col-sm-2 user btn btn-success">
                     <h3>iniciar Sesión:</h3>
@@ -63,7 +66,6 @@
                     <h1><i class="fa fa-shopping-cart"></i></h1>
                 </div>
             </div>
-            <br>
         </div>
         <!--Barra de navegación horizontal.-->
         <nav class="navbar navbar-default">
