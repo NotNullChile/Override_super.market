@@ -1,0 +1,79 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jul 2, 2015, 7:25:12 AM
+    Author     : urtubia @ notNull
+*/
+.navbar
+{
+    text-align: center;
+    font-family: Monospace;
+    font-weight: bold;
+    font-size: large;
+    background-color: red;
+    color: beige;
+}
+.navbar-brand
+{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    margin: auto;
+}
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+    width: 100%;
+    margin: auto;
+}
+.btn
+{
+    font-weight: bolder;
+    font-size: large;
+}
+.well-2
+{
+    background-color: orange;
+    font-family: Monospace;
+    color: #000000;
+    border-radius: 25px;
+}
+
+.dropdown-menu
+{
+    font-family: sans-serif;
+}
+
+.body{
+    background-color: #6daf29;
+}
+
+.logo{
+    font-family: 'Syncopate', sans-serif;
+    //font-family: 'Quicksand', sans-serif;
+    //font-family: 'Righteous', cursive;
+    //font-family: 'Fredericka the Great', cursive;
+    //font-family: 'Nova Mono', monospace;
+    font-weight: bolder;
+    background-color: red;
+    color: white;
+}
+.sublogo{
+    font-family: 'Quicksand', sans-serif;
+}
+.user{
+    font-family: 'Open Sans', sans-serif;
+    border-radius: 25px;
+}
+.carro{
+    font-family: 'Open Sans', sans-serif;
+    border-radius: 25px;
+}
+.busqueda{     
+    font-family: 'Open Sans', sans-serif;
+    border-radius: 25px;
+}
+
