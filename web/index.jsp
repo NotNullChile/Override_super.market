@@ -24,21 +24,28 @@
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     </head>
     <body class="body">
-        <div class="well logo">
+        <div class=" header logo">
             <div class="row">
+                <br>
                 <div class="col-sm-1"></div>
                 <div class="col-sm-3">
                     <h1>@Override</h1>
                     <h2 class="sublogo">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;super.market(<i class="fa fa-shopping-cart"></i>)</h2>
                 </div>
+                <form>
                     <div class="col-sm-3">
-                        <br><br>
-                        <input type="text" class="form-control" id="usr">
+                        <br>
+                        <input name="busqueda"
+                               type="text" 
+                               class="form-control" 
+                               id="busqueda">
                     </div>
-                    <div class="col-sm-1 busqueda btn btn-info">
+                    <div class="col-sm-1 busqueda btn btn-warning">
                         <h3>buscar</h3>
                         <h1><i class="fa fa-search"></i></h1>
                     </div>
+                </form>
+                
                 <div class="col-sm-2 user btn btn-success">
                     <h3>iniciar Sesión:</h3>
                     <h1><i class="fa fa-user"></i></h1>
@@ -47,14 +54,24 @@
                     <h3>mi carro:</h3>
                     <h1><i class="fa fa-shopping-cart"></i></h1>
                 </div>
-                
-                
             </div>
-            
-            
-            
+            <br>
         </div>
-        
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand active" href="#">@Override(<i class="fa fa-shopping-cart"></i>)</a>
+                </div>
+                <div>
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">Page 1</a></li>
+                    <li><a href="#">Page 2</a></li> 
+                    <li><a href="#">Page 3</a></li> 
+                  </ul>
+                </div>
+            </div>
+        </nav>    
 
         <div class="container">
             <br>

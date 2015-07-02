@@ -9,20 +9,16 @@ and open the template in the editor.
 */
 .navbar
 {
+    font-family: 'Open Sans', sans-serif;
     text-align: center;
-    font-family: Monospace;
     font-weight: bold;
     font-size: large;
-    background-color: red;
     color: beige;
+    alignment-baseline: baseline;
 }
 .navbar-brand
 {
-    position: absolute;
-    width: 100%;
-    left: 0;
-    text-align: center;
-    margin: auto;
+    font-family: 'Syncopate', sans-serif;
 }
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
@@ -58,11 +54,13 @@ and open the template in the editor.
     //font-family: 'Fredericka the Great', cursive;
     //font-family: 'Nova Mono', monospace;
     font-weight: bolder;
+    font-size: x-large;
     background-color: red;
     color: white;
 }
 .sublogo{
     font-family: 'Quicksand', sans-serif;
+    color: yellow;
 }
 .user{
     font-family: 'Open Sans', sans-serif;
