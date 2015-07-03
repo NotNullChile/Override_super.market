@@ -220,21 +220,26 @@
                     <div class="col-sm-1">
                         <br>
                         <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
-                            <img alt="Licencia Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-nc-nd/4.0/88x31.png"/>
+                            <img alt="Licencia Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-nc-nd/4.0/88x31.png" width="100"/>
                         </a>
                     </div>
                     <div class="col-sm-8 text-left">
                         <h6>
-                            <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">@Override super.market(<i class="fa fa-shopping-cart"></i>)</span> por 
+                            <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">&nbsp;&nbsp;@Override super.market(<i class="fa fa-shopping-cart"></i>)</span> por 
                                 <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.notnull.cl" property="cc:attributionName" rel="cc:attributionURL">
-                                notNull Chile</a> <br>Se distribuye bajo una <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"> Licencia Creative
-                                    Commons Atribución-NoComercial-SinDerivar 4.0 Internacional</a>.<br /> Basada en una obra en 
+                                    notNull Chile</a> <br>&nbsp;&nbsp;Se distribuye bajo una <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"> Licencia Creative
+                                        Commons Atribución-NoComercial-SinDerivar 4.0 Internacional</a>.<br />&nbsp;&nbsp; Basada en una obra en 
                                 <a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/NotNullChile/Override_super.market" rel="dct:source">
                                 https://github.com/NotNullChile/Override_super.market</a>.
                             
                         </h6>
                     </div>
-                    <div class="col-sm-2"></div>
+                    <div class="col-sm-1">
+                        <br>
+                        <img src="images/notnull.png" width="100" height="75" alt="notnull"/>
+
+                    </div>
+                    <div class="col-sm-1"></div>
                 </div>
                 <!--End of creative Commons License-->
             </div>
