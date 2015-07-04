@@ -7,7 +7,7 @@ package model.business;
  */
 public class Login 
 {
-    private String username;
+    public String username;
     private String password;
     private int rol;
 
@@ -15,7 +15,7 @@ public class Login
     {
         username = new String();
         password = new String();
-        rol = -1;
+        rol = 1;
     }
 
     public Login(String username, String password, int rol)

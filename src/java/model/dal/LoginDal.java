@@ -8,6 +8,7 @@ package model.dal;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
@@ -16,6 +17,7 @@ import java.sql.Statement;
  */
 public class LoginDal
 {
+    //Conexion conn = new Conexion();
     private Connection conn;
     private Statement state;
     
@@ -31,5 +33,35 @@ public class LoginDal
         {
             e.printStackTrace();
         }
+    }
+    
+    
+    public int insertLogin(model.business.Clientes c)
+    {
+        try 
+        {
+            //Se conecta al BD
+            conexion();
+            // Insert Login
+            String sql = "INSERT INTO login VALUES('" + c.getLogin().getUsername()+ "','" + c.getLogin().getPassword() + "'," + c.getLogin().getRol() + ");";   
+            return state.executeUpdate(sql);
+        } 
+        catch (SQLException e) 
+        {
+            return e.getErrorCode();
+        }
+        finally
+        {
+            try 
+            {
+                //Al terminar el proceso se desconecta de la BD
+               conn.close(); 
+            }
+            catch (Exception ex) 
+            {
+                
+            }
+        }
+        
     }
 }

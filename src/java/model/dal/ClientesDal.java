@@ -8,6 +8,7 @@ package model.dal;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
@@ -31,5 +32,34 @@ public class ClientesDal
         {
             e.printStackTrace();
         }
+    }
+    
+    public int insertClient(model.business.Clientes c)
+    {
+        try 
+        {
+            //Se conecta al BD
+            conexion();
+            // Insert Cliente
+            String sql = "INSERT INTO clientes VALUES(" + c.getRut() + ",'" + c.getNombre() + "','" + c.getApellido() + "','" + c.getEmail() + "'," + c.getTelefono() + ",'" + c.getLogin().getUsername() + "');";
+            return state.executeUpdate(sql);
+        } 
+        catch (SQLException e) 
+        {
+            return e.getErrorCode();
+        }
+        finally
+        {
+            try 
+            {
+                //Al terminar el proceso se desconecta de la BD
+               conn.close(); 
+            }
+            catch (Exception ex) 
+            {
+                
+            }
+        }
+        
     }
 }
