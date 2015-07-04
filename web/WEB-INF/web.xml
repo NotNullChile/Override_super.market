@@ -4,9 +4,17 @@
         <servlet-name>CreateClient</servlet-name>
         <servlet-class>controller.CreateClient</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProcesarLogin</servlet-name>
+        <servlet-class>controller.ProcesarLogin</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CreateClient</servlet-name>
         <url-pattern>/create_client.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProcesarLogin</servlet-name>
+        <url-pattern>/procesar_login.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

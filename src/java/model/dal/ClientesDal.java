@@ -8,8 +8,11 @@ package model.dal;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import model.business.Clientes;
 
 /**
  *
@@ -56,6 +59,39 @@ public class ClientesDal
                conn.close(); 
             }
             catch (Exception ex) 
+            {
+                
+            }
+        }      
+    }
+    public model.business.Clientes searhCliente(String user,String pass)
+    {
+        try 
+        {
+            conexion();
+            String sql = "SELECT c.nombre, c.apellido FROM clientes c INNER JOIN login l  ON c.username = l.username WHERE l.username = '" + user + "' AND l.contraseña = '" + pass + "';";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if (rs.first()) 
+            {
+                model.business.Clientes c = new Clientes();
+                c.setNombre(rs.getString(1));
+                c.setApellido(rs.getString(2));
+                return c;
+            }
+            return null;
+        } 
+        catch (Exception e) 
+        {
+            return null;
+        }
+        finally
+        {
+            try 
+            {
+                conn.close();
+            } 
+            catch (Exception e) 
             {
                 
             }
