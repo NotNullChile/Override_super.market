@@ -8,7 +8,12 @@ package model.dal;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import model.business.TipoProductos;
 
 /**
  *
@@ -30,6 +35,40 @@ public class TipoProductosDal
         catch (Exception e)
         {
             e.printStackTrace();
+        }
+    }
+    public ArrayList<TipoProductos> listTipoProducto()
+    {
+        try 
+        {
+            ArrayList <TipoProductos> listaTipoProd = new ArrayList<>();
+            conexion();
+            String sql = "SELECT * FROM tipoproductos";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                TipoProductos t = new TipoProductos();
+                t.setIdTipoProducto(rs.getInt(1));
+                t.setDescripcion(rs.getString(2));
+                listaTipoProd.add(t);
+            }
+            return listaTipoProd;
+        } 
+        catch (Exception e) 
+        {
+            return null;
+        }
+        finally
+        {
+            try 
+            {
+                conn.close();
+            } 
+            catch (Exception e)
+            {
+                
+            }
         }
     }
 }

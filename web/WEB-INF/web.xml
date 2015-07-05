@@ -8,6 +8,10 @@
         <servlet-name>ProcesarLogin</servlet-name>
         <servlet-class>controller.ProcesarLogin</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CreateProduct</servlet-name>
+        <servlet-class>controller.CreateProduct</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CreateClient</servlet-name>
         <url-pattern>/create_client.do</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>ProcesarLogin</servlet-name>
         <url-pattern>/procesar_login.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateProduct</servlet-name>
+        <url-pattern>/create_product.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

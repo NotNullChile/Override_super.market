@@ -8,20 +8,19 @@ package model.business;
 public class Marcas 
 {
     private int idMarca;
-    private String descripcion;
-    private String urlFoto;
+    private String descripcion;   
 
     public Marcas() 
     {
         idMarca = 0;
         descripcion = new String();
-        urlFoto = new String();
+        
     }
 
-    public Marcas(int idMarca, String descripcion, String urlFoto) {
+    public Marcas(int idMarca, String descripcion) {
         this.idMarca = idMarca;
         this.descripcion = descripcion;
-        this.urlFoto = urlFoto;
+        
     }
 
     public int getIdMarca() {
@@ -40,13 +39,6 @@ public class Marcas
         this.descripcion = descripcion;
     }
 
-    public String getUrlFoto() {
-        return urlFoto;
-    }
-
-    public void setUrlFoto(String urlFoto) {
-        this.urlFoto = urlFoto;
-    }
     
     //Methods Custom
 }

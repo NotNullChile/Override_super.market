@@ -8,7 +8,11 @@ package model.dal;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import model.business.Comunas;
 
 /**
  *
@@ -31,5 +35,29 @@ public class ComunasDal
         {
             e.printStackTrace();
         }
+    }
+    public ArrayList<Comunas> listaComuna()
+    {       
+        try 
+        {
+            conexion();
+            ArrayList <Comunas> listaComunas = new ArrayList<>();
+            conexion();
+            String sql = "select * from comunas order by 2";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                Comunas c = new Comunas();
+                c.setIdComuna(rs.getInt(1));
+                c.setNombreComuna(rs.getString(2));
+                listaComunas.add(c);
+            }
+            return listaComunas;
+        } 
+        catch (Exception e) 
+        {
+            return null;
+        }      
     }
 }

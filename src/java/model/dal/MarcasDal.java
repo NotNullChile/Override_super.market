@@ -8,7 +8,13 @@ package model.dal;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import model.business.Marcas;
+
 
 /**
  *
@@ -19,7 +25,7 @@ public class MarcasDal
     private Connection conn;
     private Statement state;
     
-    public void conexion()
+    private void conexion()
     {
         try 
         {
@@ -32,4 +38,41 @@ public class MarcasDal
             e.printStackTrace();
         }
     }
+    public ArrayList<Marcas> listMarcas()
+    {
+        try 
+        {
+            ArrayList <Marcas> listaMarcas = new ArrayList<>();
+            conexion();
+            String sql = "SELECT * FROM marcas";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                Marcas m = new Marcas();
+                m.setIdMarca(rs.getInt(1));
+                m.setDescripcion(rs.getString(2));
+                listaMarcas.add(m);
+            }
+            return listaMarcas;
+        } 
+        catch (Exception e) 
+        {
+            return null;
+        }
+        finally
+        {
+            try 
+            {
+                conn.close();
+            } 
+            catch (Exception e)
+            {
+                
+            }
+        }
+    }
+    
+      
+    
 }

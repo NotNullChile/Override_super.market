@@ -12,9 +12,9 @@ public class Producto
     private int precioUnitario;
     private int stock;
     private String descripcion;
-    private int idTipoProducto;
-    private int idMarca;
-
+    private TipoProductos tipoProducto;
+    private Marcas marca;
+    private String urlFoto;
     public Producto() 
     {
         idProducto = 0;
@@ -22,18 +22,22 @@ public class Producto
         precioUnitario = 0;
         stock = 0;
         descripcion = new String();
-        idTipoProducto = 0;
-        idMarca = 0;
+        tipoProducto = new TipoProductos();
+        marca = new Marcas();
+        urlFoto = new String();
     }
 
-    public Producto(int idProducto, String nombreProducto, int precioUnitario, int stock, String descripcion, int idTipoProducto, int idMarca) {
+    public Producto(int idProducto, String nombreProducto, int precioUnitario, 
+            int stock, String descripcion,String urlFoto) 
+    {
         this.idProducto = idProducto;
         this.nombreProducto = nombreProducto;
         this.precioUnitario = precioUnitario;
         this.stock = stock;
         this.descripcion = descripcion;
-        this.idTipoProducto = idTipoProducto;
-        this.idMarca = idMarca;
+        this.tipoProducto = new TipoProductos();
+        this.marca = new Marcas();
+        this.urlFoto = urlFoto;
     }
 
     public int getIdProducto() {
@@ -76,20 +80,28 @@ public class Producto
         this.descripcion = descripcion;
     }
 
-    public int getIdTipoProducto() {
-        return idTipoProducto;
+    public TipoProductos getTipoProducto() {
+        return tipoProducto;
     }
 
-    public void setIdTipoProducto(int idTipoProducto) {
-        this.idTipoProducto = idTipoProducto;
+    public void setTipoProducto(TipoProductos tipoProducto) {
+        this.tipoProducto = tipoProducto;
     }
 
-    public int getIdMarca() {
-        return idMarca;
+    public Marcas getMarca() {
+        return marca;
     }
 
-    public void setIdMarca(int idMarca) {
-        this.idMarca = idMarca;
+    public void setMarca(Marcas marca) {
+        this.marca = marca;
+    }
+
+    public String getUrlFoto() {
+        return urlFoto;
+    }
+
+    public void setUrlFoto(String urlFoto) {
+        this.urlFoto = urlFoto;
     }
     
     
