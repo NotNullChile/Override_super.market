@@ -7,61 +7,6 @@ and open the template in the editor.
     Created on : Jul 2, 2015, 7:25:12 AM
     Author     : urtubia @ notNull
 */
-.navbar
-{
-    font-family: 'Open Sans', sans-serif;
-    text-align: center;
-    font-weight: lighter;
-    font-size: small;
-    color: beige;
-    alignment-baseline: baseline;
-}
-.navbar-default {
-  background-color: #5cb85c;
-  border-color: #0a4f15;
-}
-.navbar-default .navbar-brand {
-  color: #ecf0f1;
-}
-.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
-  color: #ffffff;
-}
-.navbar-default .navbar-text {
-  color: #ecf0f1;
-}
-.navbar-default .navbar-nav > li > a {
-  color: #ecf0f1;
-}
-.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-  color: #ffffff;
-}
-.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
-  color: #ffffff;
-  background-color: #0a4f15;
-}
-.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
-  color: #ffffff;
-  background-color: #0a4f15;
-}
-.navbar-default .navbar-toggle {
-  border-color: #0a4f15;
-}
-.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
-  background-color: #0a4f15;
-}
-.navbar-default .navbar-toggle .icon-bar {
-  background-color: #ecf0f1;
-}
-.navbar-default .navbar-collapse,
-.navbar-default .navbar-form {
-  border-color: #ecf0f1;
-}
-.navbar-default .navbar-link {
-  color: #ecf0f1;
-}
-.navbar-default .navbar-link:hover {
-  color: #ffffff;
-}
 
 .footer {
     bottom: 0;
@@ -71,34 +16,14 @@ and open the template in the editor.
     color: #f1f1f1;
 }
 
-@media (max-width: 767px) {
-  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
-    color: #ecf0f1;
-  }
-  .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
-    color: #ffffff;
-  }
-  .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
-    color: #ffffff;
-    background-color: #0a4f15;
-  }
-}
-.navbar-brand
-{
-    font-family: 'Syncopate', sans-serif;
-    font-size: small;
-}
+
 
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
     width: 100%;
     margin: auto;
 }
-.btn
-{
-    font-weight: bolder;
-    font-size: large;
-}
+
 .well-2
 {
     background-color: orange;
@@ -116,21 +41,7 @@ and open the template in the editor.
     background-color: #f1f1f1;
 }
 
-.logo{
-    font-family: 'Syncopate', sans-serif;
-    //font-family: 'Quicksand', sans-serif;
-    //font-family: 'Righteous', cursive;
-    //font-family: 'Fredericka the Great', cursive;
-    //font-family: 'Nova Mono', monospace;
-    font-weight: bolder;
-    font-size: x-large;
-    background-color: #F44336;
-    color: white;
-}
-.sublogo{
-    font-family: 'Quicksand', sans-serif;
-    color: yellow;
-}
+
 .user{
     font-family: 'Open Sans', sans-serif;
     border-radius: 25px;
