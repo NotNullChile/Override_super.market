@@ -88,49 +88,10 @@
                 </nav>
             </div>
             <div class="w3-col m7 w3-card w3-padding">
-            <!--Carrusel con banners.-->
-                <div class="w3-container">
-                    <div id="myCarousel" class="carousel slide " data-ride="carousel">
-                    <!-- Indicadores-->
-                        <ol class="carousel-indicators">
-                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                            <li data-target="#myCarousel" data-slide-to="1"></li>
-                            <li data-target="#myCarousel" data-slide-to="2"></li>
-                        </ol>
-                        <!-- Wrapper for slides -->
-                            <div class="carousel-inner" 
-                                 role="listbox">
-                                <div class="item active">
-                                    <img src="images/cafe.png" alt="Nescafe Tradición Granulado $ 999" width="230" height="172">
-                                </div>
-                                <div class="item">
-                                    <img src="images/pizzas.png" alt="Chania" width="460" height="345">
-                                </div>
-                                <div class="item">
-                                    <img src="images/tragos.png" alt="Flower" width="460" height="345">
-                                </div>
-                            </div>
-                        <!-- Controles izquierda y derecha carrusel -->
-                        <a class="left carousel-control" 
-                            href="#myCarousel" 
-                            role="button" 
-                            data-slide="prev">
-                            <span class="glyphicon glyphicon-chevron-left" 
-                                  aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="right carousel-control" 
-                            href="#myCarousel" 
-                            role="button" 
-                            data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                        </a>
-                    </div>      
-                </div>
+            
                 <br>
                 <div class="w3-container red">
-                    <h2>Ofertas impactantes&nbsp;&nbsp;<i class="fa fa-heartbeat"></i> </h2>
+                    <h2>Resultados de su búsqueda:&nbsp;&nbsp;<i class="fa fa-search"></i> </h2>
                 </div>
                     <div class="w3-row-margin">
                         <div class="w3-third">
