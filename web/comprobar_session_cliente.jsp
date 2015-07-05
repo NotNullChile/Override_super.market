@@ -17,5 +17,7 @@
         model.business.Clientes cliente = (model.business.Clientes) sesion.getAttribute("cliente");       
         %>
         <h1>Hola : <%=cliente.getNombre() + " " + cliente.getApellido()%> </h1>
+        <a href="close_session.do">cerrar Session</a>
+        
     </body>
 </html>

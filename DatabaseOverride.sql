@@ -250,13 +250,13 @@ ON p.idTipoProducto = t.idTipoProducto INNER JOIN marcas m
 ON p.idMarca = m.idMarca
 WHERE t.descripcion = 'Abarrotes' and m.descripcion like '%h%';
 
-/* Buscando Producto por tipoProducto y producto */
+/* Buscando Producto por  producto */
 
 SELECT p.idProducto, p.nombreProducto, p.precioUnitario, p.stock, p.descripcion, t.descripcion, m.descripcion , p.urlFoto
 FROM productos p INNER JOIN tipoproductos t
 ON p.idTipoProducto = t.idTipoProducto INNER JOIN marcas m
 ON p.idMarca = m.idMarca
-WHERE t.descripcion = 'Abarrotes' and p.descripcion like '%p%';
+WHERE p.descripcion like '%p%' or m.descripcion like '%p%';
 
 /* Buscando Producto por precio menor a mayor */
 
