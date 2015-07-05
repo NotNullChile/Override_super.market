@@ -36,19 +36,42 @@ public class ProcesarLogin extends HttpServlet {
         {
            //Intancia de clases
             model.dal.ClientesDal clientesDal = new model.dal.ClientesDal();
-            
+            model.dal.AdministradorDal adminDal = new model.dal.AdministradorDal();
+            model.business.Administrador admin = new model.business.Administrador();
+            model.business.Clientes cliente = new model.business.Clientes();
             //Get
             String user = request.getParameter("txt_rut");
             String password = request.getParameter("txt_password");
+            //SET
+            admin.getLogin().setUsername(Integer.parseInt(user));
+            admin.getLogin().setPassword(password);
+             //Creara la session de admin
+           // admin = adminDal.searchAdmin(admin);
+            
+            cliente.getLogin().setUsername(Integer.parseInt(user));
+            cliente.getLogin().setPassword(password);
+            //Creara la session de Cliente
+            cliente = clientesDal.searchCliente(cliente);
             
             //Consulta si existe el cliente
-            if (clientesDal.searhCliente(user, password) != null) 
+            if (cliente.getNombre() != null) 
             {
                 out.print("Si existe este cliente");
+                //Pagina 
+                //request.getSession().setAttribute("cliente", cliente);
+                request.getRequestDispatcher("comprobar_session_cliente.jsp").forward(request, response);
+            }
+            if(adminDal.searchAdmin(admin)!= null)
+            {
+                out.print("Si existe este Admin");
+                //Pagina 
+                request.getSession().setAttribute("admin", admin);
+                request.getRequestDispatcher("comprobar_session_admin.jsp").forward(request, response);
             }
             else
-            {
-                out.print("No existes :(");
+            {               
+                //Pagina 
+                //request.getRequestDispatcher("pagina.jsp").forward(request, response);
             }   
         }
         catch(Exception e)

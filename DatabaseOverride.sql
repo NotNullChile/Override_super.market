@@ -79,9 +79,9 @@ nombreProducto varchar(50) unique,
 precioUnitario int,
 stock int,
 descripcion varchar(255),
-Urlfoto varchar(100),
 idTipoProducto int,
 idMarca int,
+Urlfoto varchar(100),
 constraint pk_idProducto primary key (idProducto),
 constraint fk_producto_tipoProducto foreign key (idTipoProducto) references tipoProductos (idTipoProducto),
 constraint fk_producto_marca foreign key (idMarca) references marcas (idMarca)
@@ -192,6 +192,95 @@ INSERT INTO administrador VALUES(19133111,'Ricardo','Carrasco','rcarrasco@overri
 /* Donde sale 1 poner tu rut y tambien en 'TuRut' */
 INSERT INTO administrador VALUES(1,'Randy','Urtubia','rurtubia@override.cl',123456,'TuRut');
 
+/*Insert Productos (Solo Pruebas)*/
+
+INSERT INTO productos values (1,'pruebas1',3500,100,'producto1',1,1,'foto');
+INSERT INTO productos values (2,'pruebas2',10000,100,'producto1',2,3,'foto');
+INSERT INTO productos values (3,'pruebas3',5000,100,'producto1',2,1,'foto');
+INSERT INTO productos values (4,'pruebas4',1000,100,'producto1',3,3,'foto');
+INSERT INTO productos values (5,'pruebas5',200,100,'producto1',1,1,'foto');
+INSERT INTO productos values (6,'pruebas6',3600,100,'producto1',2,3,'foto');
+INSERT INTO productos values (7,'pruebas7',15000,100,'producto1',3,1,'foto');
+INSERT INTO productos values (8,'pruebas8',500,100,'producto1',1,3,'foto');
+INSERT INTO productos values (9,'pruebas9',3100,100,'producto1',2,1,'foto');
+
 /*Select*/
 select * from login;
 select * from clientes;
+SELECT * FROM metodosDePago;
+SELECT * FROM tipoproductos;
+SELECT * FROM marcas;
+
+/* Buscando Usuario */
+SELECT c.nombre, c.apellido FROM clientes c INNER JOIN login l  ON c.username = l.username WHERE l.username = '1' AND l.contraseña = '1';  
+
+/* Buscando Admin*/
+
+SELECT a.nombre, a.apellido FROM administrador a INNER JOIN login l  ON a.username = l.username WHERE l.username = '19133111' AND l.contraseña = 'rick'; 
+
+
+/* Buscando Producto General */
+
+SELECT p.idProducto, p.nombreProducto, p.precioUnitario, p.stock, p.descripcion, t.descripcion, m.descripcion , p.urlFoto
+FROM productos p INNER JOIN tipoproductos t
+ON p.idTipoProducto = t.idTipoProducto INNER JOIN marcas m
+ON p.idMarca = m.idMarca;
+
+/* Buscando Producto por tipoProducto */
+
+SELECT p.idProducto, p.nombreProducto, p.precioUnitario, p.stock, p.descripcion, t.descripcion, m.descripcion , p.urlFoto
+FROM productos p INNER JOIN tipoproductos t
+ON p.idTipoProducto = t.idTipoProducto INNER JOIN marcas m
+ON p.idMarca = m.idMarca
+WHERE t.descripcion = 'Bebidas y Licores';
+
+/* Buscando Producto por tipoProducto y valores*/
+
+SELECT p.idProducto, p.nombreProducto, p.precioUnitario, p.stock, p.descripcion, t.descripcion, m.descripcion , p.urlFoto
+FROM productos p INNER JOIN tipoproductos t
+ON p.idTipoProducto = t.idTipoProducto INNER JOIN marcas m
+ON p.idMarca = m.idMarca
+WHERE t.descripcion = 'Abarrotes' and p.precioUnitario between 0 and 2000;
+
+/* Buscando Producto por tipoProducto y marca */
+
+SELECT p.idProducto, p.nombreProducto, p.precioUnitario, p.stock, p.descripcion, t.descripcion, m.descripcion , p.urlFoto
+FROM productos p INNER JOIN tipoproductos t
+ON p.idTipoProducto = t.idTipoProducto INNER JOIN marcas m
+ON p.idMarca = m.idMarca
+WHERE t.descripcion = 'Abarrotes' and m.descripcion like '%h%';
+
+/* Buscando Producto por tipoProducto y producto */
+
+SELECT p.idProducto, p.nombreProducto, p.precioUnitario, p.stock, p.descripcion, t.descripcion, m.descripcion , p.urlFoto
+FROM productos p INNER JOIN tipoproductos t
+ON p.idTipoProducto = t.idTipoProducto INNER JOIN marcas m
+ON p.idMarca = m.idMarca
+WHERE t.descripcion = 'Abarrotes' and p.descripcion like '%p%';
+
+/* Buscando Producto por precio menor a mayor */
+
+SELECT p.idProducto, p.nombreProducto, p.precioUnitario, p.stock, p.descripcion, t.descripcion, m.descripcion , p.urlFoto
+FROM productos p INNER JOIN tipoproductos t
+ON p.idTipoProducto = t.idTipoProducto INNER JOIN marcas m
+ON p.idMarca = m.idMarca
+WHERE t.descripcion = 'Abarrotes'
+order by 3;
+
+/* Buscando Producto por precio mayor a menor */
+
+SELECT p.idProducto, p.nombreProducto, p.precioUnitario, p.stock, p.descripcion, t.descripcion, m.descripcion , p.urlFoto
+FROM productos p INNER JOIN tipoproductos t
+ON p.idTipoProducto = t.idTipoProducto INNER JOIN marcas m
+ON p.idMarca = m.idMarca
+WHERE t.descripcion = 'Abarrotes'
+order by 3 desc;
+
+/* Buscando Producto por orden alfabetico */
+
+SELECT p.idProducto, p.nombreProducto, p.precioUnitario, p.stock, p.descripcion, t.descripcion, m.descripcion , p.urlFoto
+FROM productos p INNER JOIN tipoproductos t
+ON p.idTipoProducto = t.idTipoProducto INNER JOIN marcas m
+ON p.idMarca = m.idMarca
+WHERE t.descripcion = 'Abarrotes'
+order by 2;

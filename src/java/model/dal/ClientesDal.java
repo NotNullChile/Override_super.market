@@ -44,7 +44,7 @@ public class ClientesDal
             //Se conecta al BD
             conexion();
             // Insert Cliente
-            String sql = "INSERT INTO clientes VALUES(" + c.getRut() + ",'" + c.getNombre() + "','" + c.getApellido() + "','" + c.getEmail() + "'," + c.getTelefono() + ",'" + c.getLogin().getUsername() + "');";
+            String sql = "INSERT INTO clientes VALUES(" + c.getRut() + ",'" + c.getNombre() + "','" + c.getApellido() + "','" + c.getEmail() + "'," + c.getTelefono() + "," + c.getLogin().getUsername() + ");";
             return state.executeUpdate(sql);
         } 
         catch (SQLException e) 
@@ -64,12 +64,14 @@ public class ClientesDal
             }
         }      
     }
-    public model.business.Clientes searhCliente(String user,String pass)
+    public model.business.Clientes searchCliente(model.business.Clientes cli)
     {
         try 
         {
             conexion();
-            String sql = "SELECT c.nombre, c.apellido FROM clientes c INNER JOIN login l  ON c.username = l.username WHERE l.username = '" + user + "' AND l.contraseña = '" + pass + "';";
+            String sql = "SELECT c.nombre, c.apellido FROM clientes c "
+                    + "INNER JOIN login l ON c.username = l.username "
+                    + "WHERE l.username = '" + cli.getLogin().getUsername() + "' AND l.contraseña = '" + cli.getLogin().getPassword()+ "';";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             if (rs.first()) 
@@ -95,7 +97,36 @@ public class ClientesDal
             {
                 
             }
+        }     
+    }
+    public int searchRolUser(String user,String pass)
+    {
+        try 
+        {
+            conexion();
+            String sql = "SELECT l.rol FROM clientes c INNER JOIN login l ON c.username = l.username WHERE l.username = '" + user + "' AND l.contraseña = '" + pass + "';";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if (rs.first()) 
+            {
+                return rs.getInt(1);
+            }         
+        } 
+        catch (SQLException e) 
+        {
+            return e.getErrorCode();
         }
-        
+        finally
+        {
+            try 
+            {
+                conn.close();
+            } 
+            catch (Exception e) 
+            {
+                
+            }
+        } 
+        return -1;
     }
 }

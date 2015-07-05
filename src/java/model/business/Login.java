@@ -7,29 +7,29 @@ package model.business;
  */
 public class Login 
 {
-    public String username;
+    public int username;
     private String password;
     private int rol;
 
     public Login() 
     {
-        username = new String();
+        username = 0;
         password = new String();
         rol = 1;
     }
 
-    public Login(String username, String password, int rol)
+    public Login(int username, String password, int rol)
     {
         this.username = username;
         this.password = password;
         this.rol = rol;
     }
 
-    public String getUsername() {
+    public int getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(int username) {
         this.username = username;
     }
 

@@ -168,7 +168,7 @@ public class ProductoDal
             }
             return listProduct;
         }
-        catch (SQLException e) 
+        catch (Exception e) 
         {
             return null;
         }
