@@ -29,88 +29,92 @@
     <body class="body">
         <!--header-->
         <div class=" header logo">
-            <div class="row">
+            <div class="w3-row">
                 <br>
-                <div class="col-sm-1"></div>
-                <div class="col-sm-2">
-                    <img src="images/Override_logo.png" width="200" height="200" alt="Override_logo"/>
-<!--
-                    <h1>@Override</h1>
-                    <h2 class="sublogo">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;super.market(<i class="fa fa-shopping-cart"></i>)
-                    </h2>-->
+                <div class="w3-col m1">&nbsp;</div>
+                <div class="w3-col m2">
+                    <img src="images/Override_logo.png" width="150" height="150" alt="Override_logo"/>
                 </div>
                 <!--Formulario de búsqueda general en el sitio.-->
                 <form>
-                    <div class="col-sm-3">
-                        <br>
-                        <input name="busqueda"
-                               type="text" 
-                               class="form-control" 
-                               id="busqueda">
+                    <div class="w3-col m2">
+                            <br>
+                                <input name="busqueda"
+                                   type="text" 
+                                   class="form-control" 
+                                   id="busqueda">
                     </div>
-                    <div class="col-sm-1 busqueda btn btn-success">
-                        <h3>buscar</h3>
-                        <h1><i class="fa fa-search"></i></h1>
+                    <div class="w3-col m1 busqueda btn btn-success">
+                        <h4>buscar</h4>
+                        <h2><i class="fa fa-search"></i></h2>
                     </div>
                 </form>
-                <div class="col-sm-1"></div>
+                <div class="w3-col m1">&nbsp;</div>
                 <!--Inicio de sesión.-->
-                <div class="col-sm-2 user btn btn-info">
-                    <h3>iniciar Sesión:</h3>
-                    <h1><i class="fa fa-user"></i></h1>
+                <div class="w3-col m2 user btn btn-info">
+                    <h4>iniciar Sesión:</h4>
+                    <h2><i class="fa fa-user"></i></h2>
                 </div>
                 <!--Ver carro de compras.-->
-                <div class="col-sm-1 carro btn btn-primary">
-                    <h3>mi carro:</h3>
-                    <h1><i class="fa fa-shopping-cart"></i></h1>
+                <div class="col-col m2 carro btn btn-primary">
+                    <h4>mi carro:</h4>
+                    <h2><i class="fa fa-shopping-cart"></i></h2>
                 </div>
+                <div class="w3-col m1"></div>
             </div>
         </div>
         <!--Barra de navegación horizontal.-->
         <nav class="navbar navbar-default">
             <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand active" href="#">@Override(<i class="fa fa-shopping-cart"></i>)</a>
-                </div>
-                <div>
                   <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
+                    <li class="active"><a href="#">@Override</a></li>
                     <li><a href="#">Abarrotes</a></li>
-                    <li><a href="#">Alimentos congelados</a></li>
-                    <li><a href="#">Bebidas y Licores</a></li>
+                    <li><a href="#">Congelados</a></li>
+                    <li><a href="#">Bebidas</a></li>
                     <li><a href="#">Carnes</a></li>
-                    <li><a href="#">Cereales y Snacks</a></li>
-                    <li><a href="#">Desayuno y Once</a></li>
-                    <li><a href="#">Hogar y Limpieza</a></li>
+                    <li><a href="#">Cereales</a></li>
+                    <li><a href="#">Desayuno</a></li>
+                    <li><a href="#">Limpieza</a></li>
                     <li><a href="#">Lacteos</a></li>
                   </ul>
-                </div>
             </div>
         </nav>
         
-            <div class="row">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-2">
-                    <h2>Productos:</h2>
-                    <hr>
-                    <h3>
-                    <div class="list-group">
-                        <a href="#" class="list-group-item list-group-item-success">(<i class="fa fa-shopping-cart"></i>)&nbsp;&nbsp;Home</a>
-                        <a href="#" class="list-group-item"><i class="fa fa-asterisk"></i>&nbsp;&nbsp;Abarrotes</a>
-                        <a href="#" class="list-group-item"><i class="fa fa-asterisk"></i>&nbsp;&nbsp;Alimentos &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;congelados</a>
-                        <a href="#" class="list-group-item"><i class="fa fa-asterisk"></i>&nbsp;&nbsp;Bebidas y Licores</a>
-                        <a href="#" class="list-group-item"><i class="fa fa-asterisk"></i>&nbsp;&nbsp;Carnes</a>
-                        <a href="#" class="list-group-item"><i class="fa fa-asterisk"></i>&nbsp;&nbsp;Cereales y Snacks</a>
-                        <a href="#" class="list-group-item"><i class="fa fa-asterisk"></i>&nbsp;&nbsp;Desayuno y Once</a>
-                        <a href="#" class="list-group-item"><i class="fa fa-asterisk"></i>&nbsp;&nbsp;Hogar y Limpieza</a>
+            <div class="w3-row">
+                <div class="w3-col m1">  &nbsp;</div>
+                <div class="w3-col m3">
+                    <div class="w3-ul w3-card-4">
+                        <a href="#" class="list-group-item list-group-item-success">
+                            (<i class="fa fa-shopping-cart"></i>)&nbsp;&nbsp;Home
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <i class="fa fa-asterisk"></i>&nbsp;&nbsp;Abarrotes
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <i class="fa fa-asterisk"></i>&nbsp;&nbsp;Alimentos congelados
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <i class="fa fa-asterisk"></i>&nbsp;&nbsp;Bebidas y Licores
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <i class="fa fa-asterisk"></i>&nbsp;&nbsp;Carnes
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <i class="fa fa-asterisk"></i>&nbsp;&nbsp;Cereales y Snacks
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <i class="fa fa-asterisk"></i>&nbsp;&nbsp;Desayuno y Once
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <i class="fa fa-asterisk"></i>&nbsp;&nbsp;Hogar y Limpieza
+                        </a>
                         <a href="#" class="list-group-item"><i class="fa fa-asterisk"></i>&nbsp;&nbsp;Lacteos</a>
                     </div>
-                    </h3>
-                    </div>
-                <div class="col-sm-8">
+                    
+                </div>
+                <div class="w3-col m-8">
                     <!--Carrusel con banners.-->
-                    <div class="container">
+                    <div class="w3-container">
                     <br>
                         <div id="myCarousel" class="carousel slide " data-ride="carousel">
                             <!-- Indicadores-->
@@ -211,7 +215,9 @@
                 </div>
                 <br>                      
             </div>
-        </div>    
+        </div>
+        
+        
         <footer class="footer">
             <div class="container">
                 <!--Creative Commons License-->

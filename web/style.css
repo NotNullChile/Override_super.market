@@ -11,8 +11,8 @@ and open the template in the editor.
 {
     font-family: 'Open Sans', sans-serif;
     text-align: center;
-    font-weight: bold;
-    font-size: large;
+    font-weight: lighter;
+    font-size: small;
     color: beige;
     alignment-baseline: baseline;
 }
@@ -86,6 +86,7 @@ and open the template in the editor.
 .navbar-brand
 {
     font-family: 'Syncopate', sans-serif;
+    font-size: small;
 }
 
 .carousel-inner > .item > img,
