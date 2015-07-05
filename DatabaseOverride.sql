@@ -15,7 +15,7 @@ use supermarketNotNull;
 create table login
 (
 username varchar(20),
-password varchar(20),
+contraseña varchar(20),
 rol int, /* 0 = admin, 1 = cliente (posibilidad)*/
 constraint pk_username primary key (username)
 );
@@ -30,22 +30,21 @@ constraint pk_idComuna primary key (idComuna)
 create table tipoProductos
 (
 idTipoProducto int,
-descripcion varchar(50),
+descripcion varchar(50) unique,
 constraint pk_idTipoProducto primary key (idTipoProducto)
 );
 
 create table marcas
 (
 idMarca int,
-descripcion varchar(50),
-Urlfoto varchar(100),
+descripcion varchar(50) unique,
 Constraint pk_idMarca primary key (idMarca)
 );
 
 create table metodosDePago
 (
 idMetodosDePago int,
-descripcion varchar(50),
+descripcion varchar(50) unique,
 constraint pk_idMetodosDePago primary key (idMetodosDePago)
 );
 
@@ -76,10 +75,11 @@ constraint fk_cliente_login foreign key (username) references login (username)
 create table productos
 (
 idProducto int,
-nombreProducto varchar(50),
+nombreProducto varchar(50) unique,
 precioUnitario int,
 stock int,
 descripcion varchar(255),
+Urlfoto varchar(100),
 idTipoProducto int,
 idMarca int,
 constraint pk_idProducto primary key (idProducto),
@@ -141,11 +141,42 @@ INSERT INTO tipoProductos VALUES(4,'Carnes');
 INSERT INTO tipoProductos VALUES(5,'Cereales y Snacks');
 INSERT INTO tipoProductos VALUES(6,'Desayuno y Once');
 INSERT INTO tipoProductos VALUES(7,'Hogar y Limpieza');
-INSERT INTO tipoProductos VALUES(8,'Lacteos');
+INSERT INTO tipoProductos VALUES(8,'Mascotas');
 
 /* Insert Marcas*/
 
-INSERT INTO marcas VALUES(1,'Descripcion','urlFoto');
+INSERT INTO marcas VALUES(1,'Gold');
+INSERT INTO marcas VALUES(2,'Iansa');
+INSERT INTO marcas VALUES(3,'Lucchetti');
+INSERT INTO marcas VALUES(4,'Lobos');
+INSERT INTO marcas VALUES(5,'Leche Sur');
+INSERT INTO marcas VALUES(6,'Frutos del Maipo');
+INSERT INTO marcas VALUES(7,'Sadia');
+INSERT INTO marcas VALUES(8,'Minuto Verde');
+INSERT INTO marcas VALUES(9,'Breden Master');
+INSERT INTO marcas VALUES(10,'Watts');
+INSERT INTO marcas VALUES(11,'Pepsi');
+INSERT INTO marcas VALUES(12,'Royal Guard');
+INSERT INTO marcas VALUES(13,'Mistral');
+INSERT INTO marcas VALUES(14,'Casa Silva');
+INSERT INTO marcas VALUES(15,'Tyson');
+INSERT INTO marcas VALUES(16,'Super Salmón');
+INSERT INTO marcas VALUES(17,'El Golfo');
+INSERT INTO marcas VALUES(18,'Ariztía');
+INSERT INTO marcas VALUES(19,'Natur');
+INSERT INTO marcas VALUES(20,'Kelloggs');
+INSERT INTO marcas VALUES(21,'Nestlé');
+INSERT INTO marcas VALUES(22,'Cena');
+INSERT INTO marcas VALUES(23,'Yemita');
+INSERT INTO marcas VALUES(24,'Omo');
+INSERT INTO marcas VALUES(25,'Quix');
+INSERT INTO marcas VALUES(26,'Virginia');
+INSERT INTO marcas VALUES(27,'Elite');
+INSERT INTO marcas VALUES(28,'Whiskas');
+INSERT INTO marcas VALUES(29,'Master Dog');
+INSERT INTO marcas VALUES(30,'Champion Dog');
+INSERT INTO marcas VALUES(31,'Drag Pharma');
+
 
 /* Insert MetodosDePago */
 
@@ -162,5 +193,5 @@ INSERT INTO administrador VALUES(19133111,'Ricardo','Carrasco','rcarrasco@overri
 INSERT INTO administrador VALUES(1,'Randy','Urtubia','rurtubia@override.cl',123456,'TuRut');
 
 /*Select*/
-
-select * from cliente;
+select * from login;
+select * from clientes;
