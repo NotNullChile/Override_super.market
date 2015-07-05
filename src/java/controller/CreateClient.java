@@ -46,7 +46,7 @@ public class CreateClient extends HttpServlet {
             clientes.setApellido(request.getParameter("txt_apellido"));
             clientes.setEmail(request.getParameter("txt_email"));
             clientes.setTelefono(Integer.parseInt(request.getParameter("txt_telefono")));
-            clientes.getLogin().setUsername(request.getParameter("txt_rut"));
+            clientes.getLogin().setUsername(Integer.parseInt(request.getParameter("txt_rut")));
             String password1 = request.getParameter("txt_password_1");
             String password2 = request.getParameter("txt_password_2");
             String passwordDefinitiva = null;
