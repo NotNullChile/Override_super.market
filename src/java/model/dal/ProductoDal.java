@@ -42,7 +42,11 @@ public class ProductoDal
         try 
         {
             conexion();
-            String sql = "INSERT INTO productos VALUES(" + p.getIdProducto() + ",'" + p.getNombreProducto() + "'," + p.getPrecioUnitario() + "," + p.getStock() + ",'" + p.getDescripcion() + "'," + p.getTipoProducto().getIdTipoProducto()+ "," + p.getMarca().getIdMarca()+ ",'" + p.getUrlFoto() + "');";
+            String sql = "INSERT INTO productos VALUES(" + p.getIdProducto() + ",'" 
+                    + p.getNombreProducto() + "'," + p.getPrecioUnitario() + "," 
+                    + p.getStock() + ",'" + p.getDescripcion() + "'," 
+                    + p.getTipoProducto().getIdTipoProducto()+ "," + p.getMarca().getIdMarca()+ ",'" 
+                    + p.getUrlFoto() + "');";
             return state.executeUpdate(sql);
         } 
         catch (SQLException e)
@@ -228,8 +232,8 @@ public class ProductoDal
         }        
     }
     
-     public ArrayList<Producto> listaProductoMayorAMenor(String tipoProducto)
-     {
+    public ArrayList<Producto> listaProductoMayorAMenor(String tipoProducto)
+    {
          try 
         {
             ArrayList<Producto> listProduct = new ArrayList<>();
@@ -272,6 +276,7 @@ public class ProductoDal
             }
         }  
      }
+     
     public ArrayList<Producto> listaProductoXOrdenAlfabetico(String tipoProducto)
     {
         try 
@@ -316,6 +321,7 @@ public class ProductoDal
             }
         }       
     }
+    
     public ArrayList<Producto> listaProductoBusquedaGeneral(String busqueda)
     {
         try 
@@ -360,5 +366,64 @@ public class ProductoDal
             {
             }
         }       
+    }
+    
+    public int updateProducto(Producto p)
+    {
+        try 
+        {
+             conexion();
+             String sql = "UPDATE productos p INNER JOIN tipoProductos t "
+                     + "ON p.idTipoProducto = t.idTipoProducto INNER JOIN marcas m "
+                     + "ON p.idMarca = m.idMarca "
+                     + "SET p.nombreProducto = '" + p.getNombreProducto() + "', "
+                     + "p.precioUnitario = " + p.getPrecioUnitario() + ", "
+                     + "p.stock = " + p.getStock() + ", p.descripcion = '" + p.getDescripcion() + "', "
+                     + "p.idTipoProducto = " + p.getTipoProducto().getIdTipoProducto() + ", "
+                     + "p.idMarca = " + p.getMarca().getIdMarca() + ", p.Urlfoto = '" + p.getUrlFoto() + "' "
+                     + "WHERE p.idProducto = " + p.getIdProducto() + ";";
+            return state.executeUpdate(sql);
+        } 
+        catch (SQLException e) 
+        {
+            return e.getErrorCode();
+        }
+        finally
+        {
+            try 
+            {
+                conn.close();
+            }
+            catch (Exception e)
+            {
+                
+            }
+        }  
+    }
+    
+    public int deleteProducto(int idProducto)
+    {
+        try 
+        {
+            conexion();
+            String sql = "DELETE FROM productos "
+                    + "WHERE idProducto = " + idProducto + ";";
+            return state.executeUpdate(sql);  
+        } 
+        catch (SQLException e) 
+        {
+            return e.getErrorCode();
+        }
+        finally
+        {
+            try 
+            {
+                conn.close();
+            } 
+            catch (Exception e)
+            {
+                
+            }
+        }
     }
 }

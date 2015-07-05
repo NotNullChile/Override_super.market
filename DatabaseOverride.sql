@@ -210,7 +210,7 @@ select * from clientes;
 SELECT * FROM metodosDePago;
 SELECT * FROM tipoproductos;
 SELECT * FROM marcas;
-
+SELECT * FROM productos;
 /* Buscando Usuario */
 SELECT c.nombre, c.apellido FROM clientes c INNER JOIN login l  ON c.username = l.username WHERE l.username = '1' AND l.contraseña = '1';  
 
@@ -284,3 +284,17 @@ ON p.idTipoProducto = t.idTipoProducto INNER JOIN marcas m
 ON p.idMarca = m.idMarca
 WHERE t.descripcion = 'Abarrotes'
 order by 2;
+
+/* UPDATE */
+
+UPDATE productos p INNER JOIN tipoProductos t
+ON p.idTipoProducto = t.idTipoProducto INNER JOIN marcas m
+ON p.idMarca = m.idMarca
+SET p.nombreProducto = 'hola', p.precioUnitario = 122, p.stock = 12,
+p.descripcion = 'Hola1', p.idTipoProducto = 2, p.idMarca = 4, p.Urlfoto = 'ds'
+WHERE p.idProducto = 1;
+
+/* DELETE */
+
+DELETE FROM productos 
+WHERE idProducto = 1;

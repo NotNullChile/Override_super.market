@@ -22,13 +22,11 @@
                 model.dal.ProductoDal p = new ProductoDal();
                 ArrayList<Producto> listP = p.listaProductoBusquedaGeneral("p");
                 for(Producto pr: listP)
-                {
-                    
-                
+                {             
                 %>
                 <tr>
                     <td><%=pr.getIdProducto()%></td>
-                    <td></td>
+                    <td><%=pr.getMarca().getDescripcion()%></td>
                 </tr>
                 <tr>
                     <td></td>
