@@ -1,5 +1,5 @@
 <%-- 
-    Document   : login
+    Document   : error_login
     Created on : Jul 6, 2015, 9:11:44 AM
     Author     : urtubia @ notNull
 --%>
@@ -200,6 +200,11 @@
                         <div class="w3-row">&nbsp;</div>
                     </form>
                     <!--End of login form-->
+                    <!--Error message-->
+                    <div class="alert alert-danger">
+                        <strong>Username y/o password incorrecto(s)!</strong> Vuelva a escribir sus credenciales.
+                    </div>
+                    <!--End of error message-->
                 </div>
                 <!--End of login content-->
             </div>

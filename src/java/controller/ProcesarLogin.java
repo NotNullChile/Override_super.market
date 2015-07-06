@@ -75,17 +75,18 @@ public class ProcesarLogin extends HttpServlet {
                     sesionAdmin.setAttribute("admin", admin);
                     request.getRequestDispatcher("comprobar_session_admin.jsp").forward(request, response);
                 }
-                
             }
             else
             {               
-                //Pagina 
-                //request.getRequestDispatcher("pagina.jsp").forward(request, response);
+                //Error login 
+                request.getRequestDispatcher("error_login.jsp").forward(request, response);
             }   
         }
         catch(Exception e)
         {
-            out.print("Error: " + e.getMessage());
+            //Error login
+            request.getRequestDispatcher("error_login.jsp").forward(request, response);
+            //out.print("Error: " + e.getMessage());
         }
     }
 
