@@ -202,7 +202,7 @@
                                 {
                                     out.println("<label class='col-sm-2'>Cantidad</label>");
                                     out.println("<div class='col-sm-2'>");
-                                    out.println("<input type='number' name='spi_stock' class='form-control' value='1' min='1' max=" + p.getStock()+"required >");
+                                    out.println("<input type='number' name='spi_stock' class='form-control' value='1' min='1' max= " + p.getStock() + " required >");
                                     out.println("</div>");
                                     out.println("<div class='col-sm-2'>");
                                     out.println("<button type='button' class='btn btn-info'>");

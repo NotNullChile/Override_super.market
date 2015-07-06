@@ -37,8 +37,6 @@ public class ProcesarCarritoCompras extends HttpServlet {
         PrintWriter out = response.getWriter();
         try 
         {
-            //Sacar esto de ACA!!!!!!
-            request.getSession().setAttribute("carrito", new ArrayList());
             //Class
             model.business.Carrito c = new model.business.Carrito();
             //Session

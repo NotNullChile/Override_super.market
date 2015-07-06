@@ -11,10 +11,11 @@ public class Venta
     private int subTotal;
     private int iva;
     private int Total;
-    private int idMetodosDePago;
+    private MetodosDePagos metodosDePago;
     private int numeroTarjeta;
-    private int rut;
-    private int idCarrito;
+    private Clientes cliente;
+    private Carrito carrito;
+    private Despacho despacho;
 
     public Venta() 
     {
@@ -22,22 +23,25 @@ public class Venta
         this.subTotal = 0;
         this.iva = 0;
         this.Total = 0;
-        this.idMetodosDePago = 0;
+        this.metodosDePago = new MetodosDePagos();
         this.numeroTarjeta = 0;
-        this.rut = 0;
-        this.idCarrito = 0;
+        this.cliente = new Clientes();
+        this.carrito = new Carrito();
+        this.despacho = new Despacho();
     }
 
     
-    public Venta(int idVenta, int subTotal, int iva, int Total, int idMetodosDePago, int numeroTarjeta, int rut, int idCarrito) {
+    public Venta(int idVenta, int subTotal, int iva, int Total,  int numeroTarjeta) {
         this.idVenta = idVenta;
         this.subTotal = subTotal;
         this.iva = iva;
         this.Total = Total;
-        this.idMetodosDePago = idMetodosDePago;
         this.numeroTarjeta = numeroTarjeta;
-        this.rut = rut;
-        this.idCarrito = idCarrito;
+        this.cliente = new Clientes();
+        this.carrito = new Carrito();
+        this.despacho = new Despacho();
+        this.metodosDePago = new MetodosDePagos();
+
     }
 
     public int getIdVenta() {
@@ -72,12 +76,12 @@ public class Venta
         this.Total = Total;
     }
 
-    public int getIdMetodosDePago() {
-        return idMetodosDePago;
+    public MetodosDePagos getMetodosDePago() {
+        return metodosDePago;
     }
 
-    public void setIdMetodosDePago(int idMetodosDePago) {
-        this.idMetodosDePago = idMetodosDePago;
+    public void setMetodosDePago(MetodosDePagos metodosDePago) {
+        this.metodosDePago = metodosDePago;
     }
 
     public int getNumeroTarjeta() {
@@ -88,20 +92,28 @@ public class Venta
         this.numeroTarjeta = numeroTarjeta;
     }
 
-    public int getRut() {
-        return rut;
+    public Clientes getCliente() {
+        return cliente;
     }
 
-    public void setRut(int rut) {
-        this.rut = rut;
+    public void setCliente(Clientes cliente) {
+        this.cliente = cliente;
     }
 
-    public int getIdCarrito() {
-        return idCarrito;
+    public Carrito getCarrito() {
+        return carrito;
     }
 
-    public void setIdCarrito(int idCarrito) {
-        this.idCarrito = idCarrito;
+    public void setIdCarrito(Carrito carrito) {
+        this.carrito = carrito;
+    }
+
+    public Despacho getDespacho() {
+        return despacho;
+    }
+
+    public void setDespacho(Despacho despacho) {
+        this.despacho = despacho;
     }
     
 }

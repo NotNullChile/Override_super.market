@@ -27,4 +27,18 @@ public class DespachoDal
             e.printStackTrace();
         }
     }
+    
+    public int insertDespacho(model.business.Despacho d)
+    {
+        try 
+        {
+            conexion();
+            String sql = "INSERT INTO ";
+            return 0;
+        }
+        catch (Exception e)
+        {
+        }
+        return 0;
+    }
 }

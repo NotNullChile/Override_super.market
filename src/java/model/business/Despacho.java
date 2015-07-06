@@ -10,24 +10,21 @@ public class Despacho
     private int idDespacho;
     private String direccion;
     private String nombrePersonaAEntregar;
-    private int idComuna;
-    private int idVenta;
+    private Comunas comuna;
 
     public Despacho() 
     {
         this.idDespacho = 0;
         this.direccion = new String();
         this.nombrePersonaAEntregar = new String();
-        this.idComuna = 0;
-        this.idVenta = 0;
+        this.comuna = new Comunas();
     }
 
-    public Despacho(int idDespacho, String direccion, String nombrePersonaAEntregar, int idComuna, int idVenta) {
+    public Despacho(int idDespacho, String direccion, String nombrePersonaAEntregar) {
         this.idDespacho = idDespacho;
         this.direccion = direccion;
         this.nombrePersonaAEntregar = nombrePersonaAEntregar;
-        this.idComuna = idComuna;
-        this.idVenta = idVenta;
+        this.comuna = new Comunas();
     }
 
     public int getIdDespacho() {
@@ -54,20 +51,13 @@ public class Despacho
         this.nombrePersonaAEntregar = nombrePersonaAEntregar;
     }
 
-    public int getIdComuna() {
-        return idComuna;
+    public Comunas getComuna() {
+        return comuna;
     }
 
-    public void setIdComuna(int idComuna) {
-        this.idComuna = idComuna;
+    public void setComuna(Comunas comuna) {
+        this.comuna = comuna;
     }
 
-    public int getIdVenta() {
-        return idVenta;
-    }
-
-    public void setIdVenta(int idVenta) {
-        this.idVenta = idVenta;
-    }
     
 }
