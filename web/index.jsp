@@ -4,6 +4,8 @@
     Author     : urtubia @ notNull
 --%>
 
+<%@page import="model.business.Login"%>
+<%@page import="model.business.Clientes"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -21,6 +23,13 @@
         <link rel="icon" type="image/ico" href="images/override.ico">
     </head>
     <body>
+        
+        <!--Java servlet sessions and attributes-->
+        <%
+            HttpSession sesion = request.getSession();
+            model.business.Clientes cliente = (model.business.Clientes) sesion.getAttribute("cliente");       
+        %>
+        
         <!--header-->
         <header class="w3-container red w3-row">
             <!--Blank column(1)-->
@@ -41,7 +50,7 @@
             <!--Search form-->
             <form action="resultados_busqueda.jsp" method="post">
             <div class="w3-col m3">
-                <br><br>
+                <br><br><br>
                 <div class="input-group input-group-sm">
                     <input name= "txt_busqueda" 
                            type="text" 
@@ -49,7 +58,7 @@
                            placeholder="Búsqueda de productos..."
                            >
                     <span class="input-group-btn">
-                        <button type="button" 
+                        <button type="submit" 
                                 class="btn btn-primary"
                                 >
                             <i class="fa fa-search"></i>
@@ -64,7 +73,7 @@
             <!--End of blank column(1)-->
             <!--Shopping cart link(1)-->
             <div class="w3-col m1">
-                <br><br>
+                <br><br><br>
                 <div class="input-group input-group-sm">
                     <span class="input-group-btn">
                         <button type="button" 
@@ -77,15 +86,36 @@
             </div>
             <!--End of shopping cart link-->
             <!--Login link (2)-->
+            
             <div class="w3-col m2">
                 <br><br>
+                <%
+                    try
+                    {
+                        out.println("Bienvenido "+ cliente.getNombre());
+                    }
+                    catch(Exception e)
+                    {
+                        out.println("<br>");
+                    }
+                %> 
                 <div class="input-group input-group-sm">
-                    <span class="input-group-btn">
-                        <button type="button" 
-                                class="btn btn-success">
-                            <i class="fa fa-user"></i>
-                            &nbsp;Iniciar Sesión / Nuevo Usuario
-                        </button>
+                    <span class="input-group-btn">        
+                            <%
+                                try
+                                {
+                                    cliente.getNombre();
+                                    out.println("<a class='btn btn-warning' href='close_session.do'>");
+                                    out.println("<i class='fa fa-lock'></i>&nbsp;Cerrar Sesión");
+                                    out.println("</a>");
+                                }
+                                catch(Exception e)
+                                {
+                                    out.println("<a class='btn btn-success' href='login.jsp'>");
+                                    out.println("<i class='fa fa-user'></i>&nbsp;Iniciar Sesión / Nuevo Usuario");
+                                    out.println("</a>");
+                                }
+                            %>        
                     </span>
                 </div><!-- /input-group -->  
             </div>

@@ -155,7 +155,7 @@
                             <div class="w3-col m1">&nbsp;</div>
                             <div class="w3-col m4">
                                 <input type="password" 
-                                       name="txt_rut" 
+                                       name="txt_password" 
                                        value="" />
                             </div>
                             <div class="w3-col m1">&nbsp;</div>

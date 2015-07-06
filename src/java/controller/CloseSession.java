@@ -35,12 +35,15 @@ public class CloseSession extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             
             HttpSession sesion = request.getSession(true);
-        
             //Cerrar sesion
             sesion.invalidate();
         
             //Redirecciono a index.jsp
-            response.sendRedirect("login_ricardo.jsp");
+            response.sendRedirect("index.jsp");
+        }
+        catch(Exception e)
+        {
+            response.sendRedirect("error.jsp");
         }
     }
 

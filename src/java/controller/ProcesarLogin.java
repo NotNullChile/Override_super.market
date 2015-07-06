@@ -61,9 +61,8 @@ public class ProcesarLogin extends HttpServlet {
                 //Pagina 
                     request.getSession().setAttribute("cliente", cliente);
                     request.getSession().setAttribute("carrito", new ArrayList());
-                    request.getRequestDispatcher("comprobar_session_cliente.jsp").forward(request, response); 
+                    request.getRequestDispatcher("index.jsp").forward(request, response); 
                 }
-                
             }
             if(adminDal.searchAdmin(admin)!= null)
             {
