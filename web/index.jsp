@@ -23,47 +23,82 @@
     <body>
         <!--header-->
         <header class="w3-container red w3-row">
+            <!--Blank column(1)-->
             <div class="w3-col m1">&nbsp;</div>
+            <!--End of blank column-->
+            <!--Logo(2)-->
             <div class="w3-col m2">
-                <img src="images/Override_logo.png" width="70%" alt="Override_logo"/>
+                <a href="index.jsp">
+                    <img src="images/Override_logo.png" 
+                         width="70%" 
+                         alt="Override('<i class='fa fa-shopping-cart'></i>')"/>
+                </a>
             </div>
+            <!--End of logo-->
+            <!--Blank column(1)-->
             <div class="w3-col m1">&nbsp;</div>
+            <!--End of blank column(1)-->
+            <!--Search form-->
             <form action="resultados_busqueda.jsp" method="post">
             <div class="w3-col m3">
                 <br><br>
                 <div class="input-group input-group-sm">
-                    <input name= "txt_busqueda" type="text" class="form-control" 
-                           placeholder="Búsqueda de productos...">
+                    <input name= "txt_busqueda" 
+                           type="text" 
+                           class="form-control" 
+                           placeholder="Búsqueda de productos..."
+                           >
                     <span class="input-group-btn">
-                        <button type="button" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                        <button type="button" 
+                                class="btn btn-primary"
+                                >
+                            <i class="fa fa-search"></i>
+                        </button>
                     </span>
                 </div><!-- /input-group -->
             </div>
             </form>
+            <!--End of search form-->
+            <!--Blank column(1)-->
             <div class="w3-col m1">&nbsp;</div>
+            <!--End of blank column(1)-->
+            <!--Shopping cart link(1)-->
             <div class="w3-col m1">
                 <br><br>
                 <div class="input-group input-group-sm">
                     <span class="input-group-btn">
-                        <button type="button" class="btn btn-info"><i class="fa fa-shopping-cart"></i>&nbsp;mi carro</button>
+                        <button type="button" 
+                                class="btn btn-info">
+                            <i class="fa fa-shopping-cart"></i>
+                            &nbsp;mi carro
+                        </button>
                     </span>
                 </div><!-- /input-group -->  
             </div>
+            <!--End of shopping cart link-->
+            <!--Login link (2)-->
             <div class="w3-col m2">
                 <br><br>
                 <div class="input-group input-group-sm">
                     <span class="input-group-btn">
-                        <button type="button" class="btn btn-success"><i class="fa fa-user"></i>&nbsp;Iniciar Sesión / Nuevo Usuario</button>
+                        <button type="button" 
+                                class="btn btn-success">
+                            <i class="fa fa-user"></i>
+                            &nbsp;Iniciar Sesión / Nuevo Usuario
+                        </button>
                     </span>
                 </div><!-- /input-group -->  
             </div>
-            
+            <!--End of login link-->
+            <!--Blank column(1)-->
             <div class="w3-col m1">&nbsp;</div>
+            <!--End of blank column(1)-->
         </header>
         <!--header end-->
+        
         <!--horizontal menu-->
         <nav class="w3-topnav w3-padding green-d1">
-            <a href="#">Home</a>
+            <a href="index.jsp">Home</a>
             <a href="#">Abarrotes</a>
             <a href="#">Alimentos Congelados</a>
             <a href="#">Bebidas y Tragos</a>
@@ -73,34 +108,44 @@
             <a href="#">Mascotas</a>
         </nav>
         <!--horizontal menu end-->
-        <!--Body-->
+        
+        <!--Main row-->
         <div class="w3-row">
         <br>
-            <div class="w3-col m1"> &nbsp; </div>    
-            <div>
-                <nav class="w3-col m2 w3-ul w3-card w3-padding w3-bordered yellow-l5" style="width:25%">
+            <!--Blank column(1)-->
+            <div class="w3-col m1">&nbsp;</div>    
+            <!--End of blank column-->
+            
+            <!--Sidebar-->
+            <div class="w3-col m2">
+                <nav class=" w3-ul w3-card w3-padding w3-bordered yellow-l5" >
                     <br>
-                    <li><a href="#">Home</a></li><br>
-                    <li><a href="#">Abarrotes</a></li> <br>
-                    <li><a href="#">Alimentos Congelados</a></li> <br>
-                    <li><a href="#">Bebidas y Tragos</a></li><br>
-                    <li><a href="#">Carnes</a></li><br>
-                    <li><a href="#">Desayuno y Once</a></li><br>
-                    <li><a href="#">Hogar y Limpieza</a></li><br>
-                    <li><a href="#">Mascotas</a></li><br>
+                    <i class="fa fa-asterisk"></i>&nbsp;<a href=index.jsp>Home</a><br>&nbsp;<br>
+                    <i class="fa fa-asterisk"></i>&nbsp;<a href="#">Abarrotes</a><br>&nbsp;<br>
+                    <i class="fa fa-asterisk"></i>&nbsp;<a href="#">Alimentos Congelados</a><br>&nbsp;<br>
+                    <i class="fa fa-asterisk"></i>&nbsp;<a href="#">Bebidas y Tragos</a><br>&nbsp;<br>
+                    <i class="fa fa-asterisk"></i>&nbsp;<a href="#">Carnes</a></li><br>&nbsp;<br>
+                    <i class="fa fa-asterisk"></i>&nbsp;<a href="#">Desayuno y Once</a><br>&nbsp;<br>
+                    <i class="fa fa-asterisk"></i>&nbsp;<a href="#">Hogar y Limpieza</a><br>&nbsp;<br>
+                    <i class="fa fa-asterisk"></i>&nbsp;<a href="#">Mascotas</a><br>&nbsp;<br>
                 </nav>
             </div>
+            <!--End of sidebar-->
+            
+            <!--Content-->
             <div class="w3-col m7 w3-card w3-padding">
-            <!--Carrusel con banners.-->
+                <!--Banners carousel-->
                 <div class="w3-container">
-                    <div id="myCarousel" class="carousel slide " data-ride="carousel">
-                    <!-- Indicadores-->
+                    <div id="myCarousel" 
+                         class="carousel slide " 
+                         data-ride="carousel">
+                        <!-- Indicators-->
                         <ol class="carousel-indicators">
                             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                             <li data-target="#myCarousel" data-slide-to="1"></li>
                             <li data-target="#myCarousel" data-slide-to="2"></li>
                         </ol>
-                        <!-- Wrapper for slides -->
+                        <!-- Slide wrappers-->
                             <div class="carousel-inner" 
                                  role="listbox">
                                 <div class="item active">
@@ -113,63 +158,83 @@
                                     <img src="images/tragos.png" alt="Flower" width="460" height="345">
                                 </div>
                             </div>
-                        <!-- Controles izquierda y derecha carrusel -->
+                        <!--End of slides wrappers-->
+                        <!--Left/Right carousel controls-->
+                        <!--Left-->
                         <a class="left carousel-control" 
                             href="#myCarousel" 
                             role="button" 
                             data-slide="prev">
                             <span class="glyphicon glyphicon-chevron-left" 
-                                  aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
+                                  aria-hidden="true"
+                                  ></span>
+                            <span class="sr-only">
+                                Siguiente
+                            </span>
                         </a>
+                        <!--Right-->
                         <a class="right carousel-control" 
                             href="#myCarousel" 
                             role="button" 
                             data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
+                            <span class="glyphicon 
+                                  glyphicon-chevron-right" 
+                                  aria-hidden="true"
+                                  ></span>
+                            <span class="sr-only">
+                                Anterior
+                            </span>
                         </a>
-                    </div>      
+                    </div>
                 </div>
+                <!--End of carousel-->
                 <br>
+                <!--Main card-->
+                
+                <!--Title bar-->
                 <div class="w3-container red">
                     <h2>Ofertas impactantes&nbsp;&nbsp;<i class="fa fa-heartbeat"></i> </h2>
                 </div>
-                    <div class="w3-row-margin">
-                        <div class="w3-third">
-                            <div class="w3-card-2">
-                                <img src="http://www.lider.cl/dys/productImages/g/5466382ga.jpg" style="width:100%">
-                                <div class="w3-container">
-                                    <h5>Producto 1</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="w3-third">
-                            <div class="w3-card-2">
-                                <img src="http://www.lider.cl/dys/productImages/g/172325ga.jpg" style="width:100%">
-                                <div class="w3-container">
-                                    <h5>Producto 2</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="w3-third">
-                            <div class="w3-card-2">
-                            <img src="http://www.lider.cl/dys/productImages/g/5934782ga.jpg" style="width:100%">
-                                <div class="w3-container">
-                                    <h5>Producto 3</h5>
-                                </div>
+                <!--End of title bar-->
+                <!--First Row of items-->
+                <div class="w3-row-margin">
+                    <div class="w3-third">
+                        <div class="w3-card-2">
+                            <img src="http://www.lider.cl/dys/productImages/g/5466382ga.jpg" style="width:100%">
+                            <div class="w3-container">
+                                <h5>Producto 1</h5>
                             </div>
                         </div>
                     </div>
-                    <div class="w3-row-margin">
-                        <div class="w3-third">
-                            <div class="w3-card-2">
-                                <img src="http://www.lider.cl/dys/productImages/g/134880ga.jpg" style="width:100%">
-                                <div class="w3-container">
-                                    <h5>Producto 4</h5>
-                                </div>
+                    <div class="w3-third">
+                        <div class="w3-card-2">
+                            <img src="http://www.lider.cl/dys/productImages/g/172325ga.jpg" style="width:100%">
+                            <div class="w3-container">
+                                <h5>Producto 2</h5>
                             </div>
                         </div>
+                    </div>
+                    <div class="w3-third">
+                        <div class="w3-card-2">
+                        <img src="http://www.lider.cl/dys/productImages/g/5934782ga.jpg" style="width:100%">
+                            <div class="w3-container">
+                                <h5>Producto 3</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--End of first row of items-->
+                
+                <!--Second row of items-->
+                <div class="w3-row-margin">
+                    <div class="w3-third">
+                        <div class="w3-card-2">
+                            <img src="http://www.lider.cl/dys/productImages/g/134880ga.jpg" style="width:100%">
+                            <div class="w3-container">
+                                <h5>Producto 4</h5>
+                            </div>
+                        </div>
+                    </div>
                     <div class="w3-third">
                         <div class="w3-card-2">
                             <img src="http://www.lider.cl/dys/productImages/g/5434633ga.jpg" style="width:100%">
@@ -187,40 +252,60 @@
                         </div>
                     </div>
                 </div>
+                <!--End of second row of items-->
             </div>
+            <!--End of content-->
+            
+            <!--Blank column-->
             <div class="w3-col m1">&nbsp;</div>
+            <!--End of blank column-->
+            
         </div>
+        <!--End of Main Row-->
+        
+        <!--Footer-->
         <footer class="footer w3-row">
             <div class="w3-container">
-                <!--Creative Commons License-->
-                <div class=" ">
-                    <div class="w3-col m1"> &nbsp;</div>
-                    <div class="w3-col m1">
-                        <br>
-                        <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
-                            <img alt="Licencia Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-nc-nd/4.0/88x31.png" width="60%"/>
-                        </a>
-                    </div>
-                    <div class="w3-col m1"> &nbsp; </div>
-                    <div class="w3-col m6 w3-padding-left">
-                        <h6>
-                            <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">@Override super.market(<i class="fa fa-shopping-cart"></i>)</span> por 
-                                <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.notnull.cl" property="cc:attributionName" rel="cc:attributionURL">
-                                    notNull Chile</a> <br>Se distribuye bajo una <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"> Licencia Creative
-                                        Commons Atribución-NoComercial-SinDerivar 4.0 Internacional</a>.<br />Basada en una obra en 
-                                <a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/NotNullChile/Override_super.market" rel="dct:source">
-                                https://github.com/NotNullChile/Override_super.market</a>.
-                        </h6>
-                    </div>
-                    <div class="w3-col m1"> &nbsp; </div>
-                    <div class="w3-col m1">
-                        <br>
-                        <img src="images/notnull.png" width="60%" alt="notnull"/>
-                    </div>
-                    <div class="w3-col m1"> &nbsp; </div>
+                <!--Blank column-->
+                <div class="w3-col m1"> &nbsp;</div>
+                <!--End of blank column-->
+                <!--Creative Commons logo-->
+                <div class="w3-col m1">
+                    <br>
+                    <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
+                        <img alt="Licencia Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-nc-nd/4.0/88x31.png" width="60%"/>
+                    </a>
                 </div>
-                <!--End of creative Commons License-->
+                <!--End of Creative Commons logo-->
+                <!--Blank column-->
+                <div class="w3-col m1"> &nbsp; </div>
+                <!--End of blank column-->
+                <!--Creative Commons license-->
+                <div class="w3-col m6 w3-padding-left">
+                    <h6>
+                        <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">@Override super.market(<i class="fa fa-shopping-cart"></i>)</span> por 
+                            <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.notnull.cl" property="cc:attributionName" rel="cc:attributionURL">
+                                notNull Chile</a> <br>Se distribuye bajo una <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"> Licencia Creative
+                                    Commons Atribución-NoComercial-SinDerivar 4.0 Internacional</a>.<br />Basada en una obra en 
+                            <a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/NotNullChile/Override_super.market" rel="dct:source">
+                            https://github.com/NotNullChile/Override_super.market</a>.
+                    </h6>
+                </div>
+                <!--End of creative Commons license-->
+                <!--Blank column-->
+                <div class="w3-col m1"> &nbsp; </div>
+                <!--End of blank column-->
+                <!--NotNull logo-->
+                <div class="w3-col m1">
+                    <br>
+                    <img src="images/notnull.png" width="60%" alt="notnull"/>
+                </div>
+                <!--End of NotNull logo-->
+                <!--Blank column-->
+                <div class="w3-col m1">&nbsp;</div>
+                <!--End of blank column-->
             </div>
-        </footer>    
+        </footer>
+        <!--End of footer-->
     </body>
 </html>
