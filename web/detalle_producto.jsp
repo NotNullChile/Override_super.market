@@ -4,6 +4,8 @@
     Author     : urtubia @ notNull
 --%>
 
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="model.dal.ProductoDal"%>
 <%@page import="model.business.Producto"%>
 <%@page import="model.business.Marcas"%>
@@ -108,9 +110,12 @@
                             -->
                             <!--Cambiar por la URL comentada arriba.-->
                             <%
-                            ProductoDal productoDal = new ProductoDal();
-                            Producto p = new Producto();
-                            p = productoDal.buscarProducto(request.getParameter("imagen")); 
+                            try
+                            {
+                               ProductoDal productoDal = new ProductoDal();
+                                Producto p = new Producto();
+                                DecimalFormat formato = new DecimalFormat("$#,###");
+                                p = productoDal.buscarProducto(request.getParameter("imagen"));                            
                             %>
                             <img src="imagesProducts/<%=p.getUrlFoto()%>" style="width:100%">
                             <div class="w3-container">
@@ -125,7 +130,7 @@
                             <h2><%=p.getMarca().getDescripcion()%></h2><br>
                             <h3><%=p.getDescripcion()%></h3><br>
                             <h4>SKU: <%=p.getIdProducto()%></h4><br>
-                            <h3>Precio Unitario: <%=p.getPrecioUnitario()%> </h3><br>
+                            <h3>Precio Unitario: <%=formato.format(p.getPrecioUnitario())%> </h3><br>
                             <h4>Stock: <%=p.getStock()%> unidades.</h4><br>                           
                             </h3>
                         </div>
@@ -138,6 +143,13 @@
                                        min="1"
                                        max="<%=p.getStock()%>"
                                        required >
+                                <%
+                                }
+                                catch(Exception e)
+                                {  
+                                    
+                                }                           
+                                %>
                             </div>
                             <div class="col-sm-2">
                                 <button type="button" class="btn btn-info">

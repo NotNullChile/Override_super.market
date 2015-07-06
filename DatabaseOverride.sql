@@ -178,6 +178,7 @@ INSERT INTO marcas VALUES(30,'Champion Dog');
 INSERT INTO marcas VALUES(31,'Drag Pharma');
 INSERT INTO marcas VALUES(32,'Colun');
 INSERT INTO marcas VALUES(33,'Ziploc');
+INSERT INTO marcas VALUES(34,'Santa Rita');
 
 
 /* Insert MetodosDePago */
@@ -214,7 +215,7 @@ INSERT INTO productos values (11,'Jugo '		,940 ,10,'Néctar Durazno'							     
 INSERT INTO productos values (12,'Bebida'		,1350,31,'Bebida Fantasía Sabor Cola'										   ,3,11,'ByL_Pepsi_Bebida.jpg');
 INSERT INTO productos values (13,'Pack Cervezas',3850,15,'Pack Cervezas Black Label (6 Botellas 355 cc c/u)'				   ,3,12,'ByL_RoyalGuard_PackCerveza.jpg');
 INSERT INTO productos values (14,'Pisco 40°'	,7150,20,'Pisco 40° Nobel Extra Añejado'						   			   ,3,13,'ByL_Mistral_Nobel.jpg');
-INSERT INTO productos values (15,'Vino'	   		,3290,5 ,'Vino Cabernet Sauvignon Doña Dominga 750 cc'				   		   ,3,14,'ByL_DoñaDominga_Vino.jpg');
+INSERT INTO productos values (41,'Vino'	   		,3290,5 ,'Vino Cabernet Sauvignon 750 cc'				   		   			   ,3,34,'ByL_SantaRita_Vino.jpg');
 
 /* Carnes */
 INSERT INTO productos values (16,'Trutro Corto'	,1990 ,5,'Trutro Corto de Pollo Congelado Bolsa 800 g'	 ,4,15,'C_Tyson_TrutoCorto.jpg');
@@ -344,7 +345,7 @@ SELECT p.idProducto, p.nombreProducto, p.precioUnitario, p.stock, p.descripcion,
 FROM productos p INNER JOIN tipoproductos t
 ON p.idTipoProducto = t.idTipoProducto INNER JOIN marcas m
 ON p.idMarca = m.idMarca
-WHERE p.Urlfoto = 'M_Whiskas_ComidaGatos.jpg';
+WHERE p.Urlfoto = 'ByL_DoñaDominga_Vino.jpg';
 
 /* UPDATE */
 
@@ -358,4 +359,4 @@ WHERE p.idProducto = 19;
 /* DELETE */
 
 DELETE FROM productos 
-WHERE idProducto = 10;
+WHERE idProducto = 15;

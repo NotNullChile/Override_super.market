@@ -120,7 +120,6 @@
                                     <h5><%=p.getNombreProducto()%></h5>
                                     <hr>
                                     <h5 align="right"><%=formato.format(p.getPrecioUnitario())%></h5>
-                                    
                                 </div>                                
                             </div>
                         </div>
