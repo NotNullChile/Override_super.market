@@ -4,6 +4,11 @@
     Author     : urtubia @ notNull
 --%>
 
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="java.text.NumberFormat"%>
+<%@page import="java.util.Locale"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="model.dal.ProductoDal"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -28,14 +33,17 @@
                 <img src="images/Override_logo.png" width="70%" alt="Override_logo"/>
             </div>
             <div class="w3-col m1">&nbsp;</div>
+            <form action="resultados_busqueda.jsp" method="post">
             <div class="w3-col m3">
                 <br><br>
                 <div class="input-group input-group-sm">
-                    <input type="text" class="form-control" placeholder="Búsqueda de productos...">
+                    <input name = "txt_busqueda" type="text" 
+                           class="form-control" placeholder="Búsqueda de productos...">
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-primary"><i class="fa fa-search"></i></button>
                     </span>
                 </div><!-- /input-group -->
+            </form>
             </div>
             <div class="w3-col m1">&nbsp;</div>
             <div class="w3-col m1">
@@ -86,66 +94,43 @@
                     <li><a href="#">Hogar y Limpieza</a></li><br>
                     <li><a href="#">Mascotas</a></li><br>
                 </nav>
-            </div>
-            <div class="w3-col m7 w3-card w3-padding">
-            
-                <br>
+            </div>           
+            <div class="w3-col m7 w3-card w3-padding">           
+                <br>             
                 <div class="w3-container red">
                     <h2>Resultados de su búsqueda:&nbsp;&nbsp;<i class="fa fa-search"></i> </h2>
-                </div>
+                </div> 
+                <form action="detalle_producto.jsp" method="POST">
                     <div class="w3-row-margin">
+                        <%
+                         model.dal.ProductoDal productoDal = new ProductoDal();
+                         //Formato Dinero CL
+                         DecimalFormat formato = new DecimalFormat("$#,###");
+                         ArrayList<model.business.Producto> listProduct = productoDal.listaProductoBusquedaGeneral(request.getParameter("txt_busqueda"));
+                         
+                         for(model.business.Producto p : listProduct)
+                         {                                    
+                        %>
                         <div class="w3-third">
                             <div class="w3-card-2">
-                                <img src="http://www.lider.cl/dys/productImages/g/5466382ga.jpg" style="width:100%">
-                                <div class="w3-container">
-                                    <h5>Producto 1</h5>
-                                </div>
+                                <button value="<%=p.getUrlFoto()%>" name="imagen"> 
+                                <img name="imagen" value="<%=p.getUrlFoto()%>" src="imagesProducts/<%=p.getUrlFoto()%>" style="width:100%">
+                                </button>
+                                <div class="w3-container">   
+                                    <h5><%=p.getNombreProducto()%></h5>
+                                    <hr>
+                                    <h5 align="right"><%=formato.format(p.getPrecioUnitario())%></h5>
+                                    
+                                </div>                                
                             </div>
                         </div>
-                        <div class="w3-third">
-                            <div class="w3-card-2">
-                                <img src="http://www.lider.cl/dys/productImages/g/172325ga.jpg" style="width:100%">
-                                <div class="w3-container">
-                                    <h5>Producto 2</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="w3-third">
-                            <div class="w3-card-2">
-                            <img src="http://www.lider.cl/dys/productImages/g/5934782ga.jpg" style="width:100%">
-                                <div class="w3-container">
-                                    <h5>Producto 3</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="w3-row-margin">
-                        <div class="w3-third">
-                            <div class="w3-card-2">
-                                <img src="http://www.lider.cl/dys/productImages/g/134880ga.jpg" style="width:100%">
-                                <div class="w3-container">
-                                    <h5>Producto 4</h5>
-                                </div>
-                            </div>
-                        </div>
-                    <div class="w3-third">
-                        <div class="w3-card-2">
-                            <img src="http://www.lider.cl/dys/productImages/g/5434633ga.jpg" style="width:100%">
-                            <div class="w3-container">
-                                <h5>Producto 5</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="w3-third">
-                        <div class="w3-card-2">
-                            <img src="http://www.lider.cl/dys/productImages/g/5586646ga.jpg" style="width:100%">
-                            <div class="w3-container">
-                                <h5>Producto 6</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                          <%
+                            }
+                          %> 
+                   </div> 
+                 </form> 
             </div>
+                                 
             <div class="w3-col m1">&nbsp;</div>
         </div>
         <footer class="footer w3-row">

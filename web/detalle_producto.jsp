@@ -4,6 +4,8 @@
     Author     : urtubia @ notNull
 --%>
 
+<%@page import="model.dal.ProductoDal"%>
+<%@page import="model.business.Producto"%>
 <%@page import="model.business.Marcas"%>
 <%@page import="model.business.TipoProductos"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -22,31 +24,7 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
         <link rel="icon" type="image/ico" href="images/override.ico">
     </head>
-    <body>
-        <%
-            int idProducto;
-            String nombreProducto;
-            int precioUnitario;
-            int stock;
-            String descripcion;
-            TipoProductos tipoProducto;
-            Marcas marca;
-            String urlFoto;
-            
-            marca = new Marcas();
-            tipoProducto = new TipoProductos();
-            
-            //Inicializadores a modificar:
-            idProducto = 0;
-            nombreProducto = "nombre Producto";
-            precioUnitario = 0;
-            stock = 10;
-            descripcion = "textocompro textovendo textoarriendo textotexto";
-            marca.setDescripcion("marca");
-            tipoProducto.setDescripcion("tipo Producto");
-            urlFoto = new String();
-        %>
-        
+    <body>     
         <!--header-->
         <header class="w3-container red w3-row">
             <div class="w3-col m1">&nbsp;</div>
@@ -54,6 +32,7 @@
                 <img src="images/Override_logo.png" width="70%" alt="Override_logo"/>
             </div>
             <div class="w3-col m1">&nbsp;</div>
+            <form action="resultados_busqueda.jsp" method="post">
             <div class="w3-col m3">
                 <br><br>
                 <div class="input-group input-group-sm">
@@ -61,8 +40,10 @@
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-primary"><i class="fa fa-search"></i></button>
                     </span>
-                </div><!-- /input-group -->
+                </div
+                <!-- /input-group -->
             </div>
+            </form>
             <div class="w3-col m1">&nbsp;</div>
             <div class="w3-col m1">
                 <br><br>
@@ -123,24 +104,29 @@
                     <div class="w3-third">
                         <div class="w3-card-2">
                             <!-- 
-                            <img src="<%=urlFoto %>" alt="<%=nombreProducto%>" style="width:100%"/>
+                            <img src="" alt="" />
                             -->
                             <!--Cambiar por la URL comentada arriba.-->
-                            <img src="http://www.lider.cl/dys/productImages/g/5466382ga.jpg" style="width:100%">
+                            <%
+                            ProductoDal productoDal = new ProductoDal();
+                            Producto p = new Producto();
+                            p = productoDal.buscarProducto(request.getParameter("imagen")); 
+                            %>
+                            <img src="imagesProducts/<%=p.getUrlFoto()%>" style="width:100%">
                             <div class="w3-container">
-                                <h5><%=nombreProducto%></h5>
+                                <h5><%=p.getNombreProducto()%></h5>
                             </div>
                         </div>
                     </div>
                     <div width="30%">
                         <div class="w3-card-2" >
-                            <h1><%=nombreProducto%></h1><br>
-                            <h3><%=tipoProducto.getDescripcion()%></h3><br>
-                            <h2><%=marca.getDescripcion()%></h2><br>
-                            <h3><%=descripcion%></h3><br>
-                            <h4>SKU: <%=idProducto%></h4><br>
-                            <h3>Precio Unitario: <%=precioUnitario %> </h3><br>
-                            <h4>Stock: <%=stock%> unidades.</h4><br>                           
+                            <h1><%=p.getNombreProducto()%></h1><br>
+                            <h3><%=p.getTipoProducto().getDescripcion()%></h3><br>
+                            <h2><%=p.getMarca().getDescripcion()%></h2><br>
+                            <h3><%=p.getDescripcion()%></h3><br>
+                            <h4>SKU: <%=p.getIdProducto()%></h4><br>
+                            <h3>Precio Unitario: <%=p.getPrecioUnitario()%> </h3><br>
+                            <h4>Stock: <%=p.getStock()%> unidades.</h4><br>                           
                             </h3>
                         </div>
                         <div class="w3-container green-d3 row w3-padding-8">
@@ -150,7 +136,7 @@
                                        class="form-control"
                                        value="1"
                                        min="1"
-                                       max="<%=stock%>"
+                                       max="<%=p.getStock()%>"
                                        required >
                             </div>
                             <div class="col-sm-2">

@@ -36,14 +36,14 @@
                     <img src="images/Override_logo.png" width="150" height="150" alt="Override_logo"/>
                 </div>
                 <!--Formulario de búsqueda general en el sitio.-->
-                <form>
+                <form action="resultados_busqueda.jsp" method="post">
                     <div class="w3-col m2">
                             <br>
                                 <input name="busqueda"
                                    type="text" 
                                    class="form-control" 
                                    id="busqueda">
-                    </div>
+                    </div>             
                     <div class="w3-col m1 busqueda btn btn-success">
                         <h4>buscar</h4>
                         <h2><i class="fa fa-search"></i></h2>

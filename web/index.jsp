@@ -28,15 +28,18 @@
                 <img src="images/Override_logo.png" width="70%" alt="Override_logo"/>
             </div>
             <div class="w3-col m1">&nbsp;</div>
+            <form action="resultados_busqueda.jsp" method="post">
             <div class="w3-col m3">
                 <br><br>
                 <div class="input-group input-group-sm">
-                    <input type="text" class="form-control" placeholder="Búsqueda de productos...">
+                    <input name= "txt_busqueda" type="text" class="form-control" 
+                           placeholder="Búsqueda de productos...">
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-primary"><i class="fa fa-search"></i></button>
                     </span>
                 </div><!-- /input-group -->
             </div>
+            </form>
             <div class="w3-col m1">&nbsp;</div>
             <div class="w3-col m1">
                 <br><br>
