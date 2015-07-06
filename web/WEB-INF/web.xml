@@ -16,6 +16,10 @@
         <servlet-name>CloseSession</servlet-name>
         <servlet-class>controller.CloseSession</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProcesarCarritoCompras</servlet-name>
+        <servlet-class>controller.ProcesarCarritoCompras</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CreateClient</servlet-name>
         <url-pattern>/create_client.do</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>CloseSession</servlet-name>
         <url-pattern>/close_session.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProcesarCarritoCompras</servlet-name>
+        <url-pattern>/procesa_carrito_compras.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

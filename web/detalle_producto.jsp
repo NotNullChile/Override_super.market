@@ -102,7 +102,9 @@
                 <div class="w3-container red">
                     <h2>Detalles del producto:&nbsp;&nbsp;<i class="fa fa-search"></i> </h2>
                 </div>
+               
                 <div class="w3-row-margin">
+                     <form action="procesa_carrito_compras.do" method="POST">
                     <div class="w3-third">
                         <div class="w3-card-2">
                             <!-- 
@@ -137,7 +139,7 @@
                         <div class="w3-container green-d3 row w3-padding-8">
                             <label class="col-sm-2">Cantidad</label>
                             <div class="col-sm-2">
-                                <input type="number" 
+                                <input type="number" name="spi_stock"
                                        class="form-control"
                                        value="1"
                                        min="1"
@@ -159,7 +161,9 @@
                             </div>
                        </div>
                     </div>
+                  </form>
                 </div>
+                             
             </div>
             <div class="w3-col m1">&nbsp;</div>
         </div>
