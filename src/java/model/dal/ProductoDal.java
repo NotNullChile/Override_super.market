@@ -471,4 +471,48 @@ public class ProductoDal
             }
         }
     }
+    public Producto buscarProductoXIdProducto (String idProducto)
+    {
+        try
+        {
+            conexion();
+            String sql = "SELECT p.idProducto, p.nombreProducto, p.precioUnitario, "
+                    + "p.stock, p.descripcion, t.descripcion, m.descripcion , p.urlFoto "
+                    + "FROM productos p INNER JOIN tipoproductos t "
+                    + "ON p.idTipoProducto = t.idTipoProducto INNER JOIN marcas m "
+                    + "ON p.idMarca = m.idMarca "
+                    + "WHERE p.idProducto = " + idProducto + ";";            
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.first())
+            {
+                Producto p = new Producto();
+                p.setIdProducto(rs.getInt(1));
+                p.setNombreProducto(rs.getString(2));
+                p.setPrecioUnitario(rs.getInt(3));
+                p.setStock(rs.getInt(4));
+                p.setDescripcion(rs.getString(5));
+                p.getTipoProducto().setDescripcion(rs.getString(6));
+                p.getMarca().setDescripcion(rs.getString(7));
+                p.setUrlFoto(rs.getString(8));
+                return p;
+            }
+            return null;
+        } 
+        catch (Exception e) 
+        {
+            return null;
+        }
+         finally
+        {
+            try 
+            {
+               conn.close();
+            }
+            catch (Exception e) 
+            {
+            }
+        }
+        
+    }
 }

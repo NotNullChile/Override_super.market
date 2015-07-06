@@ -252,12 +252,6 @@ INSERT INTO productos values (38,'Alimento Perro Master'  ,14870,5  ,'Alimento P
 INSERT INTO productos values (39,'Alimento Perro Champion',11450,10 ,'Alimento Perro Raza Pequeña 8 kg'					   ,8,30,'M_Champion_ComidaPerros.jpg');
 INSERT INTO productos values (40,'Suplemento Nutricional' ,3990 ,30 ,'Suplemento Nutricional para Perros Senior'		   ,8,31,'M_DragPharma_Superpet.jpg');
 
-
-
-
-
-
-
 /*Select*/
 select * from login;
 select * from clientes;
@@ -265,6 +259,7 @@ SELECT * FROM metodosDePago;
 SELECT * FROM tipoproductos;
 SELECT * FROM marcas;
 SELECT * FROM productos;
+
 /* Buscando Usuario */
 SELECT c.nombre, c.apellido FROM clientes c INNER JOIN login l  ON c.username = l.username WHERE l.username = '1' AND l.contraseña = '1';  
 
@@ -346,6 +341,12 @@ FROM productos p INNER JOIN tipoproductos t
 ON p.idTipoProducto = t.idTipoProducto INNER JOIN marcas m
 ON p.idMarca = m.idMarca
 WHERE p.Urlfoto = 'ByL_DoñaDominga_Vino.jpg';
+
+/* Busqueda despacho */
+
+SELECT d.idDespacho, d.direccion, d.nombrePersonaAEntregar, d.tamaño, d.precio, c.nombreComuna
+FROM despacho d INNER JOIN comunas c
+ON d.idComuna = c.idComuna;
 
 /* UPDATE */
 

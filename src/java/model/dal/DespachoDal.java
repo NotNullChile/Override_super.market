@@ -3,6 +3,7 @@ package model.dal;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
@@ -33,12 +34,22 @@ public class DespachoDal
         try 
         {
             conexion();
-            String sql = "INSERT INTO ";
-            return 0;
+            String sql = "INSERT INTO clientes VALUES(" + d.getIdDespacho() + ",'" + d.getDireccion() + "','" + d.getNombrePersonaAEntregar() + "'," + d.getComuna().getIdComuna() + ");";
+            return state.executeUpdate(sql);
         }
-        catch (Exception e)
+        catch (SQLException e)
         {
+            return e.getErrorCode();
         }
-        return 0;
+        finally
+        {
+            try 
+            {
+                conn.close();
+            }
+            catch (Exception e)
+            {
+            }
+        }
     }
 }
