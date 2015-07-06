@@ -175,7 +175,7 @@
                             <%
                             try
                             {
-                               ProductoDal productoDal = new ProductoDal();
+                                ProductoDal productoDal = new ProductoDal();
                                 Producto p = new Producto();
                                 DecimalFormat formato = new DecimalFormat("$#,###");
                                 p = productoDal.buscarProducto(request.getParameter("imagen"));                            
@@ -190,10 +190,10 @@
                         <div class="w3-card-2" >
                             <h1><%=p.getNombreProducto()%> <%=p.getMarca().getDescripcion()%></h1>
                             <h4><%=p.getTipoProducto().getDescripcion()%></h4>
-                            <h6>SKU: <%=p.getIdProducto()%></h6>
+                            <h6>SKU: <label id="idProducto"><%=p.getIdProducto()%></label></h6>
                             <h3><%=p.getDescripcion()%></h3><br>
                             <h3>Precio Unitario: <%=formato.format(p.getPrecioUnitario())%> </h3>
-                            <h5>Stock: <%=p.getStock()%> unidades.</h5><br>                           
+                            <h5>Stock: <%=p.getStock()%> unidades.</h5><br>   
                             <br><br>
                         </div>
                         <div class="w3-container green-d3 row w3-padding-8">
