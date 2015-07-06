@@ -188,24 +188,50 @@
                     </div>
                     <div width="30%">
                         <div class="w3-card-2" >
-                            <h1><%=p.getNombreProducto()%></h1><br>
-                            <h3><%=p.getTipoProducto().getDescripcion()%></h3><br>
-                            <h2><%=p.getMarca().getDescripcion()%></h2><br>
+                            <h1><%=p.getNombreProducto()%> <%=p.getMarca().getDescripcion()%></h1>
+                            <h4><%=p.getTipoProducto().getDescripcion()%></h4>
+                            <h6>SKU: <%=p.getIdProducto()%></h6>
                             <h3><%=p.getDescripcion()%></h3><br>
-                            <h4>SKU: <%=p.getIdProducto()%></h4><br>
-                            <h3>Precio Unitario: <%=formato.format(p.getPrecioUnitario())%> </h3><br>
-                            <h4>Stock: <%=p.getStock()%> unidades.</h4><br>                           
-                            </h3>
+                            <h3>Precio Unitario: <%=formato.format(p.getPrecioUnitario())%> </h3>
+                            <h5>Stock: <%=p.getStock()%> unidades.</h5><br>                           
+                            <br><br>
                         </div>
                         <div class="w3-container green-d3 row w3-padding-8">
-                            <label class="col-sm-2">Cantidad</label>
-                            <div class="col-sm-2">
-                                <input type="number" name="spi_stock"
-                                       class="form-control"
-                                       value="1"
-                                       min="1"
+                            <%
+                                if (p.getStock() > 0) 
+                                {
+                                    out.println("<label class='col-sm-2'>Cantidad</label>");
+                                    out.println("<div class='col-sm-2'>");
+                                    out.println("<input type='number' name='spi_stock' class='form-control' value='1' min='1' max=" + p.getStock()+"required >");
+                                    out.println("</div>");
+                                    out.println("<div class='col-sm-2'>");
+                                    out.println("<button type='button' class='btn btn-info'>");
+                                    out.println("<i class='fa fa-shopping-cart'></i>");
+                                    out.println("Agregar al carro de compras");
+                                    out.println("</button>");
+                                    out.println("</div>");
+                                }
+                                else
+                                {
+                                    out.println("<label class='col-sm-2'>Producto agotado.</label>");
+                                }
+                            %>
+                            <!--label class='col-sm-2'>Cantidad</label>
+                            <div class='col-sm-2'>
+                                <input type='number' name='spi_stock'
+                                       class='form-control'
+                                       value='1'
+                                       min='1'
                                        max="<%=p.getStock()%>"
                                        required >
+                                
+                            </div>
+                            <div class="col-sm-2">
+                                <button type="button" class="btn btn-info">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    Agregar al carro de compras
+                                </button>
+                            </div-->
                                 <%
                                 }
                                 catch(Exception e)
@@ -213,13 +239,6 @@
                                     
                                 }                           
                                 %>
-                            </div>
-                            <div class="col-sm-2">
-                                <button type="button" class="btn btn-info">
-                                    <i class="fa fa-shopping-cart"></i>
-                                    Agregar al carro de compras
-                                </button>
-                            </div>
                        </div>
                     </div>
                   </form>
