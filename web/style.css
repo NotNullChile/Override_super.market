@@ -7,8 +7,17 @@ and open the template in the editor.
     Created on : Jul 2, 2015, 7:25:12 AM
     Author     : urtubia @ notNull
 */
+html {
+    position: relative;
+    min-height: 100%;
+}
+            
+body {
+    margin-bottom: 120px;
+}
 
 .footer {
+    position: absolute;
     bottom: 0;
     width: 100%;
     height: 110px;

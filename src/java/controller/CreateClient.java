@@ -41,14 +41,14 @@ public class CreateClient extends HttpServlet {
             model.dal.LoginDal loginDal         = new model.dal.LoginDal();
             
             //Set Class
-            clientes.setRut(Integer.parseInt(request.getParameter("txt_rut")));
-            clientes.setNombre(request.getParameter("txt_nombre"));
-            clientes.setApellido(request.getParameter("txt_apellido"));
-            clientes.setEmail(request.getParameter("txt_email"));
-            clientes.setTelefono(Integer.parseInt(request.getParameter("txt_telefono")));
-            clientes.getLogin().setUsername(Integer.parseInt(request.getParameter("txt_rut")));
-            String password1 = request.getParameter("txt_password_1");
-            String password2 = request.getParameter("txt_password_2");
+            clientes.setRut(Integer.parseInt(request.getParameter("txt_nuevo_rut")));
+            clientes.setNombre(request.getParameter("txt_nuevo_nombre"));
+            clientes.setApellido(request.getParameter("txt_nuevo_apellido"));
+            clientes.setEmail(request.getParameter("txt_nuevo_email"));
+            clientes.setTelefono(Integer.parseInt(request.getParameter("txt_nuevo_telefono")));
+            clientes.getLogin().setUsername(Integer.parseInt(request.getParameter("txt_nuevo_rut")));
+            String password1 = request.getParameter("txt_nuevo_password_1");
+            String password2 = request.getParameter("txt_nuevo_password_2");
             String passwordDefinitiva = null;
             if (password1.equals(password2)) 
             {
