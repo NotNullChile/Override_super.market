@@ -189,12 +189,12 @@
                     </div>
                     <div width="30%">
                         <div class="w3-card-2" >
-                            <h1><input type="text" name="txt_nombre" value="<%=p.getNombreProducto()%>" /> <%=p.getMarca().getDescripcion()%></h1>
+                            <h1><input type="text" name="txt_nombre" value="<%=p.getNombreProducto()%>"  style="border: none"/> 
+                                <br><%=p.getMarca().getDescripcion()%></h1>
                             <h4><%=p.getTipoProducto().getDescripcion()%></h4>
-                            <h6>SKU:<input type="text" name="id_producto" value="<%=p.getIdProducto()%>" /></h6>
-                            
+                            <h6>SKU:<input type="text" name="id_producto" value="<%=p.getIdProducto()%>"  style="border: none"/></h6>
                             <h3><%=p.getDescripcion()%></h3><br>
-                            <h3>Precio Unitario: <input type="text" name="txt_precio" value="<%=p.getPrecioUnitario()%>" /> </h3>
+                            <h3>Precio Unitario: <input type="text" name="txt_precio" value="<%=p.getPrecioUnitario()%>" style="border: none"/> </h3>
                             <h5>Stock: <%=p.getStock()%> unidades.</h5><br>   
                             <br><br>
                         </div>
