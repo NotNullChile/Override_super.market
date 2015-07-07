@@ -26,7 +26,22 @@
             HttpSession sesion = request.getSession();
             model.business.Clientes cliente = (model.business.Clientes) sesion.getAttribute("cliente");       
         %>
-        
+        <script language="javascript" type="text/javascript">
+            function Solo_Numerico(variable)
+            {
+                Numer=parseInt(variable);
+                if (isNaN(Numer))
+                {
+                    return "";
+                }
+                    return Numer;
+            }
+            
+            function ValNumero(Control)
+            {
+                Control.value=Solo_Numerico(Control.value);
+            }
+        </script>
         <!--header-->
         <header class="w3-container red w3-row">
             <!--Blank column(1)-->
@@ -167,7 +182,9 @@
                             <div class="w3-col m4">
                                 <input type="text" 
                                        name="txt_rut" 
-                                       value="" />
+                                       value="" 
+                                       required
+                                       onkeyUp="return ValNumero(this);"/>
                             </div>
                             <div class="w3-col m1">&nbsp;</div>
                         </div>
@@ -236,7 +253,9 @@
                             <div class="w3-col m4">
                                 <input type="text" 
                                        name="txt_nuevo_rut" 
-                                       value="" />
+                                       value="" 
+                                       required
+                                       onkeyUp="return ValNumero(this);"/>
                             </div>
                             <div class="w3-col m1">&nbsp;</div>
                         <!--End of RUT textbox-->
@@ -275,7 +294,8 @@
                             <div class="w3-col m4">
                                 <input type="text" 
                                        name="txt_nuevo_apellido" 
-                                       value="" />
+                                       value="" 
+                                       required/>
                             </div>
                             <div class="w3-col m1">&nbsp;</div>
                         <!--End of Apellido textbox-->
@@ -292,9 +312,11 @@
                             </div>
                             <div class="w3-col m1 s1">&nbsp;</div>
                             <div class="w3-col m4">
-                                <input type="text" 
+                                <input type="email" 
                                        name="txt_nuevo_email" 
-                                       value="" />
+                                       value="" 
+                                       required
+                                       onkeyUp="return ValNumero(this);"/>
                             </div>
                             <div class="w3-col m1">&nbsp;</div>
                         <!--End of email textbox-->
@@ -313,7 +335,9 @@
                             <div class="w3-col m4">
                                 <input type="text" 
                                        name="txt_nuevo_telefono" 
-                                       value="" />
+                                       value="" 
+                                       required
+                                       onkeyUp="return ValNumero(this);"/>
                             </div>
                             <div class="w3-col m1">&nbsp;</div>
                         <!--End of teléfono textbox-->
@@ -332,7 +356,8 @@
                             <div class="w3-col m4">
                                 <input type="password" 
                                        name="txt_nuevo_password_1" 
-                                       value="" />
+                                       value=""
+                                       required/>
                             </div>
                             <div class="w3-col m1">&nbsp;</div>
                         </div>
@@ -351,7 +376,8 @@
                             <div class="w3-col m4">
                                 <input type="password" 
                                        name="txt_nuevo_password_2" 
-                                       value="" />
+                                       value=""
+                                       required/>
                             </div>
                             <div class="w3-col m1">&nbsp;</div>
                         </div>

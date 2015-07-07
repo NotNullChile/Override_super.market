@@ -68,10 +68,6 @@ public class CreateClient extends HttpServlet {
                     case 1 : 
                         clientesDal.insertClient(clientes);
                         out.print("Registro Ok :)");
-                        //Crear aca o cuando se logeé?
-                        //request.getSession().setAttribute("cliente", clientes);                       
-                        //Creo que aca deberiamos crear la session del carrito (sugerencia) o a lo que se logeé
-                        //Pagina a redirigir Ok
                         //request.getRequestDispatcher("paginaARedirigir.jsp").forward(request, response);
                         break;
                     //Si retorna 1062 Cliente ya registrado

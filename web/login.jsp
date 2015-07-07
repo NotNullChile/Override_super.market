@@ -252,7 +252,7 @@
                                 <input type="text" 
                                        name="txt_nuevo_rut" 
                                        value="" 
-                                       required="true"
+                                       required
                                        onkeyUp="return ValNumero(this);"/>
                             </div>
                             <div class="w3-col m1">&nbsp;</div>
@@ -354,7 +354,7 @@
                                 <input type="password" 
                                        name="txt_nuevo_password_1" 
                                        value=""
-                                       required="true"/>
+                                       required/>
                             </div>
                             <div class="w3-col m1">&nbsp;</div>
                         </div>
@@ -374,7 +374,7 @@
                                 <input type="password" 
                                        name="txt_nuevo_password_2" 
                                        value="" 
-                                       required="true"/>
+                                       required/>
                             </div>
                             <div class="w3-col m1">&nbsp;</div>
                         </div>
