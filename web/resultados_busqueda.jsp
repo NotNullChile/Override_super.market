@@ -60,7 +60,7 @@
                            placeholder="Búsqueda de productos..."
                            >
                     <span class="input-group-btn">
-                        <button type="submit" 
+                        <button type="submit" name="btn_busqueda_general" 
                                 class="btn btn-primary"
                                 >
                             <i class="fa fa-search"></i>
@@ -172,7 +172,7 @@
                     <div class="w3-col m1">&nbsp;</div>
                     <div class="w3-col m3"><br><h4>Ordenar resultados</h4></div>
                     <div class="w3-col m1">
-                        <form action="error.jsp" method="post">
+                        <form action="resultados_busqueda.jsp" method="Post">
                             <br>
                             <button name="btn_ordenar_categoria"
                                     type="submit" 
@@ -183,7 +183,7 @@
                         </form>
                     </div>
                     <div class="w3-col m1">
-                        <form action="error.jsp" method="post">
+                        <form action="resultados_busqueda.jsp" method="Post">
                             <br>
                             <button name="btn_ordenar_alpha_asc"
                                     type="submit" 
@@ -194,7 +194,7 @@
                         </form>
                     </div>
                     <div class="w3-col m1">
-                        <form action="error.jsp" method="post">
+                        <form action="resultados_busqueda.jsp" method="Post">
                             <br>
                             <button name="btn_ordenar_alpha_desc"
                                     type="submit" 
@@ -205,7 +205,7 @@
                         </form>
                     </div>
                     <div class="w3-col m1">
-                        <form action="error.jsp" method="post">
+                        <form action="resultados_busqueda.jsp" method="Post">
                             <br>
                             <button name="btn_ordenar_precio_asc"
                                     type="submit" 
@@ -216,7 +216,7 @@
                         </form>
                     </div>
                     <div class="w3-col m1">
-                        <form action="error.jsp" method="post">
+                        <form form action="resultados_busqueda.jsp" method="Post">
                             <br>
                             <button name="btn_ordenar_precio_desc"
                                     type="submit" 
@@ -236,7 +236,7 @@
                     <div class="w3-col m3"><br><h4>Filtrar por precio</h4></div>
                     <div class="w3-col m8">
                         <br>
-                        <form>
+                        <form action="resultados_busqueda.jsp" method="Post">
                         <h4>
                             Min&nbsp;<i class="fa fa-minus"></i>
                             <input name="valor_min"
@@ -244,7 +244,7 @@
                                    size="2"
                                    width="2"
                                    style="width: 80px;"
-                                   value="100"
+                                   value="0"
                                    min="0"
                                    max="999999"
                                    >
@@ -254,11 +254,11 @@
                                    size="2"
                                    width="2"
                                    style="width: 80px;"
-                                   value="999999"
+                                   value="0"
                                    min="0"
                                    max="999999"
                                    >
-                            <button name="btn_filtrar"
+                            <button name="btn_filtrar_valores"
                                     type="submit" 
                                     class="btn btn-primary"
                                     >
@@ -276,11 +276,38 @@
                          model.dal.ProductoDal productoDal = new ProductoDal();
                          //Formato Dinero CL
                          DecimalFormat formato = new DecimalFormat("$#,###");
-                         ArrayList<model.business.Producto> listProduct = productoDal.listaProductoBusquedaGeneral(request.getParameter("txt_busqueda"));
+                         ArrayList<model.business.Producto> listProduct = productoDal.listaProductoBusquedaGeneral();
                          
+                         if(request.getParameter("btn_filtrar_valores") != null)
+                         {
+                             int valor1 = Integer.parseInt(request.getParameter("valor_min"));
+                             int valor2 = Integer.parseInt(request.getParameter("valor_max"));
+                             listProduct = productoDal.listaProductoXValores(valor1, valor2);
+                         }
+                         else if (request.getParameter("btn_ordenar_precio_asc") != null)
+                         {
+                             listProduct = productoDal.listaProductoMenorAMayor();
+                         }
+                         else if(request.getParameter("btn_ordenar_precio_desc") != null)
+                         {
+                             listProduct = productoDal.listaProductoMayorAMenor();
+                         }
+                         else if(request.getParameter("btn_ordenar_alpha_asc") != null)
+                         {
+                             listProduct = productoDal.listaProductoXOrdenAlfabeticoASC();
+                         }
+                         else if(request.getParameter("btn_ordenar_alpha_desc") != null)
+                         {
+                             listProduct = productoDal.listaProductoXOrdenAlfabeticoDESC();
+                             
+                         }else if(request.getParameter("btn_busqueda_general") != null)
+                         {
+                             listProduct = productoDal.listaProductoBusquedaGeneral(request.getParameter("txt_busqueda"));
+                         }
                          if (listProduct.isEmpty()) {
                                  out.println("<br>No existen productos que contengan el nombre o descripción <strong>''" + request.getParameter("txt_busqueda")+"''</strong>");
                              }
+                             
                          
                          for(model.business.Producto p : listProduct)
                          {                                    

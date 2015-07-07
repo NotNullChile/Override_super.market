@@ -51,12 +51,13 @@ public class ProcesarCarritoCompras extends HttpServlet {
             c.getProducto().setStock(Integer.parseInt(request.getParameter("spi_stock")));
             
             listCarrito.add(c);
-            request.getRequestDispatcher("detalle_producto.jsp").forward(request, response);
+            request.getRequestDispatcher("resultados_busqueda.jsp").forward(request, response);
             
         }
         catch(Exception e)
         {
-            
+            //Mandar Mensaje de "DEBES REGISTRARTE PARA COMPRAR"
+            request.getRequestDispatcher("login.jsp").forward(request, response);
         }
     }
 

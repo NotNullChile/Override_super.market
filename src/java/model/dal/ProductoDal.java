@@ -140,7 +140,7 @@ public class ProductoDal
             }
         }       
     }
-    
+    //Usado para  los productos en particular
     public ArrayList<model.business.Producto> listaProductoXValores(String tipoProducto,int valor1, int valor2)
     {
         try 
@@ -186,7 +186,53 @@ public class ProductoDal
             }
         }          
     }
+    //Usado para todos los productos
+    public ArrayList<model.business.Producto> listaProductoXValores(int valor1, int valor2)
+    {
+        try 
+        {
+            conexion();
+            ArrayList<model.business.Producto> listProduct = new ArrayList<>();
+            String sql = "SELECT p.idProducto, p.nombreProducto, p.precioUnitario, "
+                    + "p.stock, p.descripcion, t.descripcion, m.descripcion , p.urlFoto "
+                    + "FROM productos p INNER JOIN tipoproductos t "
+                    + "ON p.idTipoProducto = t.idTipoProducto INNER JOIN marcas m "
+                    + "ON p.idMarca = m.idMarca "
+                    + "WHERE p.precioUnitario between " + valor1 + " AND " + valor2 + ";";            
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                Producto p = new Producto();
+                p.setIdProducto(rs.getInt(1));
+                p.setNombreProducto(rs.getString(2));
+                p.setPrecioUnitario(rs.getInt(3));
+                p.setStock(rs.getInt(4));
+                p.setDescripcion(rs.getString(5));
+                p.getTipoProducto().setDescripcion(rs.getString(6));
+                p.getMarca().setDescripcion(rs.getString(7));
+                p.setUrlFoto(rs.getString(8));
+                listProduct.add(p);
+            }
+            return listProduct;
+        } 
+        catch (Exception e) 
+        {
+            return null;
+        }
+         finally
+        {
+            try 
+            {
+               conn.close();
+            }
+            catch (Exception e) 
+            {
+            }
+        }          
+    }
     
+    //Usado para  los productos en particular
     public ArrayList<Producto> listaProductoMenorAMayor(String tipoProducto)
     {
         try 
@@ -232,6 +278,53 @@ public class ProductoDal
         }        
     }
     
+    //Usado para todos los productos
+    public ArrayList<Producto> listaProductoMenorAMayor()
+    {
+        try 
+        {
+            ArrayList<Producto> listProduct = new ArrayList<>();
+            conexion();
+            String sql = "SELECT p.idProducto, p.nombreProducto, p.precioUnitario, "
+                    + "p.stock, p.descripcion, t.descripcion, m.descripcion , p.urlFoto "
+                    + "FROM productos p INNER JOIN tipoproductos t "
+                    + "ON p.idTipoProducto = t.idTipoProducto INNER JOIN marcas m "
+                    + "ON p.idMarca = m.idMarca "
+                    + "ORDER by 3;";            
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                Producto p = new Producto();
+                p.setIdProducto(rs.getInt(1));
+                p.setNombreProducto(rs.getString(2));
+                p.setPrecioUnitario(rs.getInt(3));
+                p.setStock(rs.getInt(4));
+                p.setDescripcion(rs.getString(5));
+                p.getTipoProducto().setDescripcion(rs.getString(6));
+                p.getMarca().setDescripcion(rs.getString(7));
+                p.setUrlFoto(rs.getString(8));
+                listProduct.add(p);
+            }
+            return listProduct;
+        } 
+        catch (Exception e) 
+        {
+            return null;
+        }   
+        finally
+        {
+            try 
+            {
+               conn.close();
+            }
+            catch (Exception e) 
+            {
+            }
+        }        
+    }
+    
+    //Usado para  los productos en particular
     public ArrayList<Producto> listaProductoMayorAMenor(String tipoProducto)
     {
          try 
@@ -276,8 +369,54 @@ public class ProductoDal
             }
         }  
      }
+    //Usado para todos los productos
+     public ArrayList<Producto> listaProductoMayorAMenor()
+    {
+         try 
+        {
+            ArrayList<Producto> listProduct = new ArrayList<>();
+            conexion();
+            String sql = "SELECT p.idProducto, p.nombreProducto, p.precioUnitario, "
+                    + "p.stock,p.descripcion, t.descripcion, m.descripcion , p.urlFoto "
+                    + "FROM productos p INNER JOIN tipoproductos t "
+                    + "ON p.idTipoProducto = t.idTipoProducto INNER JOIN marcas m "
+                    + "ON p.idMarca = m.idMarca "
+                    + "ORDER by 3 DESC;";             
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                Producto p = new Producto();
+                p.setIdProducto(rs.getInt(1));
+                p.setNombreProducto(rs.getString(2));
+                p.setPrecioUnitario(rs.getInt(3));
+                p.setStock(rs.getInt(4));
+                p.setDescripcion(rs.getString(5));
+                p.getTipoProducto().setDescripcion(rs.getString(6));
+                p.getMarca().setDescripcion(rs.getString(7));
+                p.setUrlFoto(rs.getString(8));
+                listProduct.add(p);
+            }
+            return listProduct;
+        } 
+        catch (Exception e) 
+        {
+            return null;
+        }
+         finally
+        {
+            try 
+            {
+               conn.close();
+            }
+            catch (Exception e) 
+            {
+            }
+        }  
+     }
      
-    public ArrayList<Producto> listaProductoXOrdenAlfabetico(String tipoProducto)
+     //Usado para  los productos en particular
+    public ArrayList<Producto> listaProductoXOrdenAlfabeticoASC(String tipoProducto)
     {
         try 
         {
@@ -288,7 +427,7 @@ public class ProductoDal
                     + "FROM productos p INNER JOIN tipoproductos t "
                     + "ON p.idTipoProducto = t.idTipoProducto INNER JOIN marcas m "
                     + "ON p.idMarca = m.idMarca WHERE t.descripcion = '" + tipoProducto + "' "
-                    + "ORDER by 2;";            
+                    + "ORDER by 2 ASC;";            
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while(rs.next())
@@ -322,6 +461,144 @@ public class ProductoDal
         }       
     }
     
+    //Usado para todos los productos
+    public ArrayList<Producto> listaProductoXOrdenAlfabeticoASC()
+    {
+        try 
+        {
+            ArrayList<Producto> listProduct = new ArrayList<>();
+            conexion();
+            String sql = "SELECT p.idProducto, p.nombreProducto, p.precioUnitario, "
+                    + "p.stock, p.descripcion, t.descripcion, m.descripcion , p.urlFoto "
+                    + "FROM productos p INNER JOIN tipoproductos t "
+                    + "ON p.idTipoProducto = t.idTipoProducto INNER JOIN marcas m "
+                    + "ON p.idMarca = m.idMarca "
+                    + "ORDER by 2 asc;";            
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                Producto p = new Producto();
+                p.setIdProducto(rs.getInt(1));
+                p.setNombreProducto(rs.getString(2));
+                p.setPrecioUnitario(rs.getInt(3));
+                p.setStock(rs.getInt(4));
+                p.setDescripcion(rs.getString(5));
+                p.getTipoProducto().setDescripcion(rs.getString(6));
+                p.getMarca().setDescripcion(rs.getString(7));
+                p.setUrlFoto(rs.getString(8));
+                listProduct.add(p);
+            }
+            return listProduct;
+        } 
+        catch (Exception e) 
+        {
+            return null;
+        }
+         finally
+        {
+            try 
+            {
+               conn.close();
+            }
+            catch (Exception e) 
+            {
+            }
+        }       
+    }
+    
+    //Usado para  los productos en particular
+    public ArrayList<Producto> listaProductoXOrdenAlfabeticoDESC(String tipoProducto)
+    {
+        try 
+        {
+            ArrayList<Producto> listProduct = new ArrayList<>();
+            conexion();
+            String sql = "SELECT p.idProducto, p.nombreProducto, p.precioUnitario, "
+                    + "p.stock, p.descripcion, t.descripcion, m.descripcion , p.urlFoto "
+                    + "FROM productos p INNER JOIN tipoproductos t "
+                    + "ON p.idTipoProducto = t.idTipoProducto INNER JOIN marcas m "
+                    + "ON p.idMarca = m.idMarca WHERE t.descripcion = '" + tipoProducto + "' "
+                    + "ORDER by 2 DESC;";            
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                Producto p = new Producto();
+                p.setIdProducto(rs.getInt(1));
+                p.setNombreProducto(rs.getString(2));
+                p.setPrecioUnitario(rs.getInt(3));
+                p.setStock(rs.getInt(4));
+                p.setDescripcion(rs.getString(5));
+                p.getTipoProducto().setDescripcion(rs.getString(6));
+                p.getMarca().setDescripcion(rs.getString(7));
+                p.setUrlFoto(rs.getString(8));
+                listProduct.add(p);
+            }
+            return listProduct;
+        } 
+        catch (Exception e) 
+        {
+            return null;
+        }
+         finally
+        {
+            try 
+            {
+               conn.close();
+            }
+            catch (Exception e) 
+            {
+            }
+        }       
+    }
+    
+    //Usado para todos los productos
+    public ArrayList<Producto> listaProductoXOrdenAlfabeticoDESC()
+    {
+        try 
+        {
+            ArrayList<Producto> listProduct = new ArrayList<>();
+            conexion();
+            String sql = "SELECT p.idProducto, p.nombreProducto, p.precioUnitario, "
+                    + "p.stock, p.descripcion, t.descripcion, m.descripcion , p.urlFoto "
+                    + "FROM productos p INNER JOIN tipoproductos t "
+                    + "ON p.idTipoProducto = t.idTipoProducto INNER JOIN marcas m "
+                    + "ON p.idMarca = m.idMarca "
+                    + "ORDER by 2 DESC;";            
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                Producto p = new Producto();
+                p.setIdProducto(rs.getInt(1));
+                p.setNombreProducto(rs.getString(2));
+                p.setPrecioUnitario(rs.getInt(3));
+                p.setStock(rs.getInt(4));
+                p.setDescripcion(rs.getString(5));
+                p.getTipoProducto().setDescripcion(rs.getString(6));
+                p.getMarca().setDescripcion(rs.getString(7));
+                p.setUrlFoto(rs.getString(8));
+                listProduct.add(p);
+            }
+            return listProduct;
+        } 
+        catch (Exception e) 
+        {
+            return null;
+        }
+         finally
+        {
+            try 
+            {
+               conn.close();
+            }
+            catch (Exception e) 
+            {
+            }
+        }       
+    }
+    //Buscará por palabra
     public ArrayList<Producto> listaProductoBusquedaGeneral(String busqueda)
     {
         try 
@@ -335,6 +612,51 @@ public class ProductoDal
                     + "ON p.idMarca = m.idMarca "
                     + "WHERE p.descripcion like '%" + busqueda + "%' or m.descripcion like '"+ busqueda +"' "
                     + "OR p.nombreProducto like '%" + busqueda + "%' ORDER by 2;";            
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                Producto p = new Producto();
+                p.setIdProducto(rs.getInt(1));
+                p.setNombreProducto(rs.getString(2));
+                p.setPrecioUnitario(rs.getInt(3));
+                p.setStock(rs.getInt(4));
+                p.setDescripcion(rs.getString(5));
+                p.getTipoProducto().setDescripcion(rs.getString(6));
+                p.getMarca().setDescripcion(rs.getString(7));
+                p.setUrlFoto(rs.getString(8));
+                listProduct.add(p);
+            }
+            return listProduct;
+        } 
+        catch (Exception e) 
+        {
+            return null;
+        }
+         finally
+        {
+            try 
+            {
+               conn.close();
+            }
+            catch (Exception e) 
+            {
+            }
+        }       
+    }
+    //Buscara todo
+    public ArrayList<Producto> listaProductoBusquedaGeneral()
+    {
+        try 
+        {
+            ArrayList<Producto> listProduct = new ArrayList<>();
+            conexion();
+            String sql = "SELECT p.idProducto, p.nombreProducto, p.precioUnitario, "
+                    + "p.stock, p.descripcion, t.descripcion, m.descripcion , p.urlFoto "
+                    + "FROM productos p INNER JOIN tipoproductos t "
+                    + "ON p.idTipoProducto = t.idTipoProducto INNER JOIN marcas m "
+                    + "ON p.idMarca = m.idMarca "
+                    + "ORDER by 2;";            
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while(rs.next())
