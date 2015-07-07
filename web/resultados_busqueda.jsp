@@ -161,7 +161,115 @@
                 <br>             
                 <div class="w3-container red">
                     <h2>Resultados de su búsqueda:&nbsp;&nbsp;<i class="fa fa-search"></i> </h2>
-                </div> 
+                </div>
+                
+                <!--Result Sort-->
+                
+                <div class="row">
+                    
+                </div>
+                <div class="w3-row">
+                    <div class="w3-col m1">&nbsp;</div>
+                    <div class="w3-col m3"><br><h4>Ordenar resultados</h4></div>
+                    <div class="w3-col m1">
+                        <form action="error.jsp" method="post">
+                            <br>
+                            <button name="btn_ordenar_categoria"
+                                    type="submit" 
+                                    class="btn btn-primary"
+                                    >
+                                <i class="fa fa-list-ul"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <div class="w3-col m1">
+                        <form action="error.jsp" method="post">
+                            <br>
+                            <button name="btn_ordenar_alpha_asc"
+                                    type="submit" 
+                                    class="btn btn-primary"
+                                    >
+                                <i class="fa fa-sort-alpha-asc"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <div class="w3-col m1">
+                        <form action="error.jsp" method="post">
+                            <br>
+                            <button name="btn_ordenar_alpha_desc"
+                                    type="submit" 
+                                    class="btn btn-primary"
+                                    >
+                                <i class="fa fa-sort-alpha-desc"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <div class="w3-col m1">
+                        <form action="error.jsp" method="post">
+                            <br>
+                            <button name="btn_ordenar_precio_asc"
+                                    type="submit" 
+                                    class="btn btn-primary"
+                                    >
+                                <i class="fa fa-sort-numeric-asc"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <div class="w3-col m1">
+                        <form action="error.jsp" method="post">
+                            <br>
+                            <button name="btn_ordenar_precio_desc"
+                                    type="submit" 
+                                    class="btn btn-primary"
+                                    >
+                                <i class="fa fa-sort-numeric-desc"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <div class="w3-col m1">&nbsp;</div>
+                </div>
+                <!--End of result sort-->
+                
+                <!--Price filter-->
+                <div class="w3-row">
+                    <div class="w3-col m1">&nbsp;</div>
+                    <div class="w3-col m3"><br><h4>Filtrar por precio</h4></div>
+                    <div class="w3-col m8">
+                        <br>
+                        <form>
+                        <h4>
+                            Min&nbsp;<i class="fa fa-minus"></i>
+                            <input name="valor_min"
+                                   type="number"
+                                   size="2"
+                                   width="2"
+                                   style="width: 80px;"
+                                   value="100"
+                                   min="0"
+                                   max="999999"
+                                   >
+                            Max&nbsp;<i class="fa fa-plus"></i>
+                            <input name="valor_max"
+                                   type="number"
+                                   size="2"
+                                   width="2"
+                                   style="width: 80px;"
+                                   value="999999"
+                                   min="0"
+                                   max="999999"
+                                   >
+                            <button name="btn_filtrar"
+                                    type="submit" 
+                                    class="btn btn-primary"
+                                    >
+                                <i class="fa fa-sign-out"></i>
+                            </button>
+                        </h4>
+                        </form>
+                    </div>
+                </div>
+                <!--End of price filter-->
+                
                 <form action="detalle_producto.jsp" method="POST">
                     <div class="w3-row-margin">
                         <%

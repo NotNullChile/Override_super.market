@@ -1,5 +1,5 @@
 <%-- 
-    Document   : index2.jsp
+    Document   : index.jsp
     Created on : Jul 4, 2015, 3:54:49 PM
     Author     : urtubia @ notNull
 --%>
