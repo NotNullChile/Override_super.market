@@ -168,10 +168,7 @@
                     
                     <div class="w3-third">
                         <div class="w3-card-2">
-                            <!-- 
-                            <img src="" alt="" />
-                            -->
-                            <!--Cambiar por la URL comentada arriba.-->
+                            
                             <%
                             try
                             {
