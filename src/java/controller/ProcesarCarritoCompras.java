@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.business.Carrito;
+import model.business.Producto;
 
 /**
  *
@@ -43,16 +44,14 @@ public class ProcesarCarritoCompras extends HttpServlet {
             HttpSession sesion = request.getSession();
             //ArrayList
             ArrayList<model.business.Carrito> listCarrito = (ArrayList<model.business.Carrito> ) sesion.getAttribute("carrito");
+                       
+            c.getProducto().setIdProducto(Integer.parseInt(request.getParameter("id_producto")));
+            c.getProducto().setNombreProducto(request.getParameter("txt_nombre"));
+            c.getProducto().setPrecioUnitario(Integer.parseInt(request.getParameter("txt_precio")));
+            c.getProducto().setStock(Integer.parseInt(request.getParameter("spi_stock")));
             
-//            c.getProducto().setIdProducto(0);
-//            c.getProducto().setNombreProducto(request.getParameter("txt_nombre"));
-              c.getProducto().setPrecioUnitario(0);
-              c.getProducto().setStock(Integer.parseInt(request.getParameter("spi_stock")));
-//            c.getProducto().setDescripcion(null);
-//            
             listCarrito.add(c);
-            out.print("agregado");
-            //request.getRequestDispatcher("detalle_producto.jsp").forward(request, response);
+            request.getRequestDispatcher("detalle_producto.jsp").forward(request, response);
             
         }
         catch(Exception e)

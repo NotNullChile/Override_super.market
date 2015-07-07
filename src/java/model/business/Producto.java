@@ -104,6 +104,10 @@ public class Producto
         this.urlFoto = urlFoto;
     }
     
-    
+    public int subTotal()
+    {
+        return stock * precioUnitario;
+    }
+
     
 }

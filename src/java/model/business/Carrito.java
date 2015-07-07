@@ -8,20 +8,20 @@ package model.business;
 public class Carrito 
 {
     private int idCarrito;
+    private int recibo;
     private Producto producto;
-    private int rut;
-
+    
     public Carrito() 
     {
         idCarrito = 0;
-        this.producto = new Producto();
-        rut = 0;
+        recibo = 0;
+        producto = new Producto();
     }
 
-    public Carrito(int idCarrito, int rut) {
+    public Carrito(int idCarrito, int recibo) {
         this.idCarrito = idCarrito;
-        this.producto = new Producto();
-        this.rut = rut;
+        this.recibo = recibo;
+        producto = new Producto();
     }
 
     public int getIdCarrito() {
@@ -32,6 +32,14 @@ public class Carrito
         this.idCarrito = idCarrito;
     }
 
+    public int getRecibo() {
+        return recibo;
+    }
+
+    public void setRecibo(int recibo) {
+        this.recibo = recibo;
+    }
+
     public Producto getProducto() {
         return producto;
     }
@@ -40,13 +48,7 @@ public class Carrito
         this.producto = producto;
     }
 
-    public int getRut() {
-        return rut;
-    }
-
-    public void setRut(int rut) {
-        this.rut = rut;
-    }
+   
     
     
 }

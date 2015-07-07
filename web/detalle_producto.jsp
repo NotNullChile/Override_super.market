@@ -163,9 +163,9 @@
                 <div class="w3-container red">
                     <h2>Detalles del producto:&nbsp;&nbsp;<i class="fa fa-search"></i> </h2>
                 </div>
-               
+                <form action="procesa_carrito_compras.do" method="POST">
                 <div class="w3-row-margin">
-                     <form action="procesa_carrito_compras.do" method="POST">
+                    
                     <div class="w3-third">
                         <div class="w3-card-2">
                             <!-- 
@@ -180,7 +180,8 @@
                                 DecimalFormat formato = new DecimalFormat("$#,###");
                                 p = productoDal.buscarProducto(request.getParameter("imagen"));                            
                             %>
-                            <img src="imagesProducts/<%=p.getUrlFoto()%>" style="width:100%">
+                            
+                            <img  src="imagesProducts/<%=p.getUrlFoto()%>" style="width:100%">     
                             <div class="w3-container">
                                 <h5><%=p.getNombreProducto()%></h5>
                             </div>
@@ -188,11 +189,12 @@
                     </div>
                     <div width="30%">
                         <div class="w3-card-2" >
-                            <h1><%=p.getNombreProducto()%> <%=p.getMarca().getDescripcion()%></h1>
+                            <h1><input type="text" name="txt_nombre" value="<%=p.getNombreProducto()%>" /> <%=p.getMarca().getDescripcion()%></h1>
                             <h4><%=p.getTipoProducto().getDescripcion()%></h4>
-                            <h6>SKU: <label id="idProducto"><%=p.getIdProducto()%></label></h6>
+                            <h6>SKU:<input type="text" name="id_producto" value="<%=p.getIdProducto()%>" /></h6>
+                            
                             <h3><%=p.getDescripcion()%></h3><br>
-                            <h3>Precio Unitario: <%=formato.format(p.getPrecioUnitario())%> </h3>
+                            <h3>Precio Unitario: <input type="text" name="txt_precio" value="<%=p.getPrecioUnitario()%>" /> </h3>
                             <h5>Stock: <%=p.getStock()%> unidades.</h5><br>   
                             <br><br>
                         </div>
@@ -205,7 +207,7 @@
                                     out.println("<input type='number' name='spi_stock' class='form-control' value='1' min='1' max= " + p.getStock() + " required >");
                                     out.println("</div>");
                                     out.println("<div class='col-sm-2'>");
-                                    out.println("<button type='button' class='btn btn-info'>");
+                                    out.println("<button type='submit' class='btn btn-info'>");
                                     out.println("<i class='fa fa-shopping-cart'></i>");
                                     out.println("Agregar al carro de compras");
                                     out.println("</button>");
@@ -241,9 +243,9 @@
                                 %>
                        </div>
                     </div>
-                  </form>
+                 
                 </div>
-                             
+                     </form>         
             </div>
             <div class="w3-col m1">&nbsp;</div>
         </div>
