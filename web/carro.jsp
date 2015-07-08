@@ -10,6 +10,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Override super.market() - Carro de compras</title>
         <link rel="stylesheet" href="w3.css">
@@ -51,7 +52,7 @@
             <form action="resultados_busqueda.jsp" method="post">
             <div class="w3-col m3">
                 <br><br><br>
-                <div class="input-group input-group">
+                <div class="input-group">
                     <input name= "txt_busqueda" 
                            type="text" 
                            class="form-control" 
@@ -60,6 +61,7 @@
                     <span class="input-group-btn">
                         <button type="submit" 
                                 class="btn btn-primary"
+                                name="btn_busqueda_general"
                                 >
                             <i class="fa fa-search"></i>
                         </button>

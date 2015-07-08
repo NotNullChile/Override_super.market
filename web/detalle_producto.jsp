@@ -14,6 +14,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <link rel="stylesheet" href="w3.css">
@@ -55,7 +56,7 @@
             <form action="resultados_busqueda.jsp" method="post">
             <div class="w3-col m3">
                 <br><br><br>
-                <div class="input-group input-group">
+                <div class="input-group">
                     <input name= "txt_busqueda" 
                            type="text" 
                            class="form-control" 
@@ -64,6 +65,7 @@
                     <span class="input-group-btn">
                         <button type="submit" 
                                 class="btn btn-primary"
+                                name="btn_busqueda_general"
                                 >
                             <i class="fa fa-search"></i>
                         </button>
@@ -179,7 +181,7 @@
                 <div class="w3-container red">
                     <h2>Detalles del producto:&nbsp;&nbsp;<i class="fa fa-search"></i> </h2>
                 </div>
-                <form action="procesa_carrito_compras.do" method="POST">
+                <form action="procesar_carro.do" method="POST">
                 <div class="w3-row-margin">
                     
                     <div class="w3-third">

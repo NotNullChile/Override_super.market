@@ -22,7 +22,7 @@ import model.business.Producto;
  *
  * @author Ricardo
  */
-public class ProcesarCarritoCompras extends HttpServlet {
+public class ProcesarCarro extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
