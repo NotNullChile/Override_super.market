@@ -149,33 +149,53 @@
         
         <!--horizontal menu-->
         <nav class="w3-topnav w3-padding green-d1">
-            <a href="#">Home</a>
-            <a href="#">Abarrotes</a>
-            <a href="#">Alimentos Congelados</a>
-            <a href="#">Bebidas y Tragos</a>
-            <a href="#">Carnes</a>
-            <a href="#">Desayuno y Once</a>
-            <a href="#">Hogar y Limpieza</a>
-            <a href="#">Mascotas</a>
+            <a href="index.jsp"> <img src="icons/Override_w.png" width="30" height="30" alt="Override_w"/>
+                </a>
+            <a href="busqueda_abarrotes.jsp"> <img src="icons/abarrotes_w.png" width="20" height="20" alt="abarrotes_w"/>
+                Abarrotes</a>
+            <a href="busqueda_alimentos_congelados.jsp"> <img src="icons/alimentos_congelados_w.png" width="20" height="20" alt="alimentos_congelados_w"/>
+                Alimentos Congelados</a>
+            <a href="busqueda_bebidas_y_licores.jsp"> <img src="icons/bebidas_y_licores_w.png" width="20" height="20" alt="bebidas_y_licores_w"/>
+                Bebidas y Licores</a>
+            <a href="busqueda_carnes.jsp"> <img src="icons/carnes_w.png" width="20" height="20" alt="carnes"/>
+                Carnes</a>
+            <a href="busqueda_cereales_y_snacks.jsp"> <img src="icons/cereales_y_snacks_w.png" width="20" height="20" alt="cereales_y_snacks_w"/>
+                Cereales y Snacks</a>
+            <a href="busqueda_desayuno_y_once.jsp"> <img src="icons/desayuno_y_once_w.png" width="20" height="20" alt="desayuno_y_once_w"/>
+                Desayuno y Once</a>
+            <a href="busqueda_hogar_y_limpieza.jsp"> <img src="icons/hogar_y_limpieza_w.png" width="20" height="20" alt="hogar_y_limpieza_w"/>
+                Hogar y Limpieza</a>
+            <a href="busqueda_mascotas.jsp"> <img src="icons/mascotas_w.png" width="20" height="20" alt="mascotas_w"/>
+                Mascotas</a>
         </nav>
         <!--horizontal menu end-->
         <!--Body-->
         <div class="w3-row">
         <br>
             <div class="w3-col m1"> &nbsp; </div>    
-            <div>
-                <nav class="w3-col m2 w3-ul w3-card w3-padding w3-bordered yellow-l5" style="width:25%">
-                    <br>
-                    <li><a href="#">Home</a></li><br>
-                    <li><a href="#">Abarrotes</a></li> <br>
-                    <li><a href="#">Alimentos Congelados</a></li> <br>
-                    <li><a href="#">Bebidas y Tragos</a></li><br>
-                    <li><a href="#">Carnes</a></li><br>
-                    <li><a href="#">Desayuno y Once</a></li><br>
-                    <li><a href="#">Hogar y Limpieza</a></li><br>
-                    <li><a href="#">Mascotas</a></li><br>
-                </nav>
-            </div>           
+                        <!--Sidebar-->
+            <div class="list-group w3-col m2">
+            <a class="list-group-item" href=index.jsp> <img src="icons/Override.png" width="30" height="30" alt="Override"/>
+                &nbsp;Home</a>
+            <a class="list-group-item" href="busqueda_abarrotes.jsp"><img src="icons/abarrotes.png" width="30" height="30" alt="abarrotes"/>
+                        &nbsp;Abarrotes</a>
+            <a class="list-group-item" href="busqueda_alimentos_congelados.jsp"><img src="icons/alimentos_congelados.png" width="30" height="30" alt="alimentos_congelados"/>
+                        &nbsp;Alimentos Congelados</a>
+            <a class="list-group-item" href="busqueda_bebidas_y_licores.jsp"><img src="icons/bebidas_y_licores.png" width="30" height="30" alt="bebidas_y_licores"/>
+                        &nbsp;Bebidas y Licores</a>
+            <a class="list-group-item" href="busqueda_carnes.jsp"> <img src="icons/carnes.png" width="30" height="30" alt="carnes"/>
+                        &nbsp;Carnes</a>
+            <a class="list-group-item" href="busqueda_cereales_y_snacks.jsp"> <img src="icons/cereales_y_snacks.png" width="30" height="30" alt="hogar_y_limpieza"/>
+                        &nbsp;Cereales y Snacks</a>
+            <a class="list-group-item" href="busqueda_desayuno_y_once.jsp"> <img src="icons/desayuno_y_once.png" width="30" height="30" alt="desayuno_y_once"/>
+                        &nbsp;Desayuno y Once</a>
+            <a class="list-group-item" href="busqueda_hogar_y_limpieza.jsp"> <img src="icons/hogar_y_limpieza.png" width="30" height="30" alt="hogar_y_limpieza"/>
+                        &nbsp;Hogar y Limpieza</a>
+            <a class="list-group-item active" href="busqueda_mascotas.jsp"> <img src="icons/mascotas_w.png" width="30" height="30" alt="mascotas"/>
+                        &nbsp;Mascotas</a>
+                <!--/nav-->
+            </div>
+            <!--End of sidebar-->           
             <div class="w3-col m7 w3-card w3-padding">           
                 <br>             
                 <div class="w3-container red">

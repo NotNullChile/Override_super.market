@@ -156,14 +156,24 @@
         
         <!--horizontal menu-->
         <nav class="w3-topnav w3-padding green-d1">
-            <a href="index.jsp">Home</a>
-            <a href="#">Abarrotes</a>
-            <a href="#">Alimentos Congelados</a>
-            <a href="#">Bebidas y Tragos</a>
-            <a href="#">Carnes</a>
-            <a href="#">Desayuno y Once</a>
-            <a href="#">Hogar y Limpieza</a>
-            <a href="#">Mascotas</a>
+            <a href="index.jsp"> <img src="icons/Override_w.png" width="30" height="30" alt="Override_w"/>
+                </a>
+            <a href="busqueda_abarrotes.jsp"> <img src="icons/abarrotes_w.png" width="20" height="20" alt="abarrotes_w"/>
+                Abarrotes</a>
+            <a href="busqueda_alimentos_congelados.jsp"> <img src="icons/alimentos_congelados_w.png" width="20" height="20" alt="alimentos_congelados_w"/>
+                Alimentos Congelados</a>
+            <a href="busqueda_bebidas_y_licores.jsp"> <img src="icons/bebidas_y_licores_w.png" width="20" height="20" alt="bebidas_y_licores_w"/>
+                Bebidas y Licores</a>
+            <a href="busqueda_carnes.jsp"> <img src="icons/carnes_w.png" width="20" height="20" alt="carnes"/>
+                Carnes</a>
+            <a href="busqueda_cereales_y_snacks.jsp"> <img src="icons/cereales_y_snacks_w.png" width="20" height="20" alt="cereales_y_snacks_w"/>
+                Cereales y Snacks</a>
+            <a href="busqueda_desayuno_y_once.jsp"> <img src="icons/desayuno_y_once_w.png" width="20" height="20" alt="desayuno_y_once_w"/>
+                Desayuno y Once</a>
+            <a href="busqueda_hogar_y_limpieza.jsp"> <img src="icons/hogar_y_limpieza_w.png" width="20" height="20" alt="hogar_y_limpieza_w"/>
+                Hogar y Limpieza</a>
+            <a href="busqueda_mascotas.jsp"> <img src="icons/mascotas_w.png" width="20" height="20" alt="mascotas_w"/>
+                Mascotas</a>
         </nav>
         <!--horizontal menu end-->
         

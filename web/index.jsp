@@ -175,9 +175,6 @@
             
             <!--Sidebar-->
             <div class="list-group w3-col m2">
-            <!--div class="w3-col m2">
-                <nav class=" w3-ul w3-card w3-padding w3-bordered yellow-l5" -->
-                    
             <a class="list-group-item active" href=index.jsp> <img src="icons/Override_w.png" width="30" height="30" alt="Override"/>
                 &nbsp;Home</a>
             <a class="list-group-item" href="busqueda_abarrotes.jsp"><img src="icons/abarrotes.png" width="30" height="30" alt="abarrotes"/>
