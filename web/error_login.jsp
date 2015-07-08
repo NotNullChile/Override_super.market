@@ -63,7 +63,7 @@
             <form action="resultados_busqueda.jsp" method="post">
             <div class="w3-col m3">
                 <br><br><br>
-                <div class="input-group input-group-sm">
+                <div class="input-group input-group">
                     <input name= "txt_busqueda" 
                            type="text" 
                            class="form-control" 
@@ -86,13 +86,27 @@
             <!--Shopping cart link(1)-->
             <div class="w3-col m1">
                 <br><br><br>
-                <div class="input-group input-group-sm">
+                <div class="input-group">
                     <span class="input-group-btn">
-                        <button type="button" 
+                        <a type="button" 
+                           href="
+                           <% 
+                            try
+                            {
+                                cliente.getNombre();
+                                out.println("carro.jsp");
+                            }
+                            catch(Exception e)
+                            {
+                                out.println("login.jsp");
+                            }
+                           %>
+                           
+                           "
                                 class="btn btn-info">
                             <i class="fa fa-shopping-cart"></i>
                             &nbsp;mi carro
-                        </button>
+                        </a>
                     </span>
                 </div><!-- /input-group -->  
             </div>
@@ -111,7 +125,7 @@
                         out.println("<br>");
                     }
                 %> 
-                <div class="input-group input-group-sm">
+                <div class="input-group">
                     <span class="input-group-btn">        
                             <%
                                 try

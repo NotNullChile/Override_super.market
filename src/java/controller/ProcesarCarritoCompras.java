@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.business.Carrito;
+import model.business.Marcas;
 import model.business.Producto;
 
 /**
@@ -40,18 +41,20 @@ public class ProcesarCarritoCompras extends HttpServlet {
         {
             //Class
             model.business.Carrito c = new model.business.Carrito();
+            model.business.Marcas m = new model.business.Marcas();
             //Session
             HttpSession sesion = request.getSession();
             //ArrayList
             ArrayList<model.business.Carrito> listCarrito = (ArrayList<model.business.Carrito> ) sesion.getAttribute("carrito");
-                       
+            m.setDescripcion(request.getParameter("txt_marca"));
             c.getProducto().setIdProducto(Integer.parseInt(request.getParameter("id_producto")));
+            c.getProducto().setMarca(m);
             c.getProducto().setNombreProducto(request.getParameter("txt_nombre"));
             c.getProducto().setPrecioUnitario(Integer.parseInt(request.getParameter("txt_precio")));
             c.getProducto().setStock(Integer.parseInt(request.getParameter("spi_stock")));
-            
+            c.getProducto().setUrlFoto(request.getParameter("txt_image"));
             listCarrito.add(c);
-            request.getRequestDispatcher("resultados_busqueda.jsp").forward(request, response);
+            request.getRequestDispatcher("carro.jsp").forward(request, response);
             
         }
         catch(Exception e)

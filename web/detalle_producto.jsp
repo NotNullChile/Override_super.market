@@ -33,6 +33,7 @@
             model.business.Clientes cliente = (model.business.Clientes) sesion.getAttribute("cliente");       
         %>
         
+        
         <!--header-->
         <header class="w3-container red w3-row">
             <!--Blank column(1)-->
@@ -54,7 +55,7 @@
             <form action="resultados_busqueda.jsp" method="post">
             <div class="w3-col m3">
                 <br><br><br>
-                <div class="input-group input-group-sm">
+                <div class="input-group input-group">
                     <input name= "txt_busqueda" 
                            type="text" 
                            class="form-control" 
@@ -77,13 +78,27 @@
             <!--Shopping cart link(1)-->
             <div class="w3-col m1">
                 <br><br><br>
-                <div class="input-group input-group-sm">
+                <div class="input-group">
                     <span class="input-group-btn">
-                        <button type="button" 
+                        <a type="button" 
+                           href="
+                           <% 
+                            try
+                            {
+                                cliente.getNombre();
+                                out.println("carro.jsp");
+                            }
+                            catch(Exception e)
+                            {
+                                out.println("login.jsp");
+                            }
+                           %>
+                           
+                           "
                                 class="btn btn-info">
                             <i class="fa fa-shopping-cart"></i>
                             &nbsp;mi carro
-                        </button>
+                        </a>
                     </span>
                 </div><!-- /input-group -->  
             </div>
@@ -102,7 +117,7 @@
                         out.println("<br>");
                     }
                 %> 
-                <div class="input-group input-group-sm">
+                <div class="input-group">
                     <span class="input-group-btn">        
                             <%
                                 try
@@ -128,6 +143,7 @@
             <!--End of blank column(1)-->
         </header>
         <!--header end-->
+        
         <!--horizontal menu-->
         <nav class="w3-topnav w3-padding green-d1">
             <a href="#">Home</a>
@@ -178,21 +194,21 @@
                                 p = productoDal.buscarProducto(request.getParameter("imagen"));                            
                             %>
                             
-                            <img  src="imagesProducts/<%=p.getUrlFoto()%>" style="width:100%">     
+                            <img src="imagesProducts/<%=p.getUrlFoto()%>" style="width:100%">     
                             <div class="w3-container">
-                                <h5><%=p.getNombreProducto()%></h5>
+                                <h5><!--%=p.getNombreProducto()%--></h5>
                             </div>
                         </div>
                     </div>
                     <div width="30%">
                         <div class="w3-card-2" >
                             <h1><input type="text" name="txt_nombre" value="<%=p.getNombreProducto()%>"  style="border: none"/> 
-                                <br><%=p.getMarca().getDescripcion()%></h1>
+                                <br><input type="text" name="txt_marca" value="<%=p.getMarca().getDescripcion()%>"  style="border: none"/></h1>
                             <h4><%=p.getTipoProducto().getDescripcion()%></h4>
                             <h6>SKU:<input type="text" name="id_producto" value="<%=p.getIdProducto()%>"  style="border: none"/></h6>
                             <h3><%=p.getDescripcion()%></h3><br>
                             <h3>Precio Unitario: <input type="text" name="txt_precio" value="<%=p.getPrecioUnitario()%>" style="border: none"/> </h3>
-                            <h5>Stock: <%=p.getStock()%> unidades.</h5><br>   
+                            <h5>Stock: <%=p.getStock()%> unidades.</h5><br><input type="hidden" name="txt_image" value="<%=p.getUrlFoto()%>" style="border: none"  />   
                             <br><br>
                         </div>
                         <div class="w3-container green-d3 row w3-padding-8">
