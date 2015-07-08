@@ -229,7 +229,7 @@
                     <td><strong><%=c.getProducto().getNombreProducto()%>
                             <br><%=c.getProducto().getMarca().getDescripcion()%>
                         </strong></td>
-                    <td><%=c.getProducto().getStock()%></td>
+                        <td><span class="badge"><%=c.getProducto().getStock()%></span></td>
                     <td align="right"><%=formato.format(c.getProducto().getPrecioUnitario())%></td>
                     <td align="right"><%=formato.format(c.getProducto().subTotal())%></td>
                     <td><input class="btn btn-danger" type="submit" value="Eliminar item" name="btn_borrar" /></td>
@@ -242,7 +242,7 @@
                   <td></td>
                   <td></td>
                   <td></td>
-                  <td><strong>Total</strong></td>
+                  <td align="right"><strong>Total</strong></td>
                   <td align="right"><strong><%=formato.format(total)%></strong></td>
                   <td><input class="btn btn-success" type="submit" value="Comprar" name="btn_comprar" />
                   </td>
