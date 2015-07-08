@@ -145,7 +145,7 @@
         
         <!--horizontal menu-->
         <nav class="w3-topnav w3-padding green-d1">
-            <a href="index.jsp"> <img src="icons/Override_w.png" width="20" height="20" alt="Override_w"/>
+            <a href="index.jsp"> <img src="icons/Override_w.png" width="30" height="30" alt="Override_w"/>
                 </a>
             <a href="busqueda_abarrotes.jsp"> <img src="icons/abarrotes_w.png" width="20" height="20" alt="abarrotes_w"/>
                 Abarrotes</a>
