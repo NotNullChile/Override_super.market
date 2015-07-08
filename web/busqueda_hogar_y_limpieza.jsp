@@ -1,5 +1,5 @@
 <%-- 
-    Document   : index2.jsp
+    Document   : busqueda_hogar_y_limpieza.jsp
     Created on : Jul 4, 2015, 3:54:49 PM
     Author     : urtubia @ notNull
 --%>
@@ -31,7 +31,9 @@
         <!--Java servlet sessions and attributes-->
         <%
             HttpSession sesion = request.getSession();
-            model.business.Clientes cliente = (model.business.Clientes) sesion.getAttribute("cliente");       
+            model.business.Clientes cliente = (model.business.Clientes) sesion.getAttribute("cliente");
+            String tipoProducto = "hogar y limpieza";
+            String thisURL = "busqueda_hogar_y_limpieza.jsp";
         %>
         
         <!--header-->
@@ -177,7 +179,7 @@
             <div class="w3-col m7 w3-card w3-padding">           
                 <br>             
                 <div class="w3-container red">
-                    <h2>Resultados de su búsqueda:&nbsp;&nbsp;<i class="fa fa-search"></i> </h2>
+                    <h2>Productos categoría: <%=tipoProducto%>&nbsp;&nbsp;<i class="fa fa-cart-arrow-down"></i> </h2>
                 </div>
                 
                 <!--Result Sort-->
@@ -189,7 +191,7 @@
                     <div class="w3-col m1">&nbsp;</div>
                     <div class="w3-col m3"><br><h4>Ordenar resultados</h4></div>
                     <div class="w3-col m1">
-                        <form action="resultados_busqueda.jsp" method="Post">
+                        <form action=<%=thisURL%> method="Post">
                             <br>
                             <button name="btn_ordenar_alpha_asc"
                                     type="submit" 
@@ -200,7 +202,7 @@
                         </form>
                     </div>
                     <div class="w3-col m1">
-                        <form action="resultados_busqueda.jsp" method="Post">
+                        <form action=<%=thisURL%> method="Post">
                             <br>
                             <button name="btn_ordenar_alpha_desc"
                                     type="submit" 
@@ -211,7 +213,7 @@
                         </form>
                     </div>
                     <div class="w3-col m1">
-                        <form action="resultados_busqueda.jsp" method="Post">
+                        <form action=<%=thisURL%> method="Post">
                             <br>
                             <button name="btn_ordenar_precio_asc"
                                     type="submit" 
@@ -222,7 +224,7 @@
                         </form>
                     </div>
                     <div class="w3-col m1">
-                        <form action="resultados_busqueda.jsp" method="Post">
+                        <form action=<%=thisURL%> method="Post">
                             <br>
                             <button name="btn_ordenar_precio_desc"
                                     type="submit" 
@@ -242,7 +244,7 @@
                     <div class="w3-col m3"><br><h4>Filtrar por precio</h4></div>
                     <div class="w3-col m8">
                         <br>
-                        <form action="resultados_busqueda.jsp" method="Post">
+                        <form action=<%=thisURL%> method="Post">
                         <h4>
                             Min&nbsp;<i class="fa fa-minus"></i>
                             <input name="valor_min"
@@ -276,7 +278,7 @@
                 </div>
                 <!--End of price filter-->
                 
-                <form action="detalle_producto.jsp" method="POST">
+                <form action=detalle_producto.jsp method="POST">
                     <div class="w3-row-margin">
                         <%
                          model.dal.ProductoDal productoDal = new ProductoDal();
@@ -284,35 +286,37 @@
                          DecimalFormat formato = new DecimalFormat("$#,###");
                          ArrayList<model.business.Producto> listProduct = productoDal.listaProductoBusquedaGeneral();
                          
+                         listProduct = productoDal.listaProductoXTipoProducto(tipoProducto);
+                         
                          if(request.getParameter("btn_filtrar_valores") != null)
                          {
                              int valor1 = Integer.parseInt(request.getParameter("valor_min"));
                              int valor2 = Integer.parseInt(request.getParameter("valor_max"));
-                             listProduct = productoDal.listaProductoXValores(valor1, valor2);
+                             listProduct = productoDal.listaProductoXValores(tipoProducto, valor1, valor2);
                          }
                          else if (request.getParameter("btn_ordenar_precio_asc") != null)
                          {
-                             listProduct = productoDal.listaProductoMenorAMayor();
+                             listProduct = productoDal.listaProductoMenorAMayor(tipoProducto);
                          }
                          else if(request.getParameter("btn_ordenar_precio_desc") != null)
                          {
-                             listProduct = productoDal.listaProductoMayorAMenor();
+                             listProduct = productoDal.listaProductoMayorAMenor(tipoProducto);
                          }
                          else if(request.getParameter("btn_ordenar_alpha_asc") != null)
                          {
-                             listProduct = productoDal.listaProductoXOrdenAlfabeticoASC();
+                             listProduct = productoDal.listaProductoXOrdenAlfabeticoASC(tipoProducto);
                          }
                          else if(request.getParameter("btn_ordenar_alpha_desc") != null)
                          {
-                             listProduct = productoDal.listaProductoXOrdenAlfabeticoDESC();
+                             listProduct = productoDal.listaProductoXOrdenAlfabeticoDESC(tipoProducto);
                              
-                         }else if(request.getParameter("btn_busqueda_general") != null)
+                         }else 
                          {
-                             listProduct = productoDal.listaProductoBusquedaGeneral(request.getParameter("txt_busqueda"));
+                             //listProduct = productoDal.listaProductoBusquedaGeneral(request.getParameter(thisPage));
                          }
                          if (listProduct.isEmpty()) {
                                  out.println("<br>No existen productos que contengan el nombre o descripción <strong>''" + request.getParameter("txt_busqueda")+"''</strong>");
-                             }
+                         }
                              
                          
                          for(model.business.Producto p : listProduct)

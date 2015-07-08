@@ -327,16 +327,16 @@ public class ProductoDal
     //Usado para  los productos en particular
     public ArrayList<Producto> listaProductoMayorAMenor(String tipoProducto)
     {
-         try 
+try 
         {
             ArrayList<Producto> listProduct = new ArrayList<>();
             conexion();
             String sql = "SELECT p.idProducto, p.nombreProducto, p.precioUnitario, "
-                    + "p.stock,p.descripcion, t.descripcion, m.descripcion , p.urlFoto "
+                    + "p.stock, p.descripcion, t.descripcion, m.descripcion , p.urlFoto "
                     + "FROM productos p INNER JOIN tipoproductos t "
-                    + "ON p.idTipoProducto = t.idTipoProducto INNER JOIN marcas m"
-                    + "ON p.idMarca = m.idMarca WHERE t.descripcion = '" + tipoProducto + "' "
-                    + "ORDER by 3 DESC;";             
+                    + "ON p.idTipoProducto = t.idTipoProducto INNER JOIN marcas m "
+                    + "ON p.idMarca = m.idMarca "
+                    + "WHERE t.descripcion = '" + tipoProducto + "' ORDER by 3 DESC;";            
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while(rs.next())
@@ -357,8 +357,8 @@ public class ProductoDal
         catch (Exception e) 
         {
             return null;
-        }
-         finally
+        }   
+        finally
         {
             try 
             {
@@ -367,7 +367,7 @@ public class ProductoDal
             catch (Exception e) 
             {
             }
-        }  
+        }        
      }
     //Usado para todos los productos
      public ArrayList<Producto> listaProductoMayorAMenor()

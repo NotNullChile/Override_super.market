@@ -209,7 +209,7 @@
                             <h4><%=p.getTipoProducto().getDescripcion()%></h4>
                             <h6>SKU:<input type="text" name="id_producto" value="<%=p.getIdProducto()%>"  style="border: none"/></h6>
                             <h3><%=p.getDescripcion()%></h3><br>
-                            <h3>Precio Unitario: <input type="text" name="txt_precio" value="<%=p.getPrecioUnitario()%>" style="border: none"/> </h3>
+                            <h3>Precio Unitario:<%=formato.format(p.getPrecioUnitario())%> <input type="hidden" name="txt_precio" value="<%=p.getPrecioUnitario()%>" /> </h3>
                             <h5>Stock: <%=p.getStock()%> unidades.</h5><br><input type="hidden" name="txt_image" value="<%=p.getUrlFoto()%>" style="border: none"  />   
                             <br><br>
                         </div>

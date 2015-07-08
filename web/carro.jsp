@@ -197,8 +197,8 @@
                                 <td><strong>Foto</strong></td>
                                 <td><strong>Nombre Producto</strong></td>
                                 <td><strong>Unidades</strong></td>
-                                <td><strong>Precio Unitario</strong></td>
-                                <td><strong>SubTotal</strong></td>
+                                <td align="right"><strong>Precio Unitario</strong></td>
+                                <td align="right"><strong>SubTotal</strong></td>
                                 <td><strong>&nbsp;</strong></td>
                                 
                             </tr>
