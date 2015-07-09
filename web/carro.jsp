@@ -208,8 +208,7 @@
                 </div>
                 <br><br>
                 <!--End of title bar-->
-                <form action="carro.jsp" method="POST">
-                        
+                <form action="carro.jsp" method="POST">                       
                     <table border="1" class="table">
                         <thead>    
                             <tr class="amber">
