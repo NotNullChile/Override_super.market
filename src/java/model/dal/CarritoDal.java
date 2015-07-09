@@ -98,7 +98,7 @@ public class CarritoDal
         try
         {
             conexion();
-            String sql = "SELECT count(idCarrito) FROM carrito;";      
+            String sql = "SELECT count(idCarrito)+1 FROM carrito;";      
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while(rs.next())

@@ -4,6 +4,7 @@
     Author     : Ricardo
 --%>
 
+<%@page import="model.dal.CarritoDal"%>
 <%@page import="model.business.Carrito"%>
 <%@page import="model.business.Clientes"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -16,8 +17,8 @@
     <%
     HttpSession sesion = request.getSession();
     Clientes c = (Clientes)sesion.getAttribute("cliente"); 
-    Carrito carrito = new Carrito();
-    String carritoOrden =("#00123");
+    CarritoDal carritoDal = new CarritoDal();
+    String carritoOrden = "#OC" + carritoDal.countCarrito();
     %>
     <body>
         <h1>Datos Facturación Orden : <%=carritoOrden%></h1>

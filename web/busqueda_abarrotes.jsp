@@ -32,7 +32,7 @@
         <%
             HttpSession sesion = request.getSession();
             model.business.Clientes cliente = (model.business.Clientes) sesion.getAttribute("cliente");
-            String tipoProducto = "Abarrotes";
+            String tipoProducto = "abarrotes";
             String thisURL = "busqueda_"+tipoProducto+".jsp";
         %>
         
