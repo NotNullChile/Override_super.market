@@ -273,16 +273,18 @@
                         for(model.business.Producto p : listProducto)
                         { 
                         %>  
-                    <div class="w3-third">
-                        <div class="w3-card-2">
-                            <button value="<%=p.getUrlFoto()%>" name="imagen"> 
+                    <div class="w3-half">
+                        <div class="w3-card-4 w3-row yellow">
+                            <button value="<%=p.getUrlFoto()%>" name="imagen" class="w3-col m6"> 
                                 <img name="imagen" value="<%=p.getUrlFoto()%>" src="imagesProducts/<%=p.getUrlFoto()%>" style="width:100%">
-                                </button>
+                                <br>
+                            </button>
+                                
                                 <div class="w3-container">   
-                                    <h5><%=p.getNombreProducto()%></h5>
-                                    <hr>
-                                    <h5 align="right">Precio Normal:  <%=formato.format(p.oferta50())%></h5>
-                                    <h5 align="right">OFERTA: <%=formato.format(p.getPrecioUnitario())%></h5>
+                                    <h4 align="right"><strong><%=p.getNombreProducto()%></h4>
+                                    <h5 align="right"><span style="color: blue"><%=p.getMarca().getDescripcion()%></span></strong></h5>
+                                    <h5 align="right">Precio Normal:<strike><span style="color: red"><%=formato.format(p.oferta50())%></span></strike></h5>
+                                    <h5 align="right"><strong>OFERTA: <%=formato.format(p.getPrecioUnitario())%></strong></h5>    
                                 </div>   
                         </div>
                     </div>
