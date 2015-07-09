@@ -32,7 +32,7 @@
         <%
             HttpSession sesion = request.getSession();
             model.business.Clientes cliente = (model.business.Clientes) sesion.getAttribute("cliente");
-            String tipoProducto = "cereales y snacks";
+            String tipoProducto = "Cereales y Snacks";
             String thisURL = "busqueda_busqueda_cereales_y_snacks.jsp";
         %>
         
@@ -196,10 +196,10 @@
                 <!--/nav-->
             </div>
             <!--End of sidebar-->         
-            <div class="w3-col m7 w3-card w3-padding">           
-                <br>             
+            <div class="w3-col m7 w3-card w3-padding">              
                 <div class="w3-container red">
-                    <h2>Productos categoría: <%=tipoProducto%>&nbsp;&nbsp;<i class="fa fa-cart-arrow-down"></i> </h2>
+                    <h2>Productos categoría: <%=tipoProducto%>&nbsp;&nbsp; <img src="icons/cereales_y_snacks_w.png" width="50" height="50" alt="cereales_y_snacks_w"/>
+                    </h2>
                 </div>
                 
                 <!--Result Sort-->
