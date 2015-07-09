@@ -8,8 +8,11 @@ package model.dal;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import model.business.Carrito;
 
 /**
  *
@@ -38,7 +41,7 @@ public class CarritoDal
         try 
         {
           conexion();
-          String sql = "INSERT INTO carrito VALUES(" + c.getIdCarrito() + "," + c.getRecibo() + ");";
+          String sql = "INSERT INTO carrito VALUES(" + c.getIdCarrito() + ",'" + c.getOrden()+ "');";
           return state.executeUpdate(sql);          
         } 
         catch (SQLException e) 
@@ -55,7 +58,69 @@ public class CarritoDal
                 return -1;
             }     
         }
-        return 0;
-       
+        return 0;    
+    }
+    
+    public model.business.Carrito buscarProductoXIdProducto (int idCarrito)
+    {
+        try
+        {
+            conexion();
+            String sql = "SELECT orden FROM carrito WHERE idCarrito = " + idCarrito + ";";      
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.first())
+            {
+                model.business.Carrito c = new model.business.Carrito();
+                c.setOrden(rs.getString(1));
+                return c;
+            }
+            return null;
+        } 
+        catch (Exception e) 
+        {
+            return null;
+        }
+         finally
+        {
+            try 
+            {
+               conn.close();
+            }
+            catch (Exception e) 
+            {
+            }
+        }     
+    }
+    
+    public int countCarrito()
+    {
+        try
+        {
+            conexion();
+            String sql = "SELECT count(idCarrito) FROM carrito;";      
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {              
+                return rs.getInt(1);
+            }
+            
+            return 0;
+        } 
+        catch (Exception e) 
+        {
+            return 0;
+        }
+         finally
+        {
+            try 
+            {
+               conn.close();
+            }
+            catch (Exception e) 
+            {
+            }
+        } 
     }
 }

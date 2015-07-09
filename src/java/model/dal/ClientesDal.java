@@ -69,7 +69,7 @@ public class ClientesDal
         try 
         {
             conexion();
-            String sql = "SELECT c.nombre, c.apellido FROM clientes c "
+            String sql = "SELECT c.nombre, c.apellido,c.rut,c.telefono, c.email FROM clientes c "
                     + "INNER JOIN login l ON c.username = l.username "
                     + "WHERE l.username = '" + cli.getLogin().getUsername() + "' AND l.contraseña = '" + cli.getLogin().getPassword()+ "';";
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -79,6 +79,9 @@ public class ClientesDal
                 model.business.Clientes c = new Clientes();
                 c.setNombre(rs.getString(1));
                 c.setApellido(rs.getString(2));
+                c.setRut(rs.getInt(3));
+                c.setTelefono(rs.getInt(4));
+                c.setEmail(rs.getString(5));
                 return c;
             }
             return null;
