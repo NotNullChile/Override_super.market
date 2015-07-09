@@ -1,5 +1,5 @@
 <%-- 
-    Document   : login
+    Document   : error_signup_differentpasswords
     Created on : Jul 6, 2015, 9:11:44 AM
     Author     : urtubia @ notNull
 --%>
@@ -230,7 +230,7 @@
                             <div class="w3-col m4">
                                 <input type="password" 
                                        name="txt_password" 
-                                       value="" 
+                                       value=""
                                        placeholder="Ingrese su password"
                                        required="true"/>
                             </div>
@@ -437,6 +437,12 @@
                     </form>
                     <!--End of signup form-->
                 </div>
+                <!--Error message-->
+                    <div class="alert alert-danger">
+                        <strong>Error: Los passwords no coinciden.</strong>
+                        <br>Intente registrarse nuevamente.
+                    </div>
+                    <!--End of error message-->
             </div>
             <!--End of signup card-->
             <!--End of content-->

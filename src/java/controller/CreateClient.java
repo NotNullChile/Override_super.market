@@ -73,12 +73,11 @@ public class CreateClient extends HttpServlet {
                     //Si retorna 1062 Cliente ya registrado
                     case 1062:
                         //Pagina a redirigir Cliente ya registrado
-                        //request.getRequestDispatcher("paginaARedirigir.jsp").forward(request, response);
-                        out.print("Cliente ya creado");
+                        request.getRequestDispatcher("error_signup_userexists.jsp").forward(request, response);
                         break;
                     //Error desconocido
                     default: 
-                        out.print("Contáctese con el administrado de la pagina");
+                        out.print("Contáctese con el administrador de la pagina");
                         //Pagina a redirigir errorDesconocido
                         //request.getRequestDispatcher("paginaARedirigir.jsp").forward(request, response);
                         break;
@@ -87,7 +86,7 @@ public class CreateClient extends HttpServlet {
             }
             else
             {
-                out.print("Sus password no coinciden");
+                request.getRequestDispatcher("error_signup_differentpasswords.jsp").forward(request, response);
             }
         }
         catch(NumberFormatException e)

@@ -56,10 +56,10 @@
                 <br><br><br>
                 <div class="input-group">
                     <input name= "txt_busqueda" 
-                           type="text" 
+                           type="search"
                            class="form-control" 
                            placeholder="Búsqueda de productos..."
-                           >
+                           autofocus>
                     <span class="input-group-btn">
                         <button type="submit"
                                 name="btn_busqueda_general"

@@ -21,7 +21,9 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
         <link rel="icon" type="image/ico" href="images/override.ico">
     </head>
+    
     <body>
+       
         <!--Java servlet sessions and attributes-->
         <%
             HttpSession sesion = request.getSession();
@@ -69,11 +71,11 @@
                            type="text" 
                            class="form-control" 
                            placeholder="Búsqueda de productos..."
+                           name="btn_busqueda_general"
                            >
                     <span class="input-group-btn">
                         <button type="submit" 
                                 class="btn btn-primary"
-                                name="btn_busqueda_general"
                                 >
                             <i class="fa fa-search"></i>
                         </button>
@@ -208,9 +210,11 @@
                             <div class="w3-col m4">
                                 <input type="text" 
                                        name="txt_rut" 
-                                       value="" 
-                                       required
+                                       value=""
+                                       required="true"
+                                       placeholder="RUT sin dígito verificador"
                                        onkeyUp="return ValNumero(this);"/>
+                                <span class="tooltip">this is the tip!</span>
                             </div>
                             <div class="w3-col m1">&nbsp;</div>
                         </div>
@@ -226,7 +230,9 @@
                             <div class="w3-col m4">
                                 <input type="password" 
                                        name="txt_password" 
-                                       value="" />
+                                       value=""
+                                       placeholder="Ingrese su password"
+                                       required="true"/>
                             </div>
                             <div class="w3-col m1">&nbsp;</div>
                         </div>
@@ -236,7 +242,10 @@
                         <div class="w3-row">
                             <div class="w3-col m6">&nbsp;</div>
                             <div class="w3-col m6">
-                                <input type="submit" value="Entrar" name="btn_entrar" />
+                                <input class="btn btn-success"
+                                       type="submit" 
+                                       value="Entrar" 
+                                       name="btn_entrar" />
                             </div>
                         </div>
                         <!--End of login button-->
@@ -279,7 +288,8 @@
                             <div class="w3-col m4">
                                 <input type="text" 
                                        name="txt_nuevo_rut" 
-                                       value="" 
+                                       placeholder="RUT sin dígito verificador" 
+                                       value=""
                                        required
                                        onkeyUp="return ValNumero(this);"/>
                             </div>
@@ -299,7 +309,8 @@
                             <div class="w3-col m1 s1">&nbsp;</div>
                             <div class="w3-col m4">
                                 <input type="text" 
-                                       name="txt_nuevo_nombre" 
+                                       name="txt_nuevo_nombre"
+                                       placeholder="Escriba su nombre"
                                        value="" 
                                        required/>
                             </div>
@@ -320,8 +331,9 @@
                             <div class="w3-col m4">
                                 <input type="text" 
                                        name="txt_nuevo_apellido" 
+                                       placeholder="Escriba su apellido"
                                        value="" 
-                                       required/>
+                                       required="true"/>
                             </div>
                             <div class="w3-col m1">&nbsp;</div>
                         <!--End of Apellido textbox-->
@@ -339,10 +351,10 @@
                             <div class="w3-col m1 s1">&nbsp;</div>
                             <div class="w3-col m4">
                                 <input type="email" 
-                                       name="txt_nuevo_email" 
-                                       value="" 
-                                       required
-                                       onkeyUp="return ValNumero(this);"/>
+                                       name="txt_nuevo_email"
+                                       placeholder="Ej: usuario@override.cl"
+                                       value=""
+                                       required="true"/>
                             </div>
                             <div class="w3-col m1">&nbsp;</div>
                         <!--End of email textbox-->
@@ -359,10 +371,11 @@
                             </div>
                             <div class="w3-col m1 s1">&nbsp;</div>
                             <div class="w3-col m4">
-                                <input type="text" 
+                                <input type="tel" 
                                        name="txt_nuevo_telefono" 
+                                       placeholder="Ej: 2222222222"
                                        value="" 
-                                       required
+                                       required="true"
                                        onkeyUp="return ValNumero(this);"/>
                             </div>
                             <div class="w3-col m1">&nbsp;</div>
@@ -381,7 +394,8 @@
                             <div class="w3-col m1">&nbsp;</div>
                             <div class="w3-col m4">
                                 <input type="password" 
-                                       name="txt_nuevo_password_1" 
+                                       name="txt_nuevo_password_1"
+                                       placeholder="Su password deseado"
                                        value=""
                                        required/>
                             </div>
@@ -401,8 +415,9 @@
                             <div class="w3-col m1">&nbsp;</div>
                             <div class="w3-col m4">
                                 <input type="password" 
-                                       name="txt_nuevo_password_2" 
-                                       value=""
+                                       name="txt_nuevo_password_2"
+                                       placeholder="Repita su password"
+                                       value="" 
                                        required/>
                             </div>
                             <div class="w3-col m1">&nbsp;</div>
@@ -416,7 +431,8 @@
                         <div class="w3-row">
                             <div class="w3-col m6">&nbsp;</div>
                             <div class="w3-col m6">
-                                <input type="submit" 
+                                <input type="submit"
+                                       class="btn btn-success"
                                        value="Registrarse" 
                                        name="btn_nuevo_usuario" />
                             </div>
