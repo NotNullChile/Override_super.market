@@ -60,7 +60,7 @@
                            type="text" 
                            class="form-control" 
                            placeholder="Búsqueda de productos..."
-                           >
+                           autofocus>
                     <span class="input-group-btn">
                         <button type="submit" 
                                 class="btn btn-primary"
@@ -194,8 +194,7 @@
                 <!--/nav-->
             </div>
             <!--End of sidebar-->           
-            <div class="w3-col m7 w3-card w3-padding">           
-                <br>             
+            <div class="w3-col m7 w3-card w3-padding">                     
                 <div class="w3-container red">
                     <h2>Resultados de su búsqueda:&nbsp;&nbsp;<i class="fa fa-search"></i> </h2>
                 </div>

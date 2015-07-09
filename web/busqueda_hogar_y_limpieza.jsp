@@ -62,6 +62,7 @@
                            type="text" 
                            class="form-control" 
                            placeholder="Búsqueda de productos..."
+                           autofocus
                            >
                     <span class="input-group-btn">
                         <button type="submit" 
