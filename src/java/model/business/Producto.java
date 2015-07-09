@@ -108,6 +108,11 @@ public class Producto
     {
         return stock * precioUnitario;
     }
-
+    
+    public int oferta50()
+    {
+        int calculoOferta = ((precioUnitario*50)/100) + precioUnitario;
+        return calculoOferta;
+    }
     
 }

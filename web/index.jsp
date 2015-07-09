@@ -4,6 +4,8 @@
     Author     : urtubia @ notNull
 --%>
 
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="model.business.Login"%>
 <%@page import="model.business.Clientes"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -262,62 +264,35 @@
                 </div>
                 <!--End of title bar-->
                 <!--First Row of items-->
-                <div class="w3-row-margin">
+                <form action="detalle_producto.jsp" method="POST">
+                  <div class="w3-row-margin">          
+                        <%
+                        model.dal.ProductoDal productoDal = new model.dal.ProductoDal();
+                        DecimalFormat formato = new DecimalFormat("$#,###");
+                        ArrayList<model.business.Producto> listProducto = productoDal.listaProductoOferta();
+                        for(model.business.Producto p : listProducto)
+                        { 
+                        %>  
                     <div class="w3-third">
                         <div class="w3-card-2">
-                            <img src="http://www.lider.cl/dys/productImages/g/5466382ga.jpg" style="width:100%">
-                            <div class="w3-container">
-                                <h5>Producto 1</h5>
-                            </div>
+                            <button value="<%=p.getUrlFoto()%>" name="imagen"> 
+                                <img name="imagen" value="<%=p.getUrlFoto()%>" src="imagesProducts/<%=p.getUrlFoto()%>" style="width:100%">
+                                </button>
+                                <div class="w3-container">   
+                                    <h5><%=p.getNombreProducto()%></h5>
+                                    <hr>
+                                    <h5 align="right">Precio Normal:  <%=formato.format(p.oferta50())%></h5>
+                                    <h5 align="right">OFERTA: <%=formato.format(p.getPrecioUnitario())%></h5>
+                                </div>   
                         </div>
                     </div>
-                    <div class="w3-third">
-                        <div class="w3-card-2">
-                            <img src="http://www.lider.cl/dys/productImages/g/172325ga.jpg" style="width:100%">
-                            <div class="w3-container">
-                                <h5>Producto 2</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="w3-third">
-                        <div class="w3-card-2">
-                        <img src="http://www.lider.cl/dys/productImages/g/5934782ga.jpg" style="width:100%">
-                            <div class="w3-container">
-                                <h5>Producto 3</h5>
-                            </div>
-                        </div>
-                    </div>
+                  </form>
+                       <%  
+                        }
+                       %>    
                 </div>
+                        
                 <!--End of first row of items-->
-                
-                <!--Second row of items-->
-                <div class="w3-row-margin">
-                    <div class="w3-third">
-                        <div class="w3-card-2">
-                            <img src="http://www.lider.cl/dys/productImages/g/134880ga.jpg" style="width:100%">
-                            <div class="w3-container">
-                                <h5>Producto 4</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="w3-third">
-                        <div class="w3-card-2">
-                            <img src="http://www.lider.cl/dys/productImages/g/5434633ga.jpg" style="width:100%">
-                            <div class="w3-container">
-                                <h5>Producto 5</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="w3-third">
-                        <div class="w3-card-2">
-                            <img src="http://www.lider.cl/dys/productImages/g/5586646ga.jpg" style="width:100%">
-                            <div class="w3-container">
-                                <h5>Producto 6</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--End of second row of items-->
             </div>
             <!--End of content-->
             
