@@ -73,7 +73,7 @@ public class ProcesarLogin extends HttpServlet {
                 //Pagina 
                     HttpSession sesionAdmin = request.getSession();
                     sesionAdmin.setAttribute("admin", admin);
-                    request.getRequestDispatcher("comprobar_session_admin.jsp").forward(request, response);
+                    request.getRequestDispatcher("index_intranet.jsp").forward(request, response);
                 }
             }
             else
