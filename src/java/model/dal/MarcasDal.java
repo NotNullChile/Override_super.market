@@ -38,6 +38,63 @@ public class MarcasDal
             e.printStackTrace();
         }
     }
+    
+    public int insertMarca(model.business.Marcas m)
+    {
+        try 
+        {
+            conexion();
+            String sql = "INSERT INTO marcas VALUES(" + m.getIdMarca() + ",'" + m.getDescripcion() + "');";
+            return state.executeUpdate(sql);  
+        } 
+        catch (SQLException e)
+        {
+            return e.getErrorCode();
+        }
+        finally
+        {
+            try 
+            {
+                conn.close();
+            } 
+            catch (Exception e) 
+            {
+                
+            }
+        }
+    }
+    
+    public int countMarcas()
+    {
+        try 
+        {
+            conexion();
+            String sql = "SELECT count(idMarca)+1 FROM marcas";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                return rs.getInt(1);
+            }
+            return 0;
+        } 
+        catch (SQLException e)
+        {
+            return e.getErrorCode();
+        }
+        finally
+        {
+            try 
+            {
+                conn.close();
+            } 
+            catch (Exception e) 
+            {
+               return 0; 
+            }
+        }
+    }
+    
     public ArrayList<Marcas> listMarcas()
     {
         try 

@@ -43,7 +43,7 @@
                         for(model.business.Comunas comunas : listComuna)
                         {         
                         %>                     
-                            <option value="<%=comunas.getIdComuna()%>"><%=comunas.getNombreComuna()%></option>                      
+                            <option value="<%=comunas.getNombreComuna()%>"><%=comunas.getNombreComuna()%></option>                      
                         <%
                         }
                         %>  
