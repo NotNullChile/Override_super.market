@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import model.business.Administrador;
 import model.business.Clientes;
@@ -29,6 +30,34 @@ public class AdministradorDal
         catch (Exception e)
         {
             e.printStackTrace();
+        }      
+    }
+    
+    public int insertAdmin(model.business.Administrador a)
+    {
+        try 
+        {
+            //Se conecta al BD
+            conexion();
+            // Insert Admin
+            String sql = "INSERT INTO administrador VALUES(" + a.getRut() + ",'" + a.getNombre() + "','" + a.getApellido() + "','" + a.getEmail() + "'," + a.getTelefono() + "," + a.getLogin().getUsername() + ");";
+            return state.executeUpdate(sql);
+        } 
+        catch (SQLException e) 
+        {
+            return e.getErrorCode();
+        }
+        finally
+        {
+            try 
+            {
+                //Al terminar el proceso se desconecta de la BD
+               conn.close(); 
+            }
+            catch (Exception ex) 
+            {
+                
+            }
         }      
     }
     

@@ -24,7 +24,7 @@
         //Call Session
         Clientes c = (Clientes) sesion.getAttribute("cliente");
         Despacho d = (Despacho) sesion.getAttribute("despacho");
-        MetodosDePagos mp = (MetodosDePagos) sesion.getAttribute("metodo_pago");
+        MetodosDePagos mp = (MetodosDePagos) sesion.getAttribute("metodo_pago");        
         //Venta
         int total = 0;
         int iva = 0;
@@ -85,6 +85,14 @@
                         </td>
                         <td>
                             <%=d.getDireccion()%>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Comuna
+                        </td>
+                        <td>
+                            <%=d.getComuna().getNombreComuna()%>
                         </td>
                     </tr>
                     <tr>

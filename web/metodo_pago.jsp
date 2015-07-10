@@ -57,6 +57,16 @@
                                size="5" required="true" maxlength="4" />
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                        Numero Cuotas
+                    </td>
+                    <td>
+                        <input type="number" name="spin_cuotas" value="" 
+                               size="5" required="true" maxlength="1"
+                               min="0" max="6"/>
+                    </td>
+                </tr>
 
                 <tr>
                     <td><input type="submit" value="Continuar" name="btn_continuar" /></td>
