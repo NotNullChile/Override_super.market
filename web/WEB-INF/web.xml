@@ -20,6 +20,10 @@
         <servlet-name>ProcesarCarro</servlet-name>
         <servlet-class>controller.ProcesarCarro</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CreateMetodoPago</servlet-name>
+        <servlet-class>controller.CreateMetodoPago</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CreateClient</servlet-name>
         <url-pattern>/create_client.do</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>ProcesarCarro</servlet-name>
         <url-pattern>/procesar_carro.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateMetodoPago</servlet-name>
+        <url-pattern>/create_metodo_pago.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -44,7 +44,7 @@ public class MetodosDePagosDal
             conexion();
             ArrayList <MetodosDePagos> listaMetodosPago = new ArrayList<>();
             conexion();
-            String sql = "SELECT * FROM metodosDePago";
+            String sql = "SELECT * FROM metodosDePago ORDER by 1";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while(rs.next())

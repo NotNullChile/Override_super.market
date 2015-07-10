@@ -114,5 +114,12 @@ public class Producto
         int calculoOferta = ((precioUnitario*50)/100) + precioUnitario;
         return calculoOferta;
     }
-    
+    public int calculoIva()
+    {
+        return (int)Math.round(subTotal() * 0.19);
+    }
+    public int calculoTotalAPagar()
+    {
+        return subTotal() + calculoIva();
+    }
 }

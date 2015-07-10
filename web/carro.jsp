@@ -208,7 +208,8 @@
                 </div>
                 <br><br>
                 <!--End of title bar-->
-                <form action="carro.jsp" method="POST">                       
+              
+                <form action = carro.jsp  method='POST'>              
                     <table border="1" class="table">
                         <thead>    
                             <tr class="amber">
@@ -237,6 +238,11 @@
                                         break;
                                     }
                                 }
+                                else if(request.getParameter("btn_comprar") != null)
+                                {
+                                    request.getRequestDispatcher("resumen_compra_rick.jsp").forward(request, response);
+                                }
+                                
                                 for(model.business.Carrito c : listCarrito )
                                 {
                                     total = total + c.getProducto().subTotal();
@@ -251,7 +257,11 @@
                         <td><span class="badge"><%=c.getProducto().getStock()%></span></td>
                     <td align="right"><%=formato.format(c.getProducto().getPrecioUnitario())%></td>
                     <td align="right"><%=formato.format(c.getProducto().subTotal())%></td>
-                    <td><input class="btn btn-danger" type="submit" value="Eliminar item" name="btn_borrar" /></td>
+                    <td>
+                        <a href="carro.jsp">
+                        <input class="btn btn-danger" type="submit" value="Eliminar item" name="btn_borrar" />
+                        </a>
+                    </td>
                 </tr>
                <%
                 }

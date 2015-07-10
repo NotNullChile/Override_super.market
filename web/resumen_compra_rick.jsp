@@ -4,6 +4,7 @@
     Author     : Ricardo
 --%>
 
+<%@page import="java.util.ArrayList"%>
 <%@page import="model.dal.CarritoDal"%>
 <%@page import="model.business.Carrito"%>
 <%@page import="model.business.Clientes"%>
@@ -14,42 +15,53 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
-    <%
-    HttpSession sesion = request.getSession();
-    Clientes c = (Clientes)sesion.getAttribute("cliente"); 
-    CarritoDal carritoDal = new CarritoDal();
-    String carritoOrden = "#OC" + carritoDal.countCarrito();
-    %>
     <body>
-        <h1>Datos Facturación Orden : <%=carritoOrden%></h1>
-        <table border="1">
+        <h1>Datos Despacho</h1>     
+        
+       <form action="create_despacho.do" method="POST">                 
+        <table border="1" aling="right">
             <tbody>
                 <tr>
-                    <td>Rut</td>
-                    <td><%=c.getRut()%></td>     
-                </tr>
-                <tr>
-                    <td>Nombre</td>
-                    <td><%=c.getNombre() + " " + c.getApellido()%></td>
-                </tr>
-                <tr>
-                    <td>Mail Contacto</td>
-                    <td><%=c.getEmail()%></td>
-                </tr>
-                <tr>
-                    <td>Teléfono de Contacto</td>
-                    <td><%=c.getTelefono()%></td>
+                    <td>Despacho</td> 
                 </tr>
                 <tr>
                     <td>
-                        <a href="index.jsp">
-                            <input type="submit" value="Seguir Comprando" name="btn_comprar" />  
-                        </a>
+                        Direccion
                     </td>
+                    <td>
+                        <input type="text" name="txt_despacho" 
+                               value="" required="true" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Comuna</td>
+                    <td>
+                        <select name="dll_comunas">
+                        <%
+                        model.dal.ComunasDal comunaDal = new model.dal.ComunasDal();
+                        ArrayList<model.business.Comunas> listComuna = comunaDal.listaComuna();
+                        for(model.business.Comunas comunas : listComuna)
+                        {         
+                        %>                     
+                            <option value="<%=comunas.getIdComuna()%>"><%=comunas.getNombreComuna()%></option>                      
+                        <%
+                        }
+                        %>  
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Persona a entregar
+                    </td>
+                    <td>
+                        <input type="text" name="txt_persona_a_entregar" 
+                               value="" required="true"/>
+                    </td>
+                </tr>
+                <tr>
                     <td> 
-                        <a href="despacho_rick.jsp">
-                            <input type="submit" value="Continuar" name="btn_continuar" />
-                        </a>
+                          <input type="submit" value="Continuar" name="btn_continuar" />
                     </td>
                 </tr>
             </tbody>

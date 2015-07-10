@@ -3,6 +3,8 @@ package model.dal;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -51,5 +53,36 @@ public class DespachoDal
             {
             }
         }
+    }
+    
+    public int countDespacho()
+    {
+        try
+        {
+            conexion();
+            String sql = "SELECT count(idDespacho)+1 FROM despacho;";      
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {              
+                return rs.getInt(1);
+            }
+            
+            return 0;
+        } 
+        catch (Exception e) 
+        {
+            return 0;
+        }
+         finally
+        {
+            try 
+            {
+               conn.close();
+            }
+            catch (Exception e) 
+            {
+            }
+        } 
     }
 }
