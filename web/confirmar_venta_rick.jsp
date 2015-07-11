@@ -34,7 +34,7 @@
         ArrayList<model.business.Carrito> listCarrito = (ArrayList<model.business.Carrito> ) sesion.getAttribute("carrito");
         //Class       
         CarritoDal carritoDal = new CarritoDal();
-        String carritoOrden = "#Orden de Compra N " + carritoDal.countCarrito();
+        String carritoOrden = "#Orden de Compra N° " + carritoDal.countCarrito();
         %>
         <h1>Confirme Compra <%=carritoOrden%></h1>
         <form action="procesar_venta.do" method="POST">

@@ -113,7 +113,7 @@ public class VentaProductoDal
                     + "ON vp.idVenta = v.idVenta INNER JOIN carrito c "
                     + "ON v.idCarrito = c.idCarrito INNER JOIN clientes cli "
                     + "ON cli.rut = v.rut "
-                    + "WHERE cli.rut = 191331117 AND c.orden = '" + orden + "';";        
+                    + "WHERE cli.rut = " + c.getRut() + " AND c.orden = '" + orden + "';";        
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while(rs.next())
