@@ -18,9 +18,9 @@ public class Carrito
         producto = new Producto();
     }
 
-    public Carrito(int idCarrito, String recibo) {
+    public Carrito(int idCarrito) {
         this.idCarrito = idCarrito;
-        this.orden = recibo;
+        this.orden = new String();
         producto = new Producto();
     }
 
@@ -36,7 +36,7 @@ public class Carrito
         return orden;
     }
 
-    public void setOrden(String recibo) {
+    public void setOrden(String orden) {
         this.orden = orden;
     }
 

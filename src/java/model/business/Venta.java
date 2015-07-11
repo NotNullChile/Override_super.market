@@ -1,6 +1,8 @@
 
 package model.business;
 
+import java.util.Date;
+
 /**
  *
  * @author RicardoCarrasco
@@ -12,7 +14,7 @@ public class Venta
     private int iva;
     private int Total;
     private MetodosDePagos metodosDePago;
-    private int numeroTarjeta;
+    private String fecha;
     private Clientes cliente;
     private Carrito carrito;
     private Despacho despacho;
@@ -24,19 +26,19 @@ public class Venta
         this.iva = 0;
         this.Total = 0;
         this.metodosDePago = new MetodosDePagos();
-        this.numeroTarjeta = 0;
+        this.fecha = new String();
         this.cliente = new Clientes();
         this.carrito = new Carrito();
         this.despacho = new Despacho();
     }
 
     
-    public Venta(int idVenta, int subTotal, int iva, int Total,  int numeroTarjeta) {
+    public Venta(int idVenta, int subTotal, int iva, int Total) {
         this.idVenta = idVenta;
         this.subTotal = subTotal;
         this.iva = iva;
         this.Total = Total;
-        this.numeroTarjeta = numeroTarjeta;
+        this.fecha = new String();
         this.cliente = new Clientes();
         this.carrito = new Carrito();
         this.despacho = new Despacho();
@@ -84,12 +86,12 @@ public class Venta
         this.metodosDePago = metodosDePago;
     }
 
-    public int getNumeroTarjeta() {
-        return numeroTarjeta;
+    public String getFecha() {
+        return fecha;
     }
 
-    public void setNumeroTarjeta(int numeroTarjeta) {
-        this.numeroTarjeta = numeroTarjeta;
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
 
     public Clientes getCliente() {

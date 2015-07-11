@@ -4,6 +4,7 @@
     Author     : Ricardo
 --%>
 
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.dal.ProductoDal"%>
 <%@page import="model.business.MetodosDePagos"%>
@@ -26,16 +27,17 @@
         Despacho d = (Despacho) sesion.getAttribute("despacho");
         MetodosDePagos mp = (MetodosDePagos) sesion.getAttribute("metodo_pago");        
         //Venta
-        int total = 0;
+        int subTotal = 0;
         int iva = 0;
         int totalAPagar = 0;
+        DecimalFormat formato = new DecimalFormat("$#,###");
         ArrayList<model.business.Carrito> listCarrito = (ArrayList<model.business.Carrito> ) sesion.getAttribute("carrito");
         //Class       
         CarritoDal carritoDal = new CarritoDal();
-        String carritoOrden = "#Orden de Compra N°" + carritoDal.countCarrito();
+        String carritoOrden = "#Orden de Compra N " + carritoDal.countCarrito();
         %>
-        <h1>Confirme Compra <%=carritoOrden%> </h1>
-        <form action="d" method="POST">
+        <h1>Confirme Compra <%=carritoOrden%></h1>
+        <form action="procesar_venta.do" method="POST">
             <table border="1">
                 <tbody>
                     <tr>
@@ -113,18 +115,19 @@
                     </tr>
                     <tr>
                         <td>
-                            Total
+                            SubTotal
                         </td>
                         <td>
                             <%
                             for(model.business.Carrito ca : listCarrito)
                             {
-                               total += ca.getProducto().subTotal();
+                               subTotal += ca.getProducto().subTotal();
                                iva += ca.getProducto().calculoIva();
                                totalAPagar += ca.getProducto().calculoTotalAPagar();
                             }
                             %>
-                            <%=total+4990%>
+                            <%=formato.format(subTotal+4990)%>
+                            <input type="hidden" name="txt_subtotal" value="<%=subTotal+4990%>" size="1" />
                         </td>
                     </tr>
                     <tr>
@@ -132,7 +135,8 @@
                             IVA
                         </td>
                         <td>
-                            <%=iva+948%>
+                            <%=formato.format(iva+948)%>
+                            <input type="hidden" name="txt_iva" value="<%=iva+948%>" size="1" />
                         </td>
                     </tr>
                     <tr>
@@ -140,10 +144,15 @@
                             Total a pagar
                         </td>
                         <td>
-                            <%=totalAPagar+5938%>
+                            <%=formato.format(totalAPagar+5938)%>
+                            <input type="hidden" name="txt_total" value="<%=totalAPagar+5938%>" size="1" />
                         </td>
                     </tr>
-                    
+                    <tr>
+                        <td>
+                            <input type="submit" value="Comprar" name="btn_comprar" />
+                        </td>
+                    </tr>
                 </tbody>
             </table>
 

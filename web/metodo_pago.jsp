@@ -4,6 +4,7 @@
     Author     : Ricardo
 --%>
 
+<%@page import="model.business.Clientes"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,6 +13,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
+    <%
+    HttpSession sesion = request.getSession();    
+    Clientes c = (Clientes) sesion.getAttribute("cliente");
+    %>
     <body>
         <h1>Método de pago</h1>
         <form action="create_metodo_pago.do" method="POST">   
@@ -27,13 +32,16 @@
                             <%
                             model.dal.MetodosDePagosDal mp = new model.dal.MetodosDePagosDal();
                             ArrayList<model.business.MetodosDePagos> listMetodos = mp.listMetodosDePagos();
+                            int idMetodo = 0;
                             for(model.business.MetodosDePagos m : listMetodos)
                             {
                             %>
-                            <option value="<%=m.getDescripcion()%>"><%=m.getDescripcion()%></option>
+                            <option value="<%=m.getDescripcion()%>"><%=m.getDescripcion()%></option>        
                             <%
+                             idMetodo = m.getIdMetodosDePago();
                              }
                             %>
+                            <input type="hidden" name="txt_id_metodos" value="<%=idMetodo%>" size="1" />
                         </select>  
                     </td>
                      
@@ -63,7 +71,7 @@
                     </td>
                     <td>
                         <input type="number" name="spin_cuotas" value="" 
-                               size="5" required="true" maxlength="1"
+                               size="5" maxlength="1" required="true" 
                                min="0" max="6"/>
                     </td>
                 </tr>

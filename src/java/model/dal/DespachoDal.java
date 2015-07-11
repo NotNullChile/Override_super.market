@@ -36,7 +36,7 @@ public class DespachoDal
         try 
         {
             conexion();
-            String sql = "INSERT INTO clientes VALUES(" + d.getIdDespacho() + ",'" + d.getDireccion() + "','" + d.getNombrePersonaAEntregar() + "'," + d.getComuna().getIdComuna() + ");";
+            String sql = "INSERT INTO despacho VALUES(null,'" + d.getDireccion() + "','" + d.getNombrePersonaAEntregar() + "'," + d.getComuna().getIdComuna() + ");";
             return state.executeUpdate(sql);
         }
         catch (SQLException e)

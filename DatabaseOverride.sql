@@ -87,10 +87,10 @@ constraint pk_idProducto primary key (idProducto),
 constraint fk_producto_tipoProducto foreign key (idTipoProducto) references tipoProductos (idTipoProducto),
 constraint fk_producto_marca foreign key (idMarca) references marcas (idMarca)
 );
-drop table carrito;
+
 create table carrito
 (
-idCarrito int,
+idCarrito int AUTO_INCREMENT,
 orden varchar(50),
 constraint pk_idCarrito primary key (idCarrito)
 );
@@ -98,7 +98,7 @@ constraint pk_idCarrito primary key (idCarrito)
 /*SELECT orden FROM carrito WHERE idCarrito = 1;*/
 create table despacho
 (
-idDespacho int,
+idDespacho int AUTO_INCREMENT,
 direccion varchar(50),
 nombrePersonaAEntregar varchar(50),
 idComuna int,
@@ -108,13 +108,13 @@ constraint fk_despacho_comuna foreign key (idComuna) references comunas (idComun
 
 create table venta
 (
-idVenta int,
+idVenta int AUTO_INCREMENT,
 subTotal int,
 iva int,
 total int,
 idMetodosDePago int,
-numeroTarjeta int,
 rut int,
+fecha date,
 idCarrito int,
 idDespacho int,
 constraint pk_Venta primary key (idVenta),
@@ -124,6 +124,13 @@ constraint fk_Venta_carrito foreign key (idCarrito) references carrito (idCarrit
 constraint fk_venta_despacho foreign key (idDespacho) references despacho (idDespacho)
 );
 
+create table venta_producto
+(
+idVenta int,
+idProducto int,
+constraint fk_venta_producto_venta foreign key (idVenta) references venta (idVenta),
+constraint fk_venta_producto_producto foreign key (idProducto) references productos (idProducto)
+);
 /* Insert Login */
 
 INSERT INTO login VALUES('19133111','rick',0);
@@ -605,7 +612,34 @@ select * from clientes;
 SELECT * FROM metodosDePago;
 SELECT * FROM tipoproductos;
 SELECT * FROM marcas;
-SELECT * FROM productos;
+SELECT * FROM productos where idProducto = 37;
+SELECT * FROM despacho ;
+SELECT * FROM carrito;
+SELECT * FROM venta;
+SELECT * FROM venta_producto;
+
+/* Buscar Compra Clientes */ 
+
+SELECT p.UrlFoto, p.nombreProducto, v.subTotal, v.iva, v.total
+FROM venta_producto vp INNER JOIN productos p 
+ON vp.idProducto = p.idProducto INNER JOIN venta v
+ON vp.idVenta = v.idVenta INNER JOIN carrito c
+ON v.idCarrito = c.idCarrito INNER JOIN clientes cli
+ON cli.rut = v.rut
+WHERE cli.rut = 191331117 AND c.orden = '#Orden de Compra N°1';
+
+
+/* Listado Ordenes de compra por fecha */ 
+SELECT v.fecha, c.orden
+FROM venta_producto vp INNER JOIN productos p 
+ON vp.idProducto = p.idProducto INNER JOIN venta v
+ON vp.idVenta = v.idVenta INNER JOIN carrito c
+ON v.idCarrito = c.idCarrito INNER JOIN clientes cli
+ON cli.rut = v.rut
+WHERE cli.rut = 191331117
+GROUP BY 2
+ORDER BY 2;
+
 
 /* Buscando Usuario */
 SELECT c.nombre, c.apellido FROM clientes c INNER JOIN login l  ON c.username = l.username WHERE l.username = '1' AND l.contraseña = '1';  
@@ -704,6 +738,9 @@ SELECT d.idDespacho, d.direccion, d.nombrePersonaAEntregar, d.tamaño, d.precio,
 FROM despacho d INNER JOIN comunas c
 ON d.idComuna = c.idComuna;
 
+/* buscar Stock producto */
+SELECT stock FROM productos WHERE idProducto = 37;
+
 /* UPDATE */
 
 UPDATE productos p INNER JOIN tipoProductos t
@@ -712,6 +749,10 @@ ON p.idMarca = m.idMarca
 SET p.nombreProducto = 'hola', p.precioUnitario = 122, p.stock = 12,
 p.descripcion = 'Hola1', p.idTipoProducto = 2, p.idMarca = 4, p.Urlfoto = 'A_CafeGold_CremeCaramel.jpg'
 WHERE p.idProducto = 19;
+
+
+
+UPDATE productos p INNER JOIN tipoProductos t ON p.idTipoProducto = t.idTipoProducto INNER JOIN marcas m ON p.idMarca = m.idMarca SET p.stock = 120 WHERE p.idProducto = 37;
 
 /* DELETE */
 

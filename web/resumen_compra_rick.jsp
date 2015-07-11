@@ -17,9 +17,12 @@
     </head>
     <body>
         <h1>Datos Despacho</h1>     
-        
-       <form action="create_despacho.do" method="POST">                 
-        <table border="1" aling="right">
+        <%
+        HttpSession sesion = request.getSession();    
+        Clientes c = (Clientes) sesion.getAttribute("cliente");
+        %>
+       <form action="create_despacho.do" method="POST">              
+        <table border="1" aling="right">                      
             <tbody>
                 <tr>
                     <td>Despacho</td> 
@@ -40,13 +43,16 @@
                         <%
                         model.dal.ComunasDal comunaDal = new model.dal.ComunasDal();
                         ArrayList<model.business.Comunas> listComuna = comunaDal.listaComuna();
+                        int idComuna = 0;
                         for(model.business.Comunas comunas : listComuna)
                         {         
                         %>                     
-                            <option value="<%=comunas.getNombreComuna()%>"><%=comunas.getNombreComuna()%></option>                      
+                            <option value="<%=comunas.getNombreComuna()%>"><%=comunas.getNombreComuna()%></option>                        
                         <%
+                        idComuna = comunas.getIdComuna();
                         }
                         %>  
+                        <input type="hidden" name="txt_comuna" value="<%=idComuna%>" size="1" />
                         </select>
                     </td>
                 </tr>
@@ -60,12 +66,12 @@
                     </td>
                 </tr>
                 <tr>
-                    <td> 
-                          <input type="submit" value="Continuar" name="btn_continuar" />
+                    <td>
+                         <input type="submit" value="Continuar" name="btn_continuar" />
                     </td>
                 </tr>
             </tbody>
         </table>
-        </form>
+       </form>
     </body>
 </html>

@@ -768,6 +768,34 @@ try
         }  
     }
     
+    public int updateProductoStock(int stock, int id)
+    {
+        try 
+        {
+             conexion();
+             String sql = "UPDATE productos p INNER JOIN tipoProductos t "
+                     + "ON p.idTipoProducto = t.idTipoProducto INNER JOIN marcas m "
+                     + "ON p.idMarca = m.idMarca "
+                     + "SET p.stock = " + stock + " WHERE p.idProducto = " + id +  ";";
+             return state.executeUpdate(sql);
+        } 
+        catch (SQLException e) 
+        {
+            return e.getErrorCode();
+        }
+        finally
+        {
+            try 
+            {
+                conn.close();
+            }
+            catch (Exception e)
+            {
+                
+            }
+        }  
+    }
+    
     public int deleteProducto(int idProducto)
     {
         try 
@@ -883,6 +911,36 @@ try
         }       
     }
     
+    public int stockProducto(int idProducto)
+    {
+        try 
+        {
+            conexion();
+            String sql = "SELECT stock FROM productos WHERE idProducto = " + idProducto +";";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                return rs.getInt(1);
+            }
+            return 0;
+        } 
+        catch (SQLException e)
+        {
+            return e.getErrorCode();
+        }
+        finally
+        {
+            try 
+            {
+                conn.close();
+            } 
+            catch (Exception e) 
+            {
+               return 0; 
+            }
+        }
+    }
     
     
     

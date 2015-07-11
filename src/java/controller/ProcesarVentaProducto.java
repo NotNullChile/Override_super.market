@@ -8,16 +8,21 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.business.Venta;
 
 /**
  *
  * @author Ricardo
  */
-public class CreateMetodoPago extends HttpServlet {
+@WebServlet(name = "ProcesarVentaProducto", urlPatterns = {"/procesar_venta_producto"})
+public class ProcesarVentaProducto extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,23 +37,28 @@ public class CreateMetodoPago extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        
         PrintWriter out = response.getWriter();
-        try 
+        try  
         {
-            //Class
-            model.business.MetodosDePagos mp = new model.business.MetodosDePagos();
-            
-            //Set
-            mp.setIdMetodosDePago(Integer.parseInt(request.getParameter("txt_id_metodos")));
-            mp.setDescripcion(request.getParameter("dll_metodo_pago"));
+            //Servlet creado con la finalidad de saber que compró nuestro cliente.
             
             //Session
-            request.getSession().setAttribute("metodo_pago", mp);
-            
-            //Pagina Siguente
-            request.getRequestDispatcher("confirmar_venta_rick.jsp").forward(request, response);
-           
+            HttpSession sesion = request.getSession();
+            Venta v = (Venta) sesion.getAttribute("venta");
+            ArrayList<model.business.Carrito> listCarrito = (ArrayList<model.business.Carrito> ) sesion.getAttribute("carrito");
+            //Class
+            model.dal.VentaProductoDal  vp = new model.dal.VentaProductoDal(); 
+            model.dal.VentaDal  ve = new model.dal.VentaDal();
+            //Insert
+            for (int i = 0; i < listCarrito.size(); i++) 
+            {
+                int idVenta = ve.maxVenta();
+                int idProducto = listCarrito.get(i).getProducto().getIdProducto();
+                vp.insertVentaProducto(idVenta, idProducto);
+                //Borrrará todo de la lista
+                listCarrito.remove(i);
+            }                      
+            request.getRequestDispatcher("compra_realizada_rick.jsp").forward(request, response);
         }
         catch(Exception e)
         {

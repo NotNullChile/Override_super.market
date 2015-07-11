@@ -41,7 +41,7 @@ public class CarritoDal
         try 
         {
           conexion();
-          String sql = "INSERT INTO carrito VALUES(" + c.getIdCarrito() + ",'" + c.getOrden()+ "');";
+          String sql = "INSERT INTO carrito VALUES(null,'" + c.getOrden()+ "');";
           return state.executeUpdate(sql);          
         } 
         catch (SQLException e) 
