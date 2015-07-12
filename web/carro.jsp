@@ -204,10 +204,10 @@
                 <!--Breadcrumbs-->
                 <div>
                     <ol class="breadcrumb">
-                        <li class="active"><span class="badge">1</span> Carro de Compras</li>
-                        <li><a href="datos_despacho.jsp"><span class="badge">2</span> Datos de Despacho</a></li>
-                        <li><a href="#"><span class="badge">3</span> Método de Pago</a></li>
-                        <li><a href="#"><span class="badge">4</span> Confirmación de Compra</a></li>
+                        <li class="active"><span class="badge">1</span> <span class="label label-primary">Carro de Compras</span></li>
+                        <li><span class="badge">2 </span>&nbsp;<span class="label label-default">Datos de Despacho</span></li>
+                        <li><span class="badge">3 </span>&nbsp;<span class="label label-default">Método de Pago</span></li>
+                        <li><span class="badge">4 </span>&nbsp;<span class="label label-default">Confirmación de Compra</span></li>
                     </ol>
                 </div>
                 <!--End of breadcrumbs-->
