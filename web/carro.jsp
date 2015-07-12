@@ -201,7 +201,16 @@
             <!--Content-->
             <div class="w3-col m7 w3-card w3-padding">
                 <!--Main card-->
-                
+                <!--Breadcrumbs-->
+                <div>
+                    <ol class="breadcrumb">
+                        <li class="active"><span class="badge">1</span> Carro de Compras</li>
+                        <li><a href="datos_despacho.jsp"><span class="badge">2</span> Datos de Despacho</a></li>
+                        <li><a href="#"><span class="badge">3</span> Método de Pago</a></li>
+                        <li><a href="#"><span class="badge">4</span> Confirmación de Compra</a></li>
+                    </ol>
+                </div>
+                <!--End of breadcrumbs-->
                 <!--Title bar-->
                 <div class="w3-container red">
                     <h2>Su carro de compras:&nbsp;&nbsp;<i class="fa fa-shopping-cart"></i> </h2>
@@ -209,80 +218,119 @@
                 <br><br>
                 <!--End of title bar-->
               
-                <form action = carro.jsp  method='POST'>              
-                    <table border="1" class="table">
-                        <thead>    
-                            <tr class="amber">
-                                <td><strong>Código<br>Producto</strong></td>
-                                <td><strong>Foto</strong></td>
-                                <td><strong>Nombre Producto</strong></td>
-                                <td><strong>Unidades</strong></td>
-                                <td align="right"><strong>Precio Unitario</strong></td>
-                                <td align="right"><strong>SubTotal</strong></td>
-                                <td><strong>&nbsp;</strong></td>
-                                
-                            </tr>
-                        </thead>
-                        <tbody>
-                                <%
-                                //ArrayList
-                                DecimalFormat formato = new DecimalFormat("$#,###");
-                                model.business.Carrito carrito = new model.business.Carrito();
-                                int total = 0;
-                                ArrayList<model.business.Carrito> listCarrito = (ArrayList<model.business.Carrito> ) sesion.getAttribute("carrito");
-                                if(request.getParameter("btn_borrar") != null)
-                                {
-                                    for(int i=0;i<listCarrito.size();i++)
-                                    {
-                                        listCarrito.remove(listCarrito.get(i));
-                                        break;
-                                    }
-                                }
-                                else if(request.getParameter("btn_comprar") != null)
-                                {
-                                    request.getRequestDispatcher("resumen_compra_rick.jsp").forward(request, response);
-                                }
-                                
-                                for(model.business.Carrito c : listCarrito )
-                                {
-                                    total = total + c.getProducto().subTotal();
-                                %>
+                <form action = carro.jsp  method='POST'>  
+                    
+                    <div class="w3-table">
+                        <div class="w3-row amber">
+                            <div class="w3-col m1">
+                                <strong>&nbsp;Código
+                                    <br>&nbsp;Producto</strong>
+                            </div>
+                            <div class="w3-col m2">
+                                <strong>&nbsp;</strong>
+                            </div>
+                            <div class="w3-col m3">
+                                <strong>&nbsp;Nombre Producto</strong>
+                            </div>
+                            <div class="w3-col m1">
+                                <strong>Cantidad</strong>
+                            </div>
+                            <div class="w3-col m1" align="right">
+                                <strong>Precio 
+                                    <br>Unitario</strong>
+                            </div>
+                            <div class="w3-col m2" align="right">
+                                <strong>&nbsp;Subtotal</strong>
+                            </div>
+                            <div class="w3-col m2">
+                                <strong>&nbsp;</strong>
+                            </div>
+                        </div>
+                        <%
+                        //ArrayList
+                        DecimalFormat formato = new DecimalFormat("$#,###");
+                        model.business.Carrito carrito = new model.business.Carrito();
+                        int total = 0;
+                        ArrayList<model.business.Carrito> listCarrito = (ArrayList<model.business.Carrito> ) sesion.getAttribute("carrito");
+                        if(request.getParameter("btn_borrar") != null)
+                        {
+                            for(int i=0;i<listCarrito.size();i++)
+                            {
+                                listCarrito.remove(listCarrito.get(i));
+                                break;
+                            }
+                        }
+                        else if(request.getParameter("btn_comprar") != null)
+                        {
+                            request.getRequestDispatcher("resumen_compra_rick.jsp").forward(request, response);
+                        }
 
-                <tr>
-                    <td><%=c.getProducto().getIdProducto()%></td>
-                    <td><img src="imagesProducts/<%=c.getProducto().getUrlFoto()%>" width="80"/></td>
-                    <td><strong><%=c.getProducto().getNombreProducto()%>
-                            <br><%=c.getProducto().getMarca().getDescripcion()%>
-                        </strong></td>
-                        <td><span class="badge"><%=c.getProducto().getStock()%></span></td>
-                    <td align="right"><%=formato.format(c.getProducto().getPrecioUnitario())%></td>
-                    <td align="right"><%=formato.format(c.getProducto().subTotal())%></td>
-                    <td>
-                        <a href="carro.jsp">
-                        <input class="btn btn-danger" type="submit" value="Eliminar item" name="btn_borrar" />
-                        </a>
-                    </td>
-                </tr>
-               <%
-                }
-               %>
-               <tr class="blue-d1">
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td align="right"><strong>Total</strong></td>
-                  <td align="right"><strong><%=formato.format(total)%></strong></td>
-                  <td><input class="btn btn-success" type="submit" value="Comprar" name="btn_comprar" />
-                  </td>
-               </tr>
-
-            </tbody>
-        </table>
-</form>
-               </div>
+                        for(model.business.Carrito c : listCarrito )
+                        {
+                            total = total + c.getProducto().subTotal();
+                        %>
+                        <div class="w3-row w3-padding">
+                            <div class="w3-col m1">
+                                <strong><%=c.getProducto().getIdProducto()%></strong>
+                            </div>
+                            <div class="w3-col m2">
+                                <strong><img src="imagesProducts/<%=c.getProducto().getUrlFoto()%>" width="80"/></strong>
+                            </div>
+                            <div class="w3-col m3">
+                                <strong><%=c.getProducto().getNombreProducto()%>
+                                        <br><%=c.getProducto().getMarca().getDescripcion()%>
+                                    </strong>
+                            </div>
+                            <div class="w3-col m1">
+                                <strong><span class="badge"><%=c.getProducto().getStock()%></span></strong>
+                            </div>
+                            <div class="w3-col m1" align="right">
+                                <strong><%=formato.format(c.getProducto().getPrecioUnitario())%></strong>
+                            </div>
+                            <div class="w3-col m2" align="right">
+                                <strong><%=formato.format(c.getProducto().subTotal())%></strong>
+                            </div>
+                            <div class="w3-col m2" align="right">
+                                <a href="carro.jsp">
+                                    <input class="btn btn-danger" type="submit" value="Eliminar item" name="btn_borrar" />
+                                    </a>
+                            </div>
+                        </div>
+                        <%
+                            }
+                        %>
+                        <div class="w3-row-padding blue-d1 ">
+                            <div class="w3-col m8" align="right">
+                                <br>
+                                <strong>Total</strong>
+                                <br>&nbsp;
+                            </div>
+                            <div class="w3-col m2" align="right">
+                                <br>&nbsp;
+                                <strong><%=formato.format(total)%></strong>
+                                <br>&nbsp;
+                            </div>
+                        </div>
+                                <div>&nbsp;</div>
+                        <div class="w3-row-padding">
+                            <div class="w3-col m1">&nbsp;</div>
+                            <div class="w3-col m4">
+                                <a class="btn btn-success btn-block" href="resultados_busqueda.jsp">
+                                    &laquo;&nbsp;Volver a productos</a>
+                            </div>
+                            <div class="w3-col m2">&nbsp;</div>
+                            <div class="w3-col m4">
+                                <input class="btn btn-success btn-block" 
+                                       type="submit" 
+                                       value="Continuar a Datos de Despacho &raquo;" 
+                                       name="btn_comprar">
+                            </div>    
+                            <div class="w3-col m1">&nbsp;</div>
+                        </div>
+                    </div>
+                </form>
+            </div>
             <!--End of content-->
-            
             <!--Blank column-->
             <div class="w3-col m1">&nbsp;</div>
             <!--End of blank column-->
