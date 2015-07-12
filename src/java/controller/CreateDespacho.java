@@ -42,7 +42,7 @@ public class CreateDespacho extends HttpServlet {
             
             //Set
             despacho.setIdDespacho(despachoDal.countDespacho());
-            despacho.setDireccion(request.getParameter("txt_despacho"));
+            despacho.setDireccion(request.getParameter("txt_despacho") + " " + request.getParameter("txt_numeroCasa"));
             despacho.setNombrePersonaAEntregar(request.getParameter("txt_persona_a_entregar"));
             despacho.getComuna().setIdComuna((Integer.parseInt(request.getParameter("txt_comuna"))));
             despacho.getComuna().setNombreComuna((request.getParameter("dll_comunas")));

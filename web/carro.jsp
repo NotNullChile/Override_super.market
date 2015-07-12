@@ -262,7 +262,7 @@
                         }
                         else if(request.getParameter("btn_comprar") != null)
                         {
-                            request.getRequestDispatcher("resumen_compra_rick.jsp").forward(request, response);
+                            request.getRequestDispatcher("datos_despacho.jsp").forward(request, response);
                         }
 
                         for(model.business.Carrito c : listCarrito )
@@ -313,19 +313,17 @@
                         </div>
                                 <div>&nbsp;</div>
                         <div class="w3-row-padding">
-                            <div class="w3-col m1">&nbsp;</div>
-                            <div class="w3-col m4">
+                            <div class="w3-col m5">
                                 <a class="btn btn-success btn-block" href="resultados_busqueda.jsp">
                                     &laquo;&nbsp;Volver a productos</a>
                             </div>
                             <div class="w3-col m2">&nbsp;</div>
-                            <div class="w3-col m4">
+                            <div class="w3-col m5">
                                 <input class="btn btn-success btn-block" 
                                        type="submit" 
                                        value="Continuar a Datos de Despacho &raquo;" 
                                        name="btn_comprar">
                             </div>    
-                            <div class="w3-col m1">&nbsp;</div>
                         </div>
                     </div>
                 </form>
