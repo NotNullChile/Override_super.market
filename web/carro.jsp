@@ -175,7 +175,7 @@
             <!--Sidebar-->
                         <!--Sidebar-->
             <div class="list-group w3-col m2">
-            <a class="list-group-item active" href=index.jsp> <img src="icons/Override_w.png" width="30" height="30" alt="Override"/>
+            <a class="list-group-item " href=index.jsp> <img src="icons/Override.png" width="30" height="30" alt="Override"/>
                 &nbsp;Home</a>
             <a class="list-group-item" href="busqueda_abarrotes.jsp"><img src="icons/abarrotes.png" width="30" height="30" alt="abarrotes"/>
                         &nbsp;Abarrotes</a>
