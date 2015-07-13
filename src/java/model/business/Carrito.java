@@ -48,6 +48,11 @@ public class Carrito
         this.producto = producto;
     }
 
+    @Override
+    public String toString() {
+        return "Carrito{" + "idCarrito=" + idCarrito + ", orden=" + orden + ", producto=" + producto + '}';
+    }
+
    
     
     

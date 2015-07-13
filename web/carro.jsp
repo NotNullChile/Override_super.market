@@ -251,13 +251,20 @@
                         DecimalFormat formato = new DecimalFormat("$#,###");
                         model.business.Carrito carrito = new model.business.Carrito();
                         int total = 0;
+                        //Tomará valor de button
+                        int id = 0;                      
                         ArrayList<model.business.Carrito> listCarrito = (ArrayList<model.business.Carrito> ) sesion.getAttribute("carrito");
                         if(request.getParameter("btn_borrar") != null)
                         {
+                            //Toma valor de button
+                            id = Integer.parseInt(request.getParameter("btn_borrar"));
                             for(int i=0;i<listCarrito.size();i++)
                             {
-                                listCarrito.remove(listCarrito.get(i));
-                                break;
+                                if(id == listCarrito.get(i).getProducto().getIdProducto() )
+                                {
+                                   listCarrito.remove(listCarrito.get(i));
+                                    break; 
+                                }                                
                             }
                         }
                         else if(request.getParameter("btn_comprar") != null)
@@ -290,11 +297,12 @@
                             <div class="w3-col m2" align="right">
                                 <strong><%=formato.format(c.getProducto().subTotal())%></strong>
                             </div>
-                            <div class="w3-col m2" align="right">
-                                <a href="carro.jsp">
-                                    <input class="btn btn-danger" type="submit" value="Eliminar item" name="btn_borrar" />
-                                    </a>
+                            <div class="w3-col m2" align="right">                                    
+                                    <button class="btn btn-danger" value="<%=c.getProducto().getIdProducto()%>" name="btn_borrar">
+                                        Eliminar
+                                    </button>
                             </div>
+
                         </div>
                         <%
                             }

@@ -122,4 +122,10 @@ public class Producto
     {
         return subTotal() + calculoIva();
     }
+
+    @Override
+    public String toString() {
+        return "Producto{" + "idProducto=" + idProducto + ", nombreProducto=" + nombreProducto + ", precioUnitario=" + precioUnitario + ", stock=" + stock + ", descripcion=" + descripcion + ", tipoProducto=" + tipoProducto + ", marca=" + marca + ", urlFoto=" + urlFoto + '}';
+    }
+    
 }
