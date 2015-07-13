@@ -47,7 +47,7 @@ public class CreateMetodoPago extends HttpServlet {
             request.getSession().setAttribute("metodo_pago", mp);
             
             //Pagina Siguente
-            request.getRequestDispatcher("confirmar_venta_rick.jsp").forward(request, response);
+            request.getRequestDispatcher("confirmacion_compra.jsp").forward(request, response);
            
         }
         catch(Exception e)
