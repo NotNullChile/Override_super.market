@@ -57,14 +57,15 @@
                 <br><br><br>
                 <div class="input-group">
                     <input name= "txt_busqueda" 
-                           type="text" 
+                           type="search"
                            class="form-control" 
                            placeholder="Búsqueda de productos..."
                            autofocus>
                     <span class="input-group-btn">
-                        <button type="submit" 
-                                class="btn btn-primary"
+                        <button type="submit"
                                 name="btn_busqueda_general"
+                                class="btn btn-primary"
+                                id="submit"
                                 >
                             <i class="fa fa-search"></i>
                         </button>
@@ -79,59 +80,55 @@
             <!--Shopping cart link(1)-->
             <div class="w3-col m1">
                 <br><br><br>
-                <div class="input-group">
-                    <span class="input-group-btn">
-                        <a type="button" 
-                           href="
-                           <% 
-                            try
-                            {
-                                cliente.getNombre();
-                                out.println("carro.jsp");
-                            }
-                            catch(Exception e)
-                            {
-                                out.println("login.jsp");
-                            }
-                           %>
-                           
-                           "
-                                class="btn btn-info">
-                            <i class="fa fa-shopping-cart"></i>
-                            &nbsp;mi carro
-                        </a>
-                    </span>
-                </div><!-- /input-group -->  
-            </div>
-            <!--End of shopping cart link-->
-            <!--Login link (2)-->
-            
-            <div class="w3-col m2">
-                <br><br>
                 <%
                     try
                     {
-                        out.println("Bienvenido "+ cliente.getNombre());
+                        out.println("Bienvenido <br>"+ cliente.getNombre());
                     }
                     catch(Exception e)
                     {
                         out.println("<br>");
                     }
                 %> 
+            </div>
+            <!--End of shopping cart link-->
+            <!--Login link (2)-->
+            
+            <div class="w3-col m2">
+                <br>
                 <div class="input-group">
-                    <span class="input-group-btn">        
+                    <span class="input-group-btn">    
                             <%
                                 try
                                 {
                                     cliente.getNombre();
-                                    out.println("<a class='btn btn-warning' href='close_session.do'>");
+                                    out.println("<a class='btn btn-block btn-info' href='carro.jsp'>");
+                                    out.println("<i class='fa fa-shopping-cart'></i>&nbsp;Carro de Compras");
+                                    out.println("</a><br>");
+                                    
+                                    out.println("<a class='btn btn-block btn-success' href='user_profile.jsp'>");
+                                    out.println("<i class='fa fa-user'></i>&nbsp;Mi Perfil");
+                                    out.println("</a><br>");
+
+                                    out.println("<a class='btn btn-block btn-warning' href='close_session.do'>");
                                     out.println("<i class='fa fa-lock'></i>&nbsp;Cerrar Sesión");
                                     out.println("</a>");
+                                    
                                 }
                                 catch(Exception e)
                                 {
-                                    out.println("<a class='btn btn-success' href='login.jsp'>");
-                                    out.println("<i class='fa fa-user'></i>&nbsp;Iniciar Sesión / Nuevo Usuario");
+                                    out.println("<br>&nbsp;<br>");
+                                    
+                                    out.println("<a class='btn btn-block btn-info' href='login.jsp'>");
+                                    out.println("<i class='fa fa-shopping-cart'></i>&nbsp;Carro de Compras");
+                                    out.println("</a><br>");
+                                    
+                                    out.println("<a class='btn btn-block btn-success' href='login.jsp'>");
+                                    out.println("<i class='fa fa-user'></i>&nbsp;Iniciar Sesión");
+                                    out.println("</a><br>");
+                                    
+                                    out.println("<a class='btn btn-block btn-warning' href='login.jsp'>");
+                                    out.println("<i class='fa fa-user-plus'></i>&nbsp;Nuevo Usuario");
                                     out.println("</a>");
                                 }
                             %>        
@@ -140,7 +137,13 @@
             </div>
             <!--End of login link-->
             <!--Blank column(1)-->
-            <div class="w3-col m1">&nbsp;</div>
+            <div class="w3-col m1">
+                <br><br><br>
+                <div class="input-group">
+                    <span class="input-group-btn">               
+                    </span>
+                </div><!-- /input-group -->
+            </div>
             <!--End of blank column(1)-->
         </header>
         <!--header end-->
