@@ -345,6 +345,9 @@
                                 <div class="w3-col m4">SubTotal:</div>
                                 <div class="w3-col m5">
                                     <%
+                                    int subTotalDespacho = (int) Math.round(4990/1.19);
+                                    int ivaDespacho = (int) Math.round(subTotalDespacho*0.19);
+                                    int totalDespacho = subTotalDespacho + ivaDespacho;
                                         for(model.business.Carrito ca : listCarrito)
                                         {
                                             subTotal += ca.getProducto().subTotal();
@@ -352,8 +355,8 @@
                                             totalAPagar += ca.getProducto().calculoTotalAPagar();
                                         }
                                     %>
-                                    <%=formato.format(subTotal+4990)%>
-                                    <input type="hidden" name="txt_subtotal" value="<%=subTotal+4990%>" size="1" />
+                                    <%=formato.format(subTotal+subTotalDespacho)%>
+                                    <input type="hidden" name="txt_subtotal" value="<%=subTotal+subTotalDespacho%>" size="1" />
                                 </div>
                                 <div class="w3-col m1">&nbsp;</div>
                             </div>
@@ -361,8 +364,8 @@
                                 <div class="w3-col m1">&nbsp;</div>
                                 <div class="w3-col m4">IVA:</div>
                                 <div class="w3-col m5">
-                                    <%=formato.format(iva+948)%>
-                                    <input type="hidden" name="txt_iva" value="<%=iva+948%>" size="1" />
+                                    <%=formato.format(iva+ivaDespacho)%>
+                                    <input type="hidden" name="txt_iva" value="<%=iva+ivaDespacho%>" size="1" />
                                 </div>
                                 <div class="w3-col m1">&nbsp;</div>
                             </div>
@@ -370,8 +373,8 @@
                                 <div class="w3-col m1">&nbsp;</div>
                                 <div class="w3-col m4">Total a Pagar:</div>
                                 <div class="w3-col m5">
-                                    <%=formato.format(totalAPagar+5938)%>
-                                    <input type="hidden" name="txt_total" value="<%=totalAPagar+5938%>" size="1" />
+                                    <%=formato.format(totalAPagar+totalDespacho)%>
+                                    <input type="hidden" name="txt_total" value="<%=totalAPagar+totalDespacho%>" size="1" />
                                 </div>
                                 <div class="w3-col m1">&nbsp;</div>
                             </div>
