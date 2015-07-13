@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,7 +20,8 @@
         %>
     <body>
         <h1>Agregar Marca</h1>
-        <form action="agregar_marca.do" method="POST">
+        
+        <form action="agregar_marca.do" method="POST" >
             <table border="1">
                 <tbody>
                     <tr>
@@ -43,7 +45,7 @@
                     </tr>
                     <tr>
                         <td>
-                            
+                           
                         </td>
                         <td>
                             <input type="submit" value="Agregar" name="btn_agregar" />
