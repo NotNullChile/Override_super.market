@@ -178,7 +178,8 @@
                                    type="text" 
                                    name="txt_nombre_producto" 
                                    value="" 
-                                   required="true" /> 
+                                   required="true" 
+                                   autofocus="true"/> 
                         </td>
                     </tr>
                     <tr>
