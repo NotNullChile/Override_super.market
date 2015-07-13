@@ -119,6 +119,11 @@
                         </td>
                         <td>
                             <%
+                            //ESTO AGREGALO AL OTRO FORMULARIO
+                            int subTotalDespacho = (int) Math.round(4990/1.19);
+                            int ivaDespacho = (int) Math.round(subTotalDespacho*0.19);
+                            int totalDespacho = subTotalDespacho + ivaDespacho;
+                            //
                             for(model.business.Carrito ca : listCarrito)
                             {
                                subTotal += ca.getProducto().subTotal();
@@ -126,8 +131,8 @@
                                totalAPagar += ca.getProducto().calculoTotalAPagar();
                             }
                             %>
-                            <%=formato.format(subTotal+4990)%>
-                            <input type="hidden" name="txt_subtotal" value="<%=subTotal+4990%>" size="1" />
+                            <%=formato.format(subTotal + subTotalDespacho )%>
+                            <input type="hidden" name="txt_subtotal" value="<%=subTotal+subTotalDespacho%>" size="1" />
                         </td>
                     </tr>
                     <tr>
@@ -135,8 +140,8 @@
                             IVA
                         </td>
                         <td>
-                            <%=formato.format(iva+948)%>
-                            <input type="hidden" name="txt_iva" value="<%=iva+948%>" size="1" />
+                            <%=formato.format(iva + ivaDespacho)%>
+                            <input type="hidden" name="txt_iva" value="<%=iva+ivaDespacho%>" size="1" />
                         </td>
                     </tr>
                     <tr>
@@ -144,8 +149,8 @@
                             Total a pagar
                         </td>
                         <td>
-                            <%=formato.format(totalAPagar+5938)%>
-                            <input type="hidden" name="txt_total" value="<%=totalAPagar+5938%>" size="1" />
+                            <%=formato.format(totalAPagar + totalDespacho)%>
+                            <input type="hidden" name="txt_total" value="<%=totalAPagar+ivaDespacho%>" size="1" />
                         </td>
                     </tr>
                     <tr>

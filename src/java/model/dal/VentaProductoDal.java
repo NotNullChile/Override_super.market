@@ -73,7 +73,7 @@ public class VentaProductoDal
                     + "ON vp.idVenta = v.idVenta INNER JOIN carrito c "
                     + "ON v.idCarrito = c.idCarrito INNER JOIN clientes cli "
                     + "ON cli.rut = v.rut "
-                    + "WHERE cli.rut = " + c.getRut() + " GROUP BY 2 ORDER BY 2;";        
+                    + "WHERE cli.rut = " + c.getRut() + " GROUP BY 2 ORDER BY 1 and 2;";        
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while(rs.next())

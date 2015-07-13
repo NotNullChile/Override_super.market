@@ -269,12 +269,15 @@
                         }
                         else if(request.getParameter("btn_comprar") != null)
                         {
-                            request.getRequestDispatcher("datos_despacho.jsp").forward(request, response);
+                            if(!listCarrito.isEmpty())
+                            {
+                                request.getRequestDispatcher("datos_despacho.jsp").forward(request, response);
+                            }                
                         }
 
                         for(model.business.Carrito c : listCarrito )
                         {
-                            total = total + c.getProducto().subTotal();
+                            total = total + c.getProducto().subTotalCarro();
                         %>
                         <div class="w3-row w3-padding">
                             <div class="w3-col m1">
@@ -295,7 +298,7 @@
                                 <strong><%=formato.format(c.getProducto().getPrecioUnitario())%></strong>
                             </div>
                             <div class="w3-col m2" align="right">
-                                <strong><%=formato.format(c.getProducto().subTotal())%></strong>
+                                <strong><%=formato.format(c.getProducto().subTotalCarro())%></strong>
                             </div>
                             <div class="w3-col m2" align="right">                                    
                                     <button class="btn btn-danger" value="<%=c.getProducto().getIdProducto()%>" name="btn_borrar">
@@ -330,7 +333,7 @@
                                 <input class="btn btn-success btn-block" 
                                        type="submit" 
                                        value="Continuar a Datos de Despacho &raquo;" 
-                                       name="btn_comprar">
+                                       name="btn_comprar">                               
                             </div>    
                         </div>
                     </div>

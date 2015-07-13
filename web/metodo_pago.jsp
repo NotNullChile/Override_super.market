@@ -266,11 +266,11 @@
                             </div>
                             <div class="w3-col m5">
                                 <input type="number"
+                                       maxlength="15"
                                        placeholder="Ej: 1111222233334444"
                                        class="form-control"
                                        name="txt_numero_tarjeta" 
                                        value="" 
-                                       maxlength="15"
                                        required="true" 
                                        />
                             </div>
@@ -284,12 +284,12 @@
                                 Pin-Pass
                             </div>
                             <div class="w3-col m5">
-                                <input type="number"
-                                       placeholder="Ej: 1234"
+                                <input type="password"
+                                       maxlength="4"
+                                       placeholder="Ej: ****"
                                        class="form-control"
                                        name="txt_pin_pass" 
-                                       value="" 
-                                       maxlength="4"
+                                       value=""                            
                                        required="true" 
                                        />
                             </div>
@@ -304,12 +304,13 @@
                             </div>
                             <div class="w3-col m1">
                                 <input type="number"
+                                       pattern="\d*" 
+                                       maxlength="1"
                                        placeholder="Ej: 1234"
                                        class="form-control"
                                        name="spin_cuotas" 
                                        value="1" 
-                                       size="5" 
-                                       maxlength="1" 
+                                       size="5"  
                                        required="true" 
                                        min="0" max="6"
                                        required="true" />

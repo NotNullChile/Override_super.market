@@ -34,61 +34,70 @@ public class CreateClient extends HttpServlet {
         PrintWriter out = response.getWriter();
         try  
         {
+            
             //Iniciacion de clases
             
             model.business.Clientes clientes    = new model.business.Clientes();
             model.dal.ClientesDal clientesDal   = new model.dal.ClientesDal();
             model.dal.LoginDal loginDal         = new model.dal.LoginDal();
             
-            //Set Class
-            clientes.setRut(Integer.parseInt(request.getParameter("txt_nuevo_rut")));
-            clientes.setNombre(request.getParameter("txt_nuevo_nombre"));
-            clientes.setApellido(request.getParameter("txt_nuevo_apellido"));
-            clientes.setEmail(request.getParameter("txt_nuevo_email"));
-            clientes.setTelefono(Integer.parseInt(request.getParameter("txt_nuevo_telefono")));
-            clientes.getLogin().setUsername(Integer.parseInt(request.getParameter("txt_nuevo_rut")));
-            String password1 = request.getParameter("txt_nuevo_password_1");
-            String password2 = request.getParameter("txt_nuevo_password_2");
-            String passwordDefinitiva = null;
-            if (password1.equals(password2)) 
+            if(clientes.validarRut(request.getParameter("txt_nuevo_rut")))
             {
-                passwordDefinitiva = password1;
-            }
-            clientes.getLogin().setPassword(passwordDefinitiva);          
-            clientes.getLogin().setRol(1);
-            
-            //Nos retornará un numero la consulta
-            int resultado = loginDal.insertLogin(clientes);
-            
-            if (passwordDefinitiva != null) 
-            {
-                switch(resultado)
+
+                //Set Class
+                clientes.setRut(Integer.parseInt(request.getParameter("txt_nuevo_rut")));
+                clientes.setNombre(request.getParameter("txt_nuevo_nombre"));
+                clientes.setApellido(request.getParameter("txt_nuevo_apellido"));
+                clientes.setEmail(request.getParameter("txt_nuevo_email"));
+                clientes.setTelefono(Integer.parseInt(request.getParameter("txt_nuevo_telefono")));
+                clientes.getLogin().setUsername(Integer.parseInt(request.getParameter("txt_nuevo_rut")));
+                String password1 = request.getParameter("txt_nuevo_password_1");
+                String password2 = request.getParameter("txt_nuevo_password_2");
+                String passwordDefinitiva = null;
+                if (password1.equals(password2)) 
                 {
-                    //Si retorna 1 todo Ok
-                    case 1 : 
-                        clientesDal.insertClient(clientes);
-                        out.print("Registro Ok :)");
-                        //request.getRequestDispatcher("paginaARedirigir.jsp").forward(request, response);
-                        break;
-                    //Si retorna 1062 Cliente ya registrado
-                    case 1062:
-                        //Pagina a redirigir Cliente ya registrado
-                        request.getRequestDispatcher("error_signup_userexists.jsp").forward(request, response);
-                        break;
-                    //Error desconocido
-                    default: 
-                        out.print("Contáctese con el administrador de la pagina");
-                        //Pagina a redirigir errorDesconocido
-                        //request.getRequestDispatcher("paginaARedirigir.jsp").forward(request, response);
-                        break;
+                    passwordDefinitiva = password1;
                 }
-               
-            }
-            else
-            {
-                request.getRequestDispatcher("error_signup_differentpasswords.jsp").forward(request, response);
-            }
+                clientes.getLogin().setPassword(passwordDefinitiva);          
+                clientes.getLogin().setRol(1);
+
+                //Nos retornará un numero la consulta
+                int resultado = loginDal.insertLogin(clientes);
+
+                if (passwordDefinitiva != null) 
+                {
+                    switch(resultado)
+                    {
+                        //Si retorna 1 todo Ok
+                        case 1 : 
+                            clientesDal.insertClient(clientes);
+                            out.print("Registro Ok :)");
+                            //request.getRequestDispatcher("paginaARedirigir.jsp").forward(request, response);
+                            break;
+                        //Si retorna 1062 Cliente ya registrado
+                        case 1062:
+                            //Pagina a redirigir Cliente ya registrado
+                            request.getRequestDispatcher("error_signup_userexists.jsp").forward(request, response);
+                            break;
+                        //Error desconocido
+                        default: 
+                            out.print("Contáctese con el administrador de la pagina");
+                            //Pagina a redirigir errorDesconocido
+                            //request.getRequestDispatcher("paginaARedirigir.jsp").forward(request, response);
+                            break;
+                    }
+
+                }
+                else
+                {
+                    request.getRequestDispatcher("error_signup_differentpasswords.jsp").forward(request, response);
+                }
         }
+        else
+        {
+               out.print("Rut no valido"); 
+        }
+      }
         catch(NumberFormatException e)
         {
             out.print("Revise sus Valores numericos");
