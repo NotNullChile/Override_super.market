@@ -104,9 +104,14 @@ public class Producto
         this.urlFoto = urlFoto;
     }
     
+    public int subTotalCarro()
+    {
+        return (stock * precioUnitario);
+    }
+    
     public int subTotal()
     {
-        return stock * precioUnitario;
+        return (int) Math.round((stock * precioUnitario)/1.19);
     }
     
     public int oferta50()
@@ -123,9 +128,6 @@ public class Producto
         return subTotal() + calculoIva();
     }
 
-    @Override
-    public String toString() {
-        return "Producto{" + "idProducto=" + idProducto + ", nombreProducto=" + nombreProducto + ", precioUnitario=" + precioUnitario + ", stock=" + stock + ", descripcion=" + descripcion + ", tipoProducto=" + tipoProducto + ", marca=" + marca + ", urlFoto=" + urlFoto + '}';
-    }
+
     
 }

@@ -9,6 +9,7 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,7 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Ricardo
  */
-public class CreateMetodoPago extends HttpServlet {
+@WebServlet(name = "AgregarMarca", urlPatterns = {"/agregar_marca.do"})
+public class AgregarMarca extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,29 +33,32 @@ public class CreateMetodoPago extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("UTF-8");
-        
         PrintWriter out = response.getWriter();
         try 
         {
             //Class
-            model.business.MetodosDePagos mp = new model.business.MetodosDePagos();
+            model.business.Marcas m = new model.business.Marcas();
+            model.dal.MarcasDal md = new model.dal.MarcasDal();
+            //SET
+            m.setIdMarca(Integer.parseInt(request.getParameter("txt_id")));
+            m.setDescripcion(request.getParameter("txt_marca"));
             
-            //Set
-            mp.setIdMetodosDePago(Integer.parseInt(request.getParameter("txt_id_metodos")));
-            mp.setDescripcion(request.getParameter("dll_metodo_pago"));
+            //Insert
+            if(md.insertMarca(m) == 1)
+            {
+                out.print("Insert OK :)");
+            }
+            else if(md.insertMarca(m) == 1062)
+            {
+                out.print("producto ya ingresado");
+            }
             
-            //Session
-            request.getSession().setAttribute("metodo_pago", mp);
-            
-            //Pagina Siguente
-            request.getRequestDispatcher("confirmar_venta_rick.jsp").forward(request, response);
-           
         }
         catch(Exception e)
         {
-            out.print(e.getMessage());
+            
         }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
