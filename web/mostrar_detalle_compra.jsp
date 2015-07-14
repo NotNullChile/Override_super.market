@@ -4,6 +4,7 @@
     Author     : urtubia @ notNull
 --%>
 
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -201,6 +202,7 @@
                     <%
                        model.dal.VentaProductoDal vp = new model.dal.VentaProductoDal();
                        String orden = request.getParameter("dll_ordenes");
+                       DecimalFormat formato = new DecimalFormat("$#,###");
                        ArrayList<model.business.VentaProducto> listProductos = vp.listaProductosXOrdenes(c,orden);
                        for(model.business.VentaProducto v : listProductos)
                        {
@@ -229,13 +231,13 @@
                     <div class="w3-row-padding">
                         <div class="w3-col m1">&nbsp;</div>
                         <div class="w3-col m3">
-                            <strong>Subtotal</strong>
-                        </div>
-                        <div class="w3-col m3">
-                            <strong>Total</strong>
+                            <strong>Subtotal:</strong>
                         </div>
                         <div class="w3-col m3">
                             <strong>IVA:</strong>
+                        </div>
+                        <div class="w3-col m3">
+                            <strong>Total:</strong>
                         </div>
                         <div class="w3-col m1">&nbsp;</div>
                     </div>
@@ -246,13 +248,13 @@
                 </div>
                 <div class="w3-row-padding">
                     <div class="w3-col m2">
-                        <%=v.getSubTotal()%>
+                        <%=formato.format(v.getSubTotal())%>
                     </div>
                     <div class="w3-col m2">
-                        <%=v.getIva()%>
+                        <%=formato.format(v.getIva())%>
                     </div>
                     <div class="w3-col m2">
-                        <%=v.getTotal()%>
+                        <%=formato.format(v.getTotal())%>
                     </div>
                     <div class="w3-col m1">&nbsp;</div>
                 </div>

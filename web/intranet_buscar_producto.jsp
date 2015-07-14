@@ -4,6 +4,7 @@
     Author     : urtubia @ notNull
 --%>
 
+<%@page import="model.dal.ProductoDal"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.business.Login"%>
@@ -31,7 +32,6 @@
         <%
             HttpSession sesion = request.getSession();
             model.business.Administrador administrador = (model.business.Administrador) sesion.getAttribute("admin");
-            model.dal.MarcasDal md = new model.dal.MarcasDal();
         %>
         
         <!--header-->
@@ -151,7 +151,7 @@
                 <br>
                 <!--End of title bar-->
                 <div>
-                <form action="agregar_marca.do" method="POST" >
+                <form action="intranet_buscar_producto.jsp" method="POST" >
                     <table border="1" class="w3-table w3-card yellow-l4">
                 <tbody>
                     <tr class="w3-row">
@@ -162,7 +162,8 @@
                             <input class="form-control"
                                    type="text" 
                                    name="txt_id"
-                                   value="Valor" 
+                                   value=""
+                                   placeholder="Id Producto"
                                    size="5" 
                                    />
                         </td>
@@ -179,18 +180,14 @@
                     </tr>
                 </tbody>
             </table>
-
-        </form>
-                    
-                </div>
-                
+        </form>       
+       </div> 
+  
             </div>
             <!--End of content-->
-            
             <!--Blank column-->
             <div class="w3-col m1">&nbsp;</div>
-            <!--End of blank column-->
-            
+            <!--End of blank column-->        
         </div>
         <!--End of Main Row-->
         <br>
