@@ -4,6 +4,9 @@
     Author     : urtubia @ notNull
 --%>
 
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.text.DateFormat"%>
 <%@page import="model.dal.CarritoDal"%>
 <%@page import="model.business.MetodosDePagos"%>
 <%@page import="model.business.Despacho"%>
@@ -239,6 +242,9 @@
                     //Class       
                     CarritoDal carritoDal = new CarritoDal();
                     String carritoOrden = "Orden de Compra N° " + carritoDal.countCarrito();
+                    DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                    Date fecha = new Date();
+                    fecha.getTime();
                 %>  
                 <form action="procesar_venta.do" method="POST">        
                     
@@ -262,7 +268,7 @@
                                 </div>
                                 <div class="w3-col m10" align="right">
                                     <i class="fa fa-calendar"></i>
-                                    Fecha de compra: <!--%=v.getFecha()%-->
+                                    Fecha de compra: <%=dateFormat.format(fecha)%>
                                     <br>&nbsp;
                                 </div>
                                 <div class="w3-col m1">&nbsp;</div>

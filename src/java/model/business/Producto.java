@@ -15,6 +15,7 @@ public class Producto
     private TipoProductos tipoProducto;
     private Marcas marca;
     private String urlFoto;
+    private int estado;
     public Producto() 
     {
         idProducto = 0;
@@ -25,6 +26,7 @@ public class Producto
         tipoProducto = new TipoProductos();
         marca = new Marcas();
         urlFoto = new String();
+        estado = 0;
     }
 
     public Producto(int idProducto, String nombreProducto, int precioUnitario, 
@@ -38,6 +40,7 @@ public class Producto
         this.tipoProducto = new TipoProductos();
         this.marca = new Marcas();
         this.urlFoto = urlFoto;
+        estado = 0;
     }
 
     public int getIdProducto() {
@@ -103,6 +106,15 @@ public class Producto
     public void setUrlFoto(String urlFoto) {
         this.urlFoto = urlFoto;
     }
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
+    
     
     public int subTotalCarro()
     {

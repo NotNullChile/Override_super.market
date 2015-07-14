@@ -33,7 +33,22 @@
             model.business.Administrador administrador = (model.business.Administrador) sesion.getAttribute("admin");
             model.dal.MarcasDal md = new model.dal.MarcasDal();
         %>
-        
+        <script language="javascript" type="text/javascript">
+            function Solo_Numerico(variable)
+            {
+                Numer=parseInt(variable);
+                if (isNaN(Numer))
+                {
+                    return "";
+                }
+                    return Numer;
+            }
+            
+            function ValNumero(Control)
+            {
+                Control.value=Solo_Numerico(Control.value);
+            }
+        </script>
         <!--header-->
         <header class="w3-container green-d1 w3-row">
             <!--Blank column(1)-->
@@ -151,50 +166,169 @@
                 <br>
                 <!--End of title bar-->
                 <div>
-                <form action="agregar_marca.do" method="POST" >
-                    <table border="1" class="w3-table w3-card green-l4">
-                <tbody>
-                    <tr>
-                        <td>
-                            Nombre campo
-                        </td>
-                        <td>
-                            <input class="form-control"
-                                   type="text" 
-                                   name="txt_id"
-                                   value="Valor" 
-                                   size="5" 
-                                   readonly="true" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Nombre Campo 2
-                        </td>
-                        <td>
-                            <input class="form-control"
-                                   type="text" 
-                                   name="txt_marca" 
-                                   value="Valor" 
-                                   required="true"
-                                   autofocus/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                           
-                        </td>
-                        <td>
-                            <input class="btn btn-success" 
-                                   type="submit" 
-                                   value="Agregar" 
-                                   name="btn_agregar" />
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-
-        </form>
+                <form action="create_admin.do" method="POST">
+                        <!--RUT textbox row-->
+                        <div class="w3-row">
+                            <div class="w3-col m1 s1">&nbsp;</div>
+                            <div class="w3-col m4 s4">
+                                RUT:
+                            </div>
+                            <div class="w3-col m1 s1">&nbsp;</div>
+                            <div class="w3-col m4">
+                                <input type="text" 
+                                       name="txt_nuevo_rut" 
+                                       placeholder="RUT sin dígito verificador" 
+                                       value=""
+                                       required
+                                       onkeyUp="return ValNumero(this);"/>
+                            </div>
+                            <div class="w3-col m1">&nbsp;</div>
+                        <!--End of RUT textbox-->
+                        </div>
+                        <!--Blank row-->
+                        <div class="w3-row">&nbsp;</div>
+                        <!--End of blank row-->
+                        
+                        <!--Nombre textbox row-->
+                        <div class="w3-row">
+                            <div class="w3-col m1 s1">&nbsp;</div>
+                            <div class="w3-col m4 s4">
+                                Nombre:
+                            </div>
+                            <div class="w3-col m1 s1">&nbsp;</div>
+                            <div class="w3-col m4">
+                                <input type="text" 
+                                       name="txt_nuevo_nombre"
+                                       placeholder="Escriba nombre"
+                                       value="" 
+                                       required/>
+                            </div>
+                            <div class="w3-col m1">&nbsp;</div>
+                        <!--End of Nombre textbox-->
+                        </div>
+                        <!--Blank row-->
+                        <div class="w3-row">&nbsp;</div>
+                        <!--End of blank row-->
+                        
+                        <!--Apellido textbox row-->
+                        <div class="w3-row">
+                            <div class="w3-col m1 s1">&nbsp;</div>
+                            <div class="w3-col m4 s4">
+                                Apellido:
+                            </div>
+                            <div class="w3-col m1 s1">&nbsp;</div>
+                            <div class="w3-col m4">
+                                <input type="text" 
+                                       name="txt_nuevo_apellido" 
+                                       placeholder="Escriba apellido"
+                                       value="" 
+                                       required="true"/>
+                            </div>
+                            <div class="w3-col m1">&nbsp;</div>
+                        <!--End of Apellido textbox-->
+                        </div>
+                        <!--Blank row-->
+                        <div class="w3-row">&nbsp;</div>
+                        <!--End of blank row-->
+                        
+                        <!--email textbox row-->
+                        <div class="w3-row">
+                            <div class="w3-col m1 s1">&nbsp;</div>
+                            <div class="w3-col m4 s4">
+                                Email:
+                            </div>
+                            <div class="w3-col m1 s1">&nbsp;</div>
+                            <div class="w3-col m4">
+                                <input type="email" 
+                                       name="txt_nuevo_email"
+                                       placeholder="Ej: admin@override.cl"
+                                       value=""
+                                       required="true"/>
+                            </div>
+                            <div class="w3-col m1">&nbsp;</div>
+                        <!--End of email textbox-->
+                        </div>
+                        <!--Blank row-->
+                        <div class="w3-row">&nbsp;</div>
+                        <!--End of blank row-->
+                        
+                        <!--Teléfono textbox row-->
+                        <div class="w3-row">
+                            <div class="w3-col m1 s1">&nbsp;</div>
+                            <div class="w3-col m4 s4">
+                                Teléfono:
+                            </div>
+                            <div class="w3-col m1 s1">&nbsp;</div>
+                            <div class="w3-col m4">
+                                <input type="tel" 
+                                       name="txt_nuevo_telefono" 
+                                       placeholder="Ej: 2222222222"
+                                       value="" 
+                                       required="true"
+                                       onkeyUp="return ValNumero(this);"/>
+                            </div>
+                            <div class="w3-col m1">&nbsp;</div>
+                        <!--End of teléfono textbox-->
+                        </div>
+                        <!--Blank row-->
+                        <div class="w3-row">&nbsp;</div>
+                        <!--End of blank row-->
+                        
+                        <!--Password textbox-->
+                        <div class="w3-row">
+                            <div class="w3-col m1">&nbsp;</div>
+                            <div class="w3-col m4">
+                                Password
+                            </div>
+                            <div class="w3-col m1">&nbsp;</div>
+                            <div class="w3-col m4">
+                                <input type="password" 
+                                       name="txt_nuevo_password_1"
+                                       placeholder="password deseada"
+                                       value=""
+                                       required/>
+                            </div>
+                            <div class="w3-col m1">&nbsp;</div>
+                        </div>
+                        <!--End of password textbox-->
+                        <!--Blank row-->
+                        <div class="w3-row">&nbsp;</div>
+                        <!--End of blank row-->
+                        
+                        <!--Password repeat textbox-->
+                        <div class="w3-row">
+                            <div class="w3-col m1">&nbsp;</div>
+                            <div class="w3-col m4">
+                                Repita su password
+                            </div>
+                            <div class="w3-col m1">&nbsp;</div>
+                            <div class="w3-col m4">
+                                <input type="password" 
+                                       name="txt_nuevo_password_2"
+                                       placeholder="Repita password"
+                                       value="" 
+                                       required/>
+                            </div>
+                            <div class="w3-col m1">&nbsp;</div>
+                        </div>
+                        <!--End of password textbox-->
+                        <!--Blank row-->
+                        <div class="w3-row">&nbsp;</div>
+                        <!--End of blank row-->
+                        
+                        <!--Login button-->
+                        <div class="w3-row">
+                            <div class="w3-col m6">&nbsp;</div>
+                            <div class="w3-col m6">
+                                <input type="submit"
+                                       class="btn btn-success"
+                                       value="Registrar" 
+                                       name="btn_nuevo_admin" />
+                            </div>
+                        </div>
+                        <!--End of login button-->
+                        <div class="w3-row">&nbsp;</div>
+                    </form>
                     
                 </div>
                 

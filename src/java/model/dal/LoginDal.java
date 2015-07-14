@@ -64,4 +64,32 @@ public class LoginDal
         }
         
     }
+    public int insertLogin(model.business.Administrador a)
+    {
+        try 
+        {
+            //Se conecta al BD
+            conexion();
+            // Insert Login
+            String sql = "INSERT INTO login VALUES('" + a.getLogin().getUsername()+ "','" + a.getLogin().getPassword() + "'," + a.getLogin().getRol() + ");";   
+            return state.executeUpdate(sql);
+        } 
+        catch (SQLException e) 
+        {
+            return e.getErrorCode();
+        }
+        finally
+        {
+            try 
+            {
+                //Al terminar el proceso se desconecta de la BD
+               conn.close(); 
+            }
+            catch (Exception ex) 
+            {
+                
+            }
+        }
+        
+    }
 }

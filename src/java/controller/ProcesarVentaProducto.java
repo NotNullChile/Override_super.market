@@ -57,7 +57,12 @@ public class ProcesarVentaProducto extends HttpServlet {
                 vp.insertVentaProducto(idVenta, idProducto);
                 //Borrrará todo de la lista
                 //listCarrito.remove(i);
-            }                      
+            } 
+            for (int i = 0; i < listCarrito.size(); i++) 
+            {
+                //Borrrará todo de la lista
+                listCarrito.removeAll(listCarrito);
+            } 
             request.getRequestDispatcher("compra_realizada_rick.jsp").forward(request, response);
         }
         catch(Exception e)

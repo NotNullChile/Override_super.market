@@ -150,7 +150,7 @@
                 <br>
                 <!--End of title bar-->
                 <div>
-                    <form action="create_product.do" method="POST">
+                    <form action="create_product.do" enctype="multipart/form-data" method="POST"  >
                         <table border="1" class="w3-table w3-card red-l5">
                 <%                      
                     model.dal.ProductoDal productoDal = new model.dal.ProductoDal();                        
@@ -255,11 +255,23 @@
                             Foto
                         </td>
                         <td>
-                            <input type="url"
+                            
+                            <input type="file" name="file" value="" />
+
+                            <!--<input type="url"
                                    class="form-control"
                                    name="txt_foto" 
                                    value="" 
-                                   required="true"/>
+                                   required="true"/>-->
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Estado
+                        </td>
+                        <td>
+                            <input type="radio" name="rbtn_estado" value="0" />Sin Oferta<br>
+                            <input type="radio" name="rbtn_estado" value="1" />Oferta
                         </td>
                     </tr>
                     <tr>

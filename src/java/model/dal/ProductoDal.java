@@ -46,7 +46,7 @@ public class ProductoDal
                     + p.getNombreProducto() + "'," + p.getPrecioUnitario() + "," 
                     + p.getStock() + ",'" + p.getDescripcion() + "'," 
                     + p.getTipoProducto().getIdTipoProducto()+ "," + p.getMarca().getIdMarca()+ ",'" 
-                    + p.getUrlFoto() + "');";
+                    + p.getUrlFoto() + "'," + p.getEstado() + ");";
             return state.executeUpdate(sql);
         } 
         catch (SQLException e)

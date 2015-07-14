@@ -6,6 +6,7 @@
 
 package controller;
 
+import com.oreilly.servlet.MultipartRequest;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,6 +14,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.dal.ProductoDal;
+import java.util.*;
+import org.apache.commons.fileupload.*;
+import org.apache.commons.fileupload.disk.*;
+import org.apache.commons.fileupload.servlet.*;
+import org.apache.commons.io.*;
+import java.io.*;
+import java.nio.file.Paths;
 
 /**
  *
@@ -33,21 +41,50 @@ public class CreateProduct extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        MultipartRequest mr = new MultipartRequest(request,"C:/Users/Ricardo/Documents/NetBeansProjects/Override_super.market/web/imagesProducts/"); 
         try  
-        {
-           //Clases
+        {   
+            //Clases
             model.business.Producto p = new model.business.Producto();
             model.dal.ProductoDal productoDal = new ProductoDal();
             
+            //Se usa este Request cuando se tiene  enctype="multipart/form-data" (Importar JAR)
+              
+               /*FileItemFactory es una interfaz para crear FileItem*/
+        FileItemFactory file_factory = new DiskFileItemFactory();
+ 
+        /*ServletFileUpload esta clase convierte los input file a FileItem*/
+        ServletFileUpload servlet_up = new ServletFileUpload(file_factory);
+        /*sacando los FileItem del ServletFileUpload en una lista */
+        List items = servlet_up.parseRequest(request);
+       
+        
+        for(int i=0;i<items.size();i++){
+            /*FileItem representa un archivo en memoria que puede ser pasado al disco duro*/
+            FileItem item = (FileItem) items.get(i);
+            /*item.isFormField() false=input file; true=text field*/
+            if (!item.isFormField()){
+                /*cual sera la ruta al archivo en el servidor*/   
+                
+                File archivo_server = new File("C:/Users/Ricardo/Documents/NetBeansProjects/Override_super.market/web/imagesProducts/"+item.getName());
+                
+                /*y lo escribimos en el servido*/
+                item.write(archivo_server); 
+            }
+        }
+         
+              
             //Set
-             p.setIdProducto(Integer.parseInt(request.getParameter("txt_id_producto")));
-             p.setNombreProducto(request.getParameter("txt_nombre_producto"));
-             p.setPrecioUnitario(Integer.parseInt(request.getParameter("txt_precio")));
-             p.setStock(Integer.parseInt(request.getParameter("txt_stock")));
-             p.setDescripcion(request.getParameter("txt_descripcion"));
-             p.getTipoProducto().setIdTipoProducto(Integer.parseInt(request.getParameter("ddl_lista_tipo_producto")));
-             p.getMarca().setIdMarca(Integer.parseInt(request.getParameter("ddl_marca_producto")));
-             p.setUrlFoto(request.getParameter("txt_foto"));
+             p.setIdProducto(Integer.parseInt(mr.getParameter("txt_id_producto")));
+             p.setNombreProducto(mr.getParameter("txt_nombre_producto"));
+             p.setPrecioUnitario(Integer.parseInt(mr.getParameter("txt_precio")));
+             p.setStock(Integer.parseInt(mr.getParameter("txt_stock")));
+             p.setDescripcion(mr.getParameter("txt_descripcion"));
+             p.getTipoProducto().setIdTipoProducto(Integer.parseInt(mr.getParameter("ddl_lista_tipo_producto")));
+             p.getMarca().setIdMarca(Integer.parseInt(mr.getParameter("ddl_marca_producto")));
+             //Recoge el NOMBRE del file
+             p.setUrlFoto(mr.getFilesystemName("file"));
+             p.setEstado(Integer.parseInt(mr.getParameter("rbtn_estado")));
              
              //Registro BD
              int resultado = productoDal.insertProduct(p);
@@ -69,7 +106,9 @@ public class CreateProduct extends HttpServlet {
                      //request.getRequestDispatcher("pagina.jsp").forward(request, response);
                      break;
              }
+            
          
+          
         }
         catch(Exception e)
         {
