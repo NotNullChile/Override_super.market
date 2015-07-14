@@ -1,9 +1,10 @@
 <%-- 
-    Document   : intranet_agregar_producto
-    Created on : Jul 9, 2015, 8:15:38 PM
+    Document   : intranet_modificar_eliminar_producto
+    Created on : Jul 14, 2015, 5:15:33 PM
     Author     : urtubia @ notNull
 --%>
 
+<%@page import="model.dal.ProductoDal"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.business.Login"%>
@@ -34,7 +35,7 @@
             response.setHeader("Cache-Control","no-cache"); //Forces caches to obtain a new copy of the page from the origin server
             response.setHeader("Cache-Control","no-store"); //Directs caches not to store the page under any circumstance
             response.setDateHeader("Expires", 0); //Causes the proxy cache to see the page as "stale"
-            response.setHeader("Pragma","no-cache");            
+            response.setHeader("Pragma","no-cache");
         %>
         
         <!--header-->
@@ -141,9 +142,9 @@
             <div class="list-group w3-col m2">
             <a class="list-group-item" href=index_intranet.jsp> <img src="icons/Override.png" width="30" height="30" alt="Intranet Override"/>
                 &nbsp;Home Intranet</a>
-                <a class="list-group-item active" href="intranet_agregar_producto.jsp"><img src="icons/new_product_w.png" width="30" height="30" alt=""/>
+                <a class="list-group-item" href="intranet_agregar_producto.jsp"><img src="icons/new_product.png" width="30" height="30" alt=""/>
                         &nbsp;Agregar nuevo producto</a>
-                <a class="list-group-item" href="intranet_buscar_producto.jsp"><img src="icons/search.png" width="30" height="30" alt=""/>
+                <a class="list-group-item active" href="intranet_buscar_producto.jsp"><img src="icons/search_w.png" width="30" height="30" alt=""/>
                         &nbsp;Buscar Producto</a>
                 <a class="list-group-item" href="intranet_agregar_marca.jsp"><img src="icons/new_brand.png" width="30" height="30" alt=""/>
                         &nbsp;Agregar nueva marca</a>
@@ -157,36 +158,61 @@
             <div class="w3-col m7 w3-card w3-padding">
                 <!--Title bar-->
                 <div class="w3-container red">
-                    <h2>Agregar nuevo producto&nbsp;&nbsp; <img src="icons/new_product_w.png" width="50" height="50" alt="new_product_w"/>
+                    <h2>Buscar Producto&nbsp;&nbsp; <img src="icons/search_w.png" width="50" height="50" alt="new_product_w"/>
                     </h2>
                 </div>
                 <br>
                 <!--End of title bar-->
                 <div>
-                    <form action="create_product.do" enctype="multipart/form-data" method="POST"  >
-                        <table border="1" class="w3-table w3-card red-l5">
-                <%                      
-                    model.dal.ProductoDal productoDal = new model.dal.ProductoDal();                        
-                %>
+                <form action="intranet_buscar_producto.jsp" method="POST" >
+                    <table border="1" class="w3-table w3-card yellow-l4">
                 <tbody>
-                    <tr>
-                        <td>
-                          Número  
+                    <tr class="w3-row">
+                        <td class="w3-col m5">
+                            Escriba los valores a buscar
                         </td>
-                        <td>
+                        <td class="w3-col m7">
+                            <input class="form-control"
+                                   type="text" 
+                                   name="txt_id"
+                                   value=""
+                                   placeholder="Id Producto"
+                                   size="5" 
+                                   />
+                        </td>
+                    </tr>
+                    <tr class="w3-row">
+                        <td class="w3-col m5">
+                        </td>
+                        <td class="w3-col m7">
+                            <input class="btn btn-success" 
+                                   type="submit" 
+                                   value="Buscar Producto" 
+                                   name="btn_buscar" />
+                        </td>
+                    </tr>
+                    
+                    <!--Product Modification/Elimination-->
+                    
+                    <tr class="w3-row">
+                        <td class="w3-col m5">
+                            Número
+                        </td>
+                        <td class="w3-col m7">
                             <input type="text" 
                                    name="txt_id_producto" 
-                                   value="<%=productoDal.maxProduct()%>" 
+                                   value="" 
                                    class="form-control"
                                    size="5" 
                                    readonly="readonly" />
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                           Nombre 
+                    
+                    <tr class="w3-row">
+                        <td class="w3-col m5">
+                            Nombre
                         </td>
-                        <td>
+                        <td class="w3-col m7">
                             <input class="form-control"
                                    type="text" 
                                    name="txt_nombre_producto" 
@@ -195,51 +221,38 @@
                                    autofocus="true"/> 
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                           Tipo Producto
+                    
+                    <tr class="w3-row">
+                        <td class="w3-col m5">
+                            Tipo Producto
                         </td>
-                        <td>
+                        <td class="w3-col m7">
                             <select name="ddl_lista_tipo_producto"
                                     class="form-control">
-                            <%
-                            model.dal.TipoProductosDal tipoProdDal = new model.dal.TipoProductosDal();
-                            ArrayList<model.business.TipoProductos> listTipoProd = tipoProdDal.listTipoProducto();
-                            for(model.business.TipoProductos t : listTipoProd)
-                            {                               
-                            %>                           
-                                <option value="<%=t.getIdTipoProducto()%>"><%=t.getDescripcion()%></option>                               
-                            <%
-                            }
-                            %>
+                                                       
+                                <option value=""></option>                               
+                            
                             </select>
                         </td>
                     </tr>
-                    <tr>
-                        <td>
+                    
+                    <tr class="w3-row">
+                        <td class="w3-col m5">
                             Marca
                         </td>
-                        <td>
+                        <td class="w3-col m7">
                             <select name="ddl_marca_producto"
-                                    class="form-control">
-                            <%
-                            model.dal.MarcasDal marcaDal = new model.dal.MarcasDal();
-                            ArrayList<model.business.Marcas> listMarca = marcaDal.listMarcas(); 
-                            for(model.business.Marcas m : listMarca)
-                            {                               
-                            %>                    
-                                <option value="<%=m.getIdMarca()%>"><%=m.getDescripcion()%></option>                          
-                            <%
-                            }
-                            %>
+                                    class="form-control">                    
+                                <option value=""></option>                          
                             </select>
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                           Precio 
+                    
+                    <tr class="w3-row">
+                        <td class="w3-col m5">
+                            Precio
                         </td>
-                        <td>
+                        <td class="w3-col m7">
                             <input type="number" 
                                    class="form-control"
                                    name="txt_precio" 
@@ -249,11 +262,12 @@
                                    required="true" />
                         </td>
                     </tr>
-                    <tr>
-                        <td>
+                    
+                    <tr class="w3-row">
+                        <td class="w3-col m5">
                             Stock
                         </td>
-                        <td>
+                        <td class="w3-col m7">
                             <input type="number" 
                                    name="txt_stock"
                                    class="form-control"
@@ -263,35 +277,23 @@
                                    required="true" />
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            Foto
-                        </td>
-                        <td>
                             
-                            <input type="file" name="file" value="" />
-
-                            <!--<input type="url"
-                                   class="form-control"
-                                   name="txt_foto" 
-                                   value="" 
-                                   required="true"/>-->
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
+                    
+                    <tr class="w3-row">
+                        <td class="w3-col m5">
                             Estado
                         </td>
-                        <td>
+                        <td class="w3-col m7">
                             <input type="radio" name="rbtn_estado" value="0" />Sin Oferta<br>
                             <input type="radio" name="rbtn_estado" value="1" />Oferta
                         </td>
                     </tr>
-                    <tr>
-                        <td>
+                    
+                    <tr class="w3-row">
+                        <td class="w3-col m5">
                             Descripción
                         </td>
-                        <td>
+                        <td class="w3-col m7">
                             <textarea name="txt_descripcion" 
                                       class="form-control"
                                       rows="4" 
@@ -299,27 +301,34 @@
                             </textarea>
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            
+                    
+                    <tr class="w3-row">
+                        <td class="w3-col m6">
+                            <input type="submit" 
+                                   value="Guardar Cambios" 
+                                   name="btn_guardar" 
+                                   class="btn btn-primary btn-block"/>
                         </td>
-                        <td>
-                            <input type="submit" value="Crear" name="btn_crear" class="btn btn-primary"/>
+                        <td class="w3-col m6">
+                            <input type="submit" 
+                                   value="Eliminar Producto" 
+                                   name="btn_eliminar" 
+                                   class="btn btn-danger btn-block"/>
                         </td>
                     </tr>
+                    
+                    <!--End of Product Modification/Elimination-->
+                    
                 </tbody>
             </table>
-        </form>
-                    
-                </div>
-                
+        </form>       
+       </div> 
+  
             </div>
             <!--End of content-->
-            
             <!--Blank column-->
             <div class="w3-col m1">&nbsp;</div>
-            <!--End of blank column-->
-            
+            <!--End of blank column-->        
         </div>
         <!--End of Main Row-->
         <br>
