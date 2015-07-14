@@ -164,7 +164,7 @@
                 <br>
                 <!--End of title bar-->
                 <div>
-                <form action="intranet_buscar_producto.jsp" method="POST" >
+                <form action="intranet_modificar_eliminar_producto.jsp" method="POST" >
                     <table border="1" class="w3-table w3-card yellow-l4">
                 <tbody>
                     <tr class="w3-row">

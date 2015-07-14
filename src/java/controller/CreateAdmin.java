@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.business.Administrador;
 
 /**
  *
@@ -39,15 +40,15 @@ public class CreateAdmin extends HttpServlet {
             model.business.Administrador admin    = new model.business.Administrador();
             model.dal.AdministradorDal adminDal   = new model.dal.AdministradorDal();
             model.dal.LoginDal loginDal         = new model.dal.LoginDal();
-            
-            if(admin.validarRut(request.getParameter("txt_nuevo_rut")))
+            String rut = request.getParameter("txt_nuevo_rut");
+            if(Administrador.validarRut(rut))
             {
 
                 //Set Class
                 //String rut = request.getParameter("txt_nuevo_rut");
                 //admin.setRut(Integer.parseInt(rut.substring(rut.length() - 1, 1)));
-                String rut = request.getParameter("txt_nuevo_rut");
-                admin.setRut(Integer.parseInt((rut.substring(0, rut.length() - 1))));
+                
+                admin.setRut(Integer.parseInt((rut.substring(0,rut.length() - 1))));
                 //admin.setRut(Integer.parseInt(request.getParameter("txt_nuevo_rut")));
                 admin.setNombre(request.getParameter("txt_nuevo_nombre"));
                 admin.setApellido(request.getParameter("txt_nuevo_apellido"));
