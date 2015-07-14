@@ -41,7 +41,7 @@ public class CreateProduct extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        MultipartRequest mr = new MultipartRequest(request,"C:/Users/Ricardo/Documents/NetBeansProjects/Override_super.market/web/imagesProducts/"); 
+        MultipartRequest mr = new MultipartRequest(request,"C:/Users/Randy/Documents/NetBeansProjects/Override/web/imagesProducts/"); 
         try  
         {   
             //Clases
@@ -66,8 +66,7 @@ public class CreateProduct extends HttpServlet {
             if (!item.isFormField()){
                 /*cual sera la ruta al archivo en el servidor*/   
                 
-                File archivo_server = new File("C:/Users/Ricardo/Documents/NetBeansProjects/Override_super.market/web/imagesProducts/"+item.getName());
-                
+                File archivo_server = new File("C:/Users/Randy/Documents/NetBeansProjects/Override/web/imagesProducts/"+item.getName());
                 /*y lo escribimos en el servido*/
                 item.write(archivo_server); 
             }
@@ -91,27 +90,29 @@ public class CreateProduct extends HttpServlet {
              switch(resultado)
              {
                  case 1 :
-                     out.print("Registro OK");
+                     //out.print("Registro OK");
                      //Pagina Redirrecion
-                     //request.getRequestDispatcher("pagina.jsp").forward(request, response);
+                     request.getRequestDispatcher("redirect_index_intranet_producto_creado.jsp").forward(request, response);
                      break;
                  case 1062:
-                     out.print("Producto Existente");
+                     //out.print("Producto Existente");
                      //Pagina Redirrecion
-                     //request.getRequestDispatcher("pagina.jsp").forward(request, response);
+                     request.getRequestDispatcher("redirect_index_intranet_error_producto_existente.jsp").forward(request, response);
                      break;
-                 default: 
-                     out.print("Error : "+ productoDal.insertProduct(p));
+                 default:
+                     //Error genérico
+                        request.getRequestDispatcher("redirect_index_intranet_error.jsp").forward(request, response);
+                     //out.print("Error : "+ productoDal.insertProduct(p));
                      //Pagina Redirrecion
                      //request.getRequestDispatcher("pagina.jsp").forward(request, response);
                      break;
              }
-            
-         
-          
+ 
         }
         catch(Exception e)
         {
+            //Error genérico
+            //request.getRequestDispatcher("redirect_index_intranet_error.jsp").forward(request, response);
             out.print("error : " + e.getMessage());
         }
     }
