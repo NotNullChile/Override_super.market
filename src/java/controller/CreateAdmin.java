@@ -44,7 +44,11 @@ public class CreateAdmin extends HttpServlet {
             {
 
                 //Set Class
-                admin.setRut(Integer.parseInt(request.getParameter("txt_nuevo_rut")));
+                //String rut = request.getParameter("txt_nuevo_rut");
+                //admin.setRut(Integer.parseInt(rut.substring(rut.length() - 1, 1)));
+                String rut = request.getParameter("txt_nuevo_rut");
+                admin.setRut(Integer.parseInt((rut.substring(0, rut.length() - 1))));
+                //admin.setRut(Integer.parseInt(request.getParameter("txt_nuevo_rut")));
                 admin.setNombre(request.getParameter("txt_nuevo_nombre"));
                 admin.setApellido(request.getParameter("txt_nuevo_apellido"));
                 admin.setEmail(request.getParameter("txt_nuevo_email"));
@@ -70,40 +74,41 @@ public class CreateAdmin extends HttpServlet {
                         //Si retorna 1 todo Ok
                         case 1 : 
                             adminDal.insertAdmin(admin);
-                            out.print("Registro Ok :)");
-                            //request.getRequestDispatcher("paginaARedirigir.jsp").forward(request, response);
+                            request.getRequestDispatcher("redirect_index_intranet_admin_creado.jsp").forward(request, response);
                             break;
                         //Si retorna 1062 Admin ya registrado
                         case 1062:
                             //Pagina a redirigir Admin ya registrado
-                            //request.getRequestDispatcher("pagina.jsp").forward(request, response);
+                            request.getRequestDispatcher("redirect_index_intranet_error_admin_existente.jsp").forward(request, response);
                             break;
                         //Error desconocido
                         default: 
-                            out.print("Contáctese con el administrador de la pagina");
                             //Pagina a redirigir errorDesconocido
-                            //request.getRequestDispatcher("pagina.jsp").forward(request, response);
+                            request.getRequestDispatcher("redirect_index_intranet_error.jsp").forward(request, response);
                             break;
                     }
 
                 }
                 else
                 {
-                    //request.getRequestDispatcher("error_signup_differentpasswords.jsp").forward(request, response);
+                    request.getRequestDispatcher("redirect_index_intranet_error_admin_differentpasswords.jsp").forward(request, response);
                 }
-        }
-        else
-        {
-               out.print("Rut no valido"); 
-        }
+            }
+            else
+            {
+                request.getRequestDispatcher("redirect_index_intranet_error_admin_rutnovalido.jsp").forward(request, response);          
+                //out.print("Rut no valido"); 
+            }
         }
         catch(NumberFormatException e)
         {
-            out.print("Revise sus Valores numericos");
+            request.getRequestDispatcher("redirect_index_intranet_error.jsp").forward(request, response);
+            //out.print("Revise sus Valores numericos");
         }
         catch(NullPointerException ex)
         {
-            out.print("No deje nada vacio");
+            request.getRequestDispatcher("redirect_index_intranet_error.jsp").forward(request, response);
+            //out.print("No deje nada vacio");
         } 
       }
     

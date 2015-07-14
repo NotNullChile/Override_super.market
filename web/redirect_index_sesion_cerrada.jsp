@@ -29,7 +29,11 @@
         <!--Java servlet sessions and attributes-->
         <%
             HttpSession sesion = request.getSession();
-            model.business.Clientes cliente = (model.business.Clientes) sesion.getAttribute("cliente");       
+            model.business.Clientes cliente = (model.business.Clientes) sesion.getAttribute("cliente");    
+                        response.setHeader("Cache-Control","no-cache"); //Forces caches to obtain a new copy of the page from the origin server
+            response.setHeader("Cache-Control","no-store"); //Directs caches not to store the page under any circumstance
+            response.setDateHeader("Expires", 0); //Causes the proxy cache to see the page as "stale"
+            response.setHeader("Pragma","no-cache");
         %>
         <!--header-->
         <header class="w3-container red w3-row">
@@ -108,6 +112,7 @@
                         <h3>Será redirigido a la página de inicio&nbsp;.&nbsp;.&nbsp;.</h3>
                         <br>
                         <center>
+                            <h1><i class="fa fa-spin fa-spinner"></i></h1>
                         <img src="icons/Override.png" width="200" height="200" alt="Override"/>
                         </center>
                     </div>

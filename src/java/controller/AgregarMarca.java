@@ -51,17 +51,17 @@ public class AgregarMarca extends HttpServlet {
             //Insert
             if(md.insertMarca(m) == 1)
             {
-                out.print("Insert OK :)");
+                response.sendRedirect("redirect_index_intranet_marca_creada.jsp");
             }
             else if(md.insertMarca(m) == 1062)
             {
-                out.print("producto ya ingresado");
+                response.sendRedirect("redirect_index_intranet_error.jsp");
             }
             
         }
         catch(Exception e)
         {
-            out.print(e.getMessage());
+            response.sendRedirect("redirect_index_intranet_error.jsp");
         }
         
     }

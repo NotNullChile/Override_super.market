@@ -36,7 +36,11 @@
         <!--Java servlet sessions and attributes-->
         <%
             HttpSession sesion = request.getSession();
-            model.business.Clientes cliente = (model.business.Clientes) sesion.getAttribute("cliente");       
+            model.business.Clientes cliente = (model.business.Clientes) sesion.getAttribute("cliente");   
+            response.setHeader("Cache-Control","no-cache"); //Forces caches to obtain a new copy of the page from the origin server
+            response.setHeader("Cache-Control","no-store"); //Directs caches not to store the page under any circumstance
+            response.setDateHeader("Expires", 0); //Causes the proxy cache to see the page as "stale"
+            response.setHeader("Pragma","no-cache");
         %>
         
         <!--header-->

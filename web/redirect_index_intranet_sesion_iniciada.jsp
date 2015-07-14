@@ -1,6 +1,6 @@
 <%-- 
-    Document   : redirect_iniciar_sesion
-    Created on : Jul 14, 2015, 12:48:42 AM
+    Document   : redirect_index_intranet_sesion_iniciada
+    Created on : Jul 14, 2015, 10:32:26 AM
     Author     : urtubia @ notNull
 --%>
 
@@ -21,16 +21,12 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
         <link rel="icon" type="image/ico" href="images/override.ico">
-        <meta http-equiv="refresh" content="3; url=login.jsp" />
+        <meta http-equiv="refresh" content="2; url=index_intranet.jsp" />
     </head>
     
     <body>
        
         <!--Java servlet sessions and attributes-->
-        <%
-            HttpSession sesion = request.getSession();
-            model.business.Clientes cliente = (model.business.Clientes) sesion.getAttribute("cliente");       
-        %>
         <!--header-->
         <header class="w3-container red w3-row">
             <!--Blank column(1)-->
@@ -98,14 +94,14 @@
 
                 <div class="w3-card-2">
                     <div class="w3-col m1">&nbsp;</div>
-                    <div class="w3-col m10 alert alert-danger">
-                        <div class="w3-container red">
-                    <h2>Sesión no iniciada&nbsp;&nbsp;<i class="fa fa-user"></i> </h2>
+                    <div class="w3-col m10 alert alert-success">
+                        <div class="w3-container green">
+                    <h2>Sesión iniciada&nbsp;&nbsp;<i class="fa fa-user"></i> </h2>
                 </div>
                         <br>
-                        <h3>Necesita iniciar sesión.</h3>
+                        <h3>Bienvenido a la intranet de @Override.</h3>
                         <br>
-                        <h3>Será redirigido a la página de login en 3 segundos&nbsp;.&nbsp;.&nbsp;.</h3>
+                        <h3>Será redirigido al inicio de la intranet&nbsp;.&nbsp;.&nbsp;.</h3>
                         <br>
                         <center>
                             <h1><i class="fa fa-spin fa-spinner"></i></h1>

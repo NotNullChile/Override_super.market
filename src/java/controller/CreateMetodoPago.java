@@ -52,7 +52,9 @@ public class CreateMetodoPago extends HttpServlet {
         }
         catch(Exception e)
         {
-            out.print(e.getMessage());
+            //Error genérico
+            request.getRequestDispatcher("redirect_index_error.jsp").forward(request, response);
+            //out.print(e.getMessage());
         }
     }
 

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : redirect_iniciar_sesion
-    Created on : Jul 14, 2015, 12:48:42 AM
+    Document   : redirect_index_intranet_error_producto_existente
+    Created on : Jul 14, 2015, 10:26:19 AM
     Author     : urtubia @ notNull
 --%>
 
@@ -21,16 +21,12 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
         <link rel="icon" type="image/ico" href="images/override.ico">
-        <meta http-equiv="refresh" content="3; url=login.jsp" />
+        <meta http-equiv="refresh" content="3; url=index_intranet.jsp" />
     </head>
     
     <body>
        
         <!--Java servlet sessions and attributes-->
-        <%
-            HttpSession sesion = request.getSession();
-            model.business.Clientes cliente = (model.business.Clientes) sesion.getAttribute("cliente");       
-        %>
         <!--header-->
         <header class="w3-container red w3-row">
             <!--Blank column(1)-->
@@ -100,12 +96,12 @@
                     <div class="w3-col m1">&nbsp;</div>
                     <div class="w3-col m10 alert alert-danger">
                         <div class="w3-container red">
-                    <h2>Sesión no iniciada&nbsp;&nbsp;<i class="fa fa-user"></i> </h2>
+                    <h2>Error&nbsp;&nbsp;<i class="fa fa-exclamation-triangle"></i> </h2>
                 </div>
                         <br>
-                        <h3>Necesita iniciar sesión.</h3>
+                        <h3>El producto ya se encuentra registrado en la base de datos.</h3>
                         <br>
-                        <h3>Será redirigido a la página de login en 3 segundos&nbsp;.&nbsp;.&nbsp;.</h3>
+                        <h3>Será redirigido al inicio de intranet.&nbsp;.&nbsp;.&nbsp;.</h3>
                         <br>
                         <center>
                             <h1><i class="fa fa-spin fa-spinner"></i></h1>

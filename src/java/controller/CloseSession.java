@@ -43,7 +43,7 @@ public class CloseSession extends HttpServlet {
         }
         catch(Exception e)
         {
-            response.sendRedirect("error.jsp");
+            response.sendRedirect("redirect_index_error.jsp");
         }
     }
 

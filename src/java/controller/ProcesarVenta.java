@@ -126,7 +126,9 @@ public class ProcesarVenta extends HttpServlet {
         }
         catch(Exception e)
         {
-            out.print(e.getMessage());
+            //Error Genérico:
+            request.getRequestDispatcher("redirect_index_error.jsp").forward(request, response);
+            //out.print(e.getMessage());
             
         }
     }

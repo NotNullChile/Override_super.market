@@ -28,7 +28,11 @@
         <!--Java servlet sessions and attributes-->
         <%
             HttpSession sesion = request.getSession();
-            model.business.Clientes cliente = (model.business.Clientes) sesion.getAttribute("cliente");       
+            model.business.Clientes cliente = (model.business.Clientes) sesion.getAttribute("cliente");  
+            response.setHeader("Cache-Control","no-cache"); //Forces caches to obtain a new copy of the page from the origin server
+            response.setHeader("Cache-Control","no-store"); //Directs caches not to store the page under any circumstance
+            response.setDateHeader("Expires", 0); //Causes the proxy cache to see the page as "stale"
+            response.setHeader("Pragma","no-cache");
         %>
         <!--header-->
         <header class="w3-container red w3-row">
@@ -76,15 +80,24 @@
             <!--Shopping cart link(1)-->
             <div class="w3-col m1">
                 <br><br><br>
+                Bienvenido
                 <%
                     try
+                    {
+                        out.println(cliente.getNombre());
+                    }        
+                    catch(Exception e)
+                    {
+                        response.sendRedirect("redirect_iniciar_sesion.jsp");
+                    }
+                    /*try
                     {
                         out.println("Bienvenido <br>"+ cliente.getNombre());
                     }
                     catch(Exception e)
                     {
-                        out.println("<br>");
-                    }
+                        response.sendRedirect("redirect_iniciar_sesion.jsp");
+                    }*/
                 %> 
             </div>
             <!--End of shopping cart link-->
@@ -113,6 +126,7 @@
                                 }
                                 catch(Exception e)
                                 {
+                                    response.sendRedirect("redirect_iniciar_sesion.jsp");
                                     out.println("<br>&nbsp;<br>");
                                     
                                     out.println("<a class='btn btn-block btn-info' href='login.jsp'>");

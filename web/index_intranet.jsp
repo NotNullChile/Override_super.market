@@ -31,6 +31,10 @@
         <%
             HttpSession sesion = request.getSession();
             model.business.Administrador administrador = (model.business.Administrador) sesion.getAttribute("admin");
+            response.setHeader("Cache-Control","no-cache"); //Forces caches to obtain a new copy of the page from the origin server
+            response.setHeader("Cache-Control","no-store"); //Directs caches not to store the page under any circumstance
+            response.setDateHeader("Expires", 0); //Causes the proxy cache to see the page as "stale"
+            response.setHeader("Pragma","no-cache");
         %>
         
         <!--header-->
@@ -55,7 +59,16 @@
                 <br>
                 <div class="input-group">
                     <br>
-                    <h2>Bienvenido <%=administrador.getNombre()%></h2>
+                    <h2>Bienvenido <%
+                    try
+                    {
+                        out.println(administrador.getNombre());
+                    }        
+                    catch(Exception e)
+                    {
+                        response.sendRedirect("redirect_iniciar_sesion.jsp");
+                    }
+                    %></h2>
                     <h4>Intranet @Override super.market(<i class="fa fa-shopping-cart"></i>)</h4>
                         
                     

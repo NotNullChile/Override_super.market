@@ -1,6 +1,6 @@
 <%-- 
-    Document   : error_signup_userexists
-    Created on : Jul 6, 2015, 9:11:44 AM
+    Document   : error_signup_rut_no_valido
+    Created on : Jul 14, 2015, 1:46:14 AM
     Author     : urtubia @ notNull
 --%>
 
@@ -215,7 +215,7 @@
                                        name="txt_rut" 
                                        value=""
                                        required="true"
-                                       placeholder="RUT sin puntos ni guiones"
+                                       placeholder="RUT sin dígito verificador"
                                        />
                                 <span class="tooltip">this is the tip!</span>
                             </div>
@@ -442,8 +442,8 @@
                 </div>
                 <!--Error message-->
                     <div class="alert alert-danger">
-                        <strong>Error: El RUT ya se encuentra en nuestro registros.</strong>
-                        <br>Inicie sesión o registre otro RUT.
+                        <strong>Error: El RUT ingresado no es válido.</strong>
+                        <br>Intente registrarse nuevamente.
                     </div>
                     <!--End of error message-->
             </div>

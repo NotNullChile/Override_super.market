@@ -215,7 +215,7 @@
                                        name="txt_rut" 
                                        value=""
                                        required="true"
-                                       placeholder="RUT sin dígito verificador"
+                                       placeholder="RUT sin puntos ni guiones"
                                        autofocus/>
                                 <span class="tooltip">this is the tip!</span>
                             </div>

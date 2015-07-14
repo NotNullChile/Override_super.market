@@ -71,8 +71,7 @@ public class CreateClient extends HttpServlet {
                         //Si retorna 1 todo Ok
                         case 1 : 
                             clientesDal.insertClient(clientes);
-                            out.print("Registro Ok :)");
-                            //request.getRequestDispatcher("paginaARedirigir.jsp").forward(request, response);
+                            request.getRequestDispatcher("redirect_index_cliente_creado.jsp").forward(request, response);
                             break;
                         //Si retorna 1062 Cliente ya registrado
                         case 1062:
@@ -81,9 +80,9 @@ public class CreateClient extends HttpServlet {
                             break;
                         //Error desconocido
                         default: 
-                            out.print("Contáctese con el administrador de la pagina");
+                            //out.print("Contáctese con el administrador de la pagina");
                             //Pagina a redirigir errorDesconocido
-                            //request.getRequestDispatcher("paginaARedirigir.jsp").forward(request, response);
+                            request.getRequestDispatcher("redirect_index_error.jsp").forward(request, response);
                             break;
                     }
 
@@ -95,16 +94,20 @@ public class CreateClient extends HttpServlet {
         }
         else
         {
-               out.print("Rut no valido"); 
+               request.getRequestDispatcher("error_signup_rut_no_valido.jsp").forward(request, response);
         }
       }
         catch(NumberFormatException e)
         {
-            out.print("Revise sus Valores numericos");
+            //Error genérico
+            request.getRequestDispatcher("redirect_index_error.jsp").forward(request, response);
+            //out.print("Revise sus Valores numericos");
         }
         catch(NullPointerException ex)
         {
-            out.print("No deje nada vacio");
+            //Error Genérico
+            //out.print("No deje nada vacio");
+            request.getRequestDispatcher("redirect_index_error.jsp").forward(request, response);
         }
     }
 

@@ -108,6 +108,7 @@
                         <h3>Será redirigido a la página de inicio&nbsp;.&nbsp;.&nbsp;.</h3>
                         <br>
                         <center>
+                            <h1><i class="fa fa-spin fa-spinner"></i></h1>
                         <img src="icons/Override.png" width="200" height="200" alt="Override"/>
                         </center>
                     </div>

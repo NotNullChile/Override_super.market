@@ -32,6 +32,10 @@
             model.business.Clientes c = (model.business.Clientes) sesion.getAttribute("cliente");
             request.setCharacterEncoding("UTF-8");
             String orden1 = request.getParameter("dll_ordenes");
+            response.setHeader("Cache-Control","no-cache"); //Forces caches to obtain a new copy of the page from the origin server
+            response.setHeader("Cache-Control","no-store"); //Directs caches not to store the page under any circumstance
+            response.setDateHeader("Expires", 0); //Causes the proxy cache to see the page as "stale"
+            response.setHeader("Pragma","no-cache");
         %>
         <!--header-->
         <header class="w3-container red w3-row">
@@ -259,7 +263,23 @@
                     <div class="w3-col m1">&nbsp;</div>
                 </div>
                 <br>   
+                <div class="w3-row-padding">
+                    <div class="w3-col m1">&nbsp;</div>
+                    <div class="w3-col m4">
+                        <a class="btn btn-success btn-block"
+                           href="user_profile.jsp">&laquo;&nbsp;Volver al perfil de usuario</a>
+                    </div>
+                    <div class="w3-col m2">&nbsp;<br><br></div>
+                    <div class="w3-col m4">
+                        <a class="btn btn-success btn-block"
+                       href="index.jsp">&laquo;&laquo;&nbsp;Volver a la página principal</a>
+                    </div>
+                    <div class="w3-col m1">&nbsp;</div>
+                </div>
+                
             </div>
+                    
+                    
         </div>           
 
         <br>

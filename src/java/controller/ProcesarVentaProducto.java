@@ -63,11 +63,12 @@ public class ProcesarVentaProducto extends HttpServlet {
                 //Borrrará todo de la lista
                 listCarrito.removeAll(listCarrito);
             } 
-            request.getRequestDispatcher("compra_realizada_rick.jsp").forward(request, response);
+            request.getRequestDispatcher("redirect_index_coompra_realizada.jsp").forward(request, response);
         }
         catch(Exception e)
         {
-            
+            //Error Genérico:
+            request.getRequestDispatcher("redirect_index_error.jsp").forward(request, response);
         }
     }
 
