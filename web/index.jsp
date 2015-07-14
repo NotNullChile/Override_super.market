@@ -218,13 +218,19 @@
                             <div class="carousel-inner" 
                                  role="listbox">
                                 <div class="item active">
-                                    <img src="images/cafe.png" alt="Nescafe Tradición Granulado $ 999" width="230" height="172">
+                                    <a href="busqueda_desayuno_y_once.jsp">
+                                        <img src="images/cafe.png" alt="Nescafe Tradición Granulado $ 999" width="230" height="172">
+                                    </a>
                                 </div>
                                 <div class="item">
-                                    <img src="images/pizzas.png" alt="Chania" width="460" height="345">
+                                    <a href="busqueda_mascotas.jsp">
+                                        <img src="images/mascotas.png" alt="Chania" width="460" height="345">
+                                    </a>
                                 </div>
                                 <div class="item">
-                                    <img src="images/tragos.png" alt="Flower" width="460" height="345">
+                                    <a href="busqueda_bebidas_y_licores.jsp">
+                                        <img src="images/tragos.png" alt="Flower" width="460" height="345">
+                                    </a>
                                 </div>
                             </div>
                         <!--End of slides wrappers-->

@@ -215,7 +215,7 @@
                                        name="txt_rut" 
                                        value=""
                                        required="true"
-                                       placeholder="RUT sin dígito verificador"
+                                       placeholder="Sin puntos, guiones, ni DV"
                                        />
                                 <span class="tooltip">this is the tip!</span>
                             </div>
@@ -286,7 +286,7 @@
                             <div class="w3-col m4">
                                 <input type="text" 
                                        name="txt_nuevo_rut" 
-                                       placeholder="RUT sin dígito verificador" 
+                                       placeholder="Sin puntos, guiones, ni DV" 
                                        value=""
                                        required
                                        />

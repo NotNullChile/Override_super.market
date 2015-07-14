@@ -1,6 +1,6 @@
 <%-- 
-    Document   : redirect_index_intranet_producto_creado
-    Created on : Jul 14, 2015, 10:24:22 AM
+    Document   : redirect_index_intranet_producto_modificado
+    Created on : Jul 14, 2015, 5:48:48 PM
     Author     : urtubia @ notNull
 --%>
 
@@ -94,7 +94,7 @@
                     <div class="w3-col m1">&nbsp;</div>
                     <div class="w3-col m10 alert alert-success">
                         <div class="w3-container green">
-                    <h2>Producto creado exitosamente&nbsp;&nbsp;<i class="fa fa-check"></i> </h2>
+                    <h2>Producto modificado exitosamente&nbsp;&nbsp;<i class="fa fa-check"></i> </h2>
                 </div>
                         <br>
                         <h3></h3>

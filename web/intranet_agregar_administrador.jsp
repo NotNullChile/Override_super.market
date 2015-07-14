@@ -190,7 +190,7 @@
                             <div class="w3-col m4">
                                 <input type="text" 
                                        name="txt_nuevo_rut" 
-                                       placeholder="RUT sin puntos ni guiones" 
+                                       placeholder="Sin puntos, guiones, ni DV" 
                                        value=""
                                        required
                                        />
