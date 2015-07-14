@@ -4,6 +4,7 @@
     Author     : urtubia @ notNull
 --%>
 
+<%@page import="model.business.Producto"%>
 <%@page import="model.dal.ProductoDal"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="java.util.ArrayList"%>
@@ -164,7 +165,7 @@
                 <br>
                 <!--End of title bar-->
                 <div>
-                <form action="intranet_buscar_producto.jsp" method="POST" >
+                <form action="intranet_modificar_eliminar_producto.jsp" method="POST" >
                     <table border="1" class="w3-table w3-card yellow-l4">
                 <tbody>
                     <tr class="w3-row">
@@ -191,9 +192,21 @@
                                    name="btn_buscar" />
                         </td>
                     </tr>
-                    
+                </tbody>
+         </table>     
+      </form>         
                     <!--Product Modification/Elimination-->
+                    <form action="modificar_eliminar_producto.do" method="POST">
+                    <table>
+                        <tbody>
+                    <%
+                    request.setCharacterEncoding("UTF-8");  
+                    String id = request.getParameter("txt_id");
+                    model.dal.ProductoDal productoDal = new model.dal.ProductoDal();
+                    model.business.Producto p = new Producto();
+                    p = productoDal.buscarProductoXIdProducto(id);
                     
+                    %>
                     <tr class="w3-row">
                         <td class="w3-col m5">
                             Número
@@ -201,7 +214,7 @@
                         <td class="w3-col m7">
                             <input type="text" 
                                    name="txt_id_producto" 
-                                   value="" 
+                                   value="<%=p.getIdProducto()%>" 
                                    class="form-control"
                                    size="5" 
                                    readonly="readonly" />
@@ -216,7 +229,7 @@
                             <input class="form-control"
                                    type="text" 
                                    name="txt_nombre_producto" 
-                                   value="" 
+                                   value="<%=p.getNombreProducto()%>" 
                                    required="true" 
                                    autofocus="true"/> 
                         </td>
@@ -228,10 +241,17 @@
                         </td>
                         <td class="w3-col m7">
                             <select name="ddl_lista_tipo_producto"
-                                    class="form-control">
-                                                       
-                                <option value=""></option>                               
-                            
+                                    class="form-control">                  
+                                <%
+                                model.dal.TipoProductosDal tp = new model.dal.TipoProductosDal();
+                                ArrayList<model.business.TipoProductos> listTipo = tp.listTipoProducto();
+                                for(model.business.TipoProductos t : listTipo)
+                                {
+                                %>
+                                <option value="<%=t.getIdTipoProducto()%>"><%=t.getDescripcion()%></option>                               
+                                <%
+                                }
+                                %>
                             </select>
                         </td>
                     </tr>
@@ -242,8 +262,17 @@
                         </td>
                         <td class="w3-col m7">
                             <select name="ddl_marca_producto"
-                                    class="form-control">                    
-                                <option value=""></option>                          
+                                    class="form-control">                        
+                                <%
+                                model.dal.MarcasDal m = new model.dal.MarcasDal();
+                                ArrayList<model.business.Marcas> listMarcas = m.listMarcas();
+                                for(model.business.Marcas mar : listMarcas)
+                                {
+                                %>
+                                <option value="<%=mar.getIdMarca()%>"><%=mar.getDescripcion()%></option>                               
+                                <%
+                                }
+                                %>
                             </select>
                         </td>
                     </tr>
@@ -256,7 +285,7 @@
                             <input type="number" 
                                    class="form-control"
                                    name="txt_precio" 
-                                   value="" 
+                                   value="<%=p.getPrecioUnitario()%>" 
                                    size="5"
                                    min="0"
                                    required="true" />
@@ -271,7 +300,7 @@
                             <input type="number" 
                                    name="txt_stock"
                                    class="form-control"
-                                   value="" 
+                                   value="<%=p.getStock()%>" 
                                    size="5" 
                                    min="0"
                                    required="true" />
@@ -284,8 +313,23 @@
                             Estado
                         </td>
                         <td class="w3-col m7">
-                            <input type="radio" name="rbtn_estado" value="0" />Sin Oferta<br>
-                            <input type="radio" name="rbtn_estado" value="1" />Oferta
+                            <%
+                            if(p.getEstado() == 0)
+                            {
+                            %>    
+                            <input type="radio" name="rbtn_estado" value="0" checked="true" />Sin Oferta<br>
+                            <input type="radio" name="rbtn_estado" value="1" checked="false" />Oferta
+                            <% 
+                            }
+                            else
+                            {
+                            %>
+                            <input type="radio" name="rbtn_estado" value="0" checked="false" />Sin Oferta<br>
+                            <input type="radio" name="rbtn_estado" value="1" checked="true" />Oferta
+                            <%
+                            }
+                            %>
+                           
                         </td>
                     </tr>
                     
@@ -298,6 +342,7 @@
                                       class="form-control"
                                       rows="4" 
                                       cols="20" required="true" >
+                                <%=p.getDescripcion()%>
                             </textarea>
                         </td>
                     </tr>

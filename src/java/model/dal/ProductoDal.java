@@ -747,7 +747,7 @@ try
                      + "p.precioUnitario = " + p.getPrecioUnitario() + ", "
                      + "p.stock = " + p.getStock() + ", p.descripcion = '" + p.getDescripcion() + "', "
                      + "p.idTipoProducto = " + p.getTipoProducto().getIdTipoProducto() + ", "
-                     + "p.idMarca = " + p.getMarca().getIdMarca() + ", p.Urlfoto = '" + p.getUrlFoto() + "' "
+                     + "p.idMarca = " + p.getMarca().getIdMarca() + ", p.estado = " + p.getEstado() + " "
                      + "WHERE p.idProducto = " + p.getIdProducto() + ";";
             return state.executeUpdate(sql);
         } 
@@ -796,13 +796,13 @@ try
         }  
     }
     
-    public int deleteProducto(int idProducto)
+    public int deleteProducto(model.business.Producto p)
     {
         try 
         {
             conexion();
             String sql = "DELETE FROM productos "
-                    + "WHERE idProducto = " + idProducto + ";";
+                    + "WHERE idProducto = " + p.getIdProducto()+ ";";
             return state.executeUpdate(sql);  
         } 
         catch (SQLException e) 
