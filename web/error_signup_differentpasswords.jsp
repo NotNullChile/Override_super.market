@@ -216,7 +216,7 @@
                                        value=""
                                        required="true"
                                        placeholder="RUT sin dígito verificador"
-                                       onkeyUp="return ValNumero(this);"/>
+                                       />
                                 <span class="tooltip">this is the tip!</span>
                             </div>
                             <div class="w3-col m1">&nbsp;</div>
@@ -289,7 +289,7 @@
                                        placeholder="RUT sin dígito verificador" 
                                        value=""
                                        required
-                                       onkeyUp="return ValNumero(this);"/>
+                                       />
                             </div>
                             <div class="w3-col m1">&nbsp;</div>
                         <!--End of RUT textbox-->

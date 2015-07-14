@@ -33,11 +33,11 @@
             function Solo_Numerico(variable)
             {
                 Numer=parseInt(variable);
-                if (isNaN(Numer))
+                if (isNaN(Numer) || variable.keys('k'))
                 {
                     return "";
                 }
-                    return Numer;
+                    return variable;
             }
             
             function ValNumero(Control)
@@ -216,7 +216,6 @@
                                        value=""
                                        required="true"
                                        placeholder="RUT sin dígito verificador"
-                                       onkeyUp="return ValNumero(this);"
                                        autofocus>
                                 <span class="tooltip">this is the tip!</span>
                             </div>
@@ -289,8 +288,7 @@
                                        name="txt_nuevo_rut" 
                                        placeholder="RUT sin dígito verificador" 
                                        value=""
-                                       required
-                                       onkeyUp="return ValNumero(this);"/>
+                                       required/>
                             </div>
                             <div class="w3-col m1">&nbsp;</div>
                         <!--End of RUT textbox-->

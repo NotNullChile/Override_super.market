@@ -180,7 +180,7 @@
                                        placeholder="RUT sin dígito verificador" 
                                        value=""
                                        required
-                                       onkeyUp="return ValNumero(this);"/>
+                                       />
                             </div>
                             <div class="w3-col m1">&nbsp;</div>
                         <!--End of RUT textbox-->
