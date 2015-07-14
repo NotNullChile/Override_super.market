@@ -1,6 +1,6 @@
 <%-- 
-    Document   : user_profile
-    Created on : Jul 13, 2015, 1:04:12 AM
+    Document   : mostrar_detalle_compra
+    Created on : Jul 13, 2015, 7:46:17 PM
     Author     : urtubia @ notNull
 --%>
 
@@ -28,7 +28,9 @@
         <!--Java servlet sessions and attributes-->
         <%
             HttpSession sesion = request.getSession();
-            model.business.Clientes cliente = (model.business.Clientes) sesion.getAttribute("cliente");       
+            model.business.Clientes c = (model.business.Clientes) sesion.getAttribute("cliente");
+            request.setCharacterEncoding("UTF-8");
+            String orden1 = request.getParameter("dll_ordenes");
         %>
         <!--header-->
         <header class="w3-container red w3-row">
@@ -79,7 +81,7 @@
                 <%
                     try
                     {
-                        out.println("Bienvenido <br>"+ cliente.getNombre());
+                        out.println("Bienvenido <br>"+ c.getNombre());
                     }
                     catch(Exception e)
                     {
@@ -97,7 +99,7 @@
                             <%
                                 try
                                 {
-                                    cliente.getNombre();
+                                    c.getNombre();
                                     out.println("<a class='btn btn-block btn-info' href='carro.jsp'>");
                                     out.println("<i class='fa fa-shopping-cart'></i>&nbsp;Carro de Compras");
                                     out.println("</a><br>");
@@ -168,6 +170,7 @@
         <!--horizontal menu end-->
         
         <!--Main row-->
+        
         <div class="w3-row">
         <br>
             <!--Blank column(1)-->
@@ -175,131 +178,88 @@
             <!--End of blank column-->
             <!--Content-->
             <!--Login card-->
-            <div class="w3-col m8">
+            <div class="w3-col m8 w3-card-2">
                 <!--Title bar-->
                 <div class="w3-container red">
-                    <h2>Perfil de Usuario&nbsp;&nbsp;<i class="fa fa-user"></i> </h2>
+                    <h2>Detalle <%=orden1%>&nbsp;&nbsp;<i class="fa fa-shopping-cart"></i> </h2>
                 </div>
                 <!--End of title bar-->
-                
-                <!--Login content-->
-                <form action="mostrar_detalle_compra.jsp" method="POST">
-                <div class="w3-card-2">
-                    <br>
+                <div class="w3-half">
                     <div class="w3-row-padding">
-                        <div class="w3-col m1">&nbsp;
-                        </div>
-                        <div class="w3-col m6">
-                            <strong>Datos Personales:</strong>
-                        </div>
-                    </div>
-                    <div><hr></div>
-                    <div class="w3-row-padding">
-                        <div class="w3-col m1">&nbsp;</div>
-                        <div class="w3-col m5">
-                            Nombre:
-                        </div>
-                        <div class="w3-col m5">
-                            <%=cliente.getNombre()%>&nbsp;<%=cliente.getApellido()%>
-                        </div>
-                        <div class="w3-col m1">&nbsp;</div>
+                        <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PRODUCTOS:<hr></strong>
                     </div>
                     <div class="w3-row-padding">
                         <div class="w3-col m1">&nbsp;</div>
-                        <div class="w3-col m5">
-                            RUT:
-                        </div>
-                        <div class="w3-col m5">
-                            <%=cliente.getRut()%>
-                        </div>
-                        <div class="w3-col m1">&nbsp;</div>
-                    </div>
-                    
-                    <div>&nbsp;</div>
-                    <div class="w3-row-padding">
-                        <div class="w3-col m1">&nbsp;
-                        </div>
-                        <div class="w3-col m6">
-                            <strong>Datos de Contacto:</strong>
-                        </div>
-                    </div>
-                    <div><hr></div>
-                    <div class="w3-row-padding">
-                        <div class="w3-col m1">&nbsp;</div>
-                        <div class="w3-col m5">
-                            email:
-                        </div>
-                        <div class="w3-col m5">
-                            <%=cliente.getEmail()%>
-                        </div>
-                        <div class="w3-col m1">&nbsp;</div>
-                    </div>
-                    <div class="w3-row-padding">
-                        <div class="w3-col m1">&nbsp;</div>
-                        <div class="w3-col m5">
-                            Teléfono:
-                        </div>
-                        <div class="w3-col m5">
-                            <%=cliente.getTelefono()%>
-                        </div>
-                        <div class="w3-col m1">&nbsp;</div>
-                    </div>
-                    <div>&nbsp;</div>
-                    
-                    <div class="w3-row-padding">
-                        <div class="w3-col m1">&nbsp;
-                        </div>
-                        <div class="w3-col m6">
-                            <strong>Datos de Pedidos:</strong>
-                        </div>
-                    </div>
-                    <div><hr></div>
-                    <div class="w3-row-padding">
-                        <div class="w3-col m1">&nbsp;</div>
-                        <div class="w3-col m5">
-                            Detalle de mis Compras:
+                        <div class="w3-col m4">
+                            <strong>Foto</strong>
                         </div>
                         <div class="w3-col m4">
-                            <select name="dll_ordenes"
-                                    class="form-control">
-                                <%
-                                model.dal.VentaProductoDal vp = new model.dal.VentaProductoDal();
-                                ArrayList<model.business.VentaProducto> listOrdenes = vp.listaOrdenes(cliente);
-                                for(model.business.VentaProducto v : listOrdenes)
-                                { 
-                                %>
-                                <option value="<%=v.getCarrito().getOrden()%>"><%=v.getVenta().getFecha() + " - " + v.getCarrito().getOrden()%></option>
-                                <%
-                                }
-                                %>
-                            </select>
-                            <input type="submit" 
-                                   class="btn btn-block btn-primary"
-                                   value="Ver Detalle" 
-                                   name="btn_buscar" />
+                            <strong>Nombre</strong>
                         </div>
                         <div class="w3-col m1">&nbsp;</div>
                     </div>
-                    <div>&nbsp;</div>
-                    
+                    <%
+                       model.dal.VentaProductoDal vp = new model.dal.VentaProductoDal();
+                       String orden = request.getParameter("dll_ordenes");
+                       ArrayList<model.business.VentaProducto> listProductos = vp.listaProductosXOrdenes(c,orden);
+                       for(model.business.VentaProducto v : listProductos)
+                       {
+                    %>
+                    <div class="w3-row-padding">
+                        <div class="w3-col m1">&nbsp;</div>
+                        <div class="w3-col m4">
+                            <img name="imagen" src="imagesProducts/<%=v.getProducto().getUrlFoto()%>" style="width:100%">
+                            <br>
+                        </div>
+                        <div class="w3-col m4">
+                            <%=v.getProducto().getNombreProducto()%>
+                            <br>
+                            <%=v.getProducto().getMarca().getDescripcion()%>
+                        </div>
+                        <div class="w3-col m1">&nbsp;</div>
+                    </div>
+                    <%       
+                     }
+                    %>
                 </div>
-                </form>
+                <div class="w3-half">
+                    <div class="w3-row-padding">
+                        <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PAGOS:<hr></strong>
+                    </div>
+                    <div class="w3-row-padding">
+                        <div class="w3-col m1">&nbsp;</div>
+                        <div class="w3-col m3">
+                            <strong>Subtotal</strong>
+                        </div>
+                        <div class="w3-col m3">
+                            <strong>Total</strong>
+                        </div>
+                        <div class="w3-col m3">
+                            <strong>IVA:</strong>
+                        </div>
+                        <div class="w3-col m1">&nbsp;</div>
+                    </div>
+                    <%
+                       model.business.Venta v = listProductos.get(0).getVenta();
+                       
+                    %>
+                </div>
+                <div class="w3-row-padding">
+                    <div class="w3-col m2">
+                        <%=v.getSubTotal()%>
+                    </div>
+                    <div class="w3-col m2">
+                        <%=v.getIva()%>
+                    </div>
+                    <div class="w3-col m2">
+                        <%=v.getTotal()%>
+                    </div>
+                    <div class="w3-col m1">&nbsp;</div>
+                </div>
+                <br>   
             </div>
-                        
-                        
-            <!--Blank column(2)-->
-            <div class="w3-col m2">&nbsp;</div>    
-            <!--End of blank column-->
-            
+        </div>           
 
-            <!--End of content-->
-            
-            <!--Blank column-->
-            <div class="w3-col m1">&nbsp;</div>
-            <!--End of blank column-->
-            
-        </div>
-        <!--End of Main Row-->
         <br>
         <!--Footer-->
         <footer class="footer w3-row">
@@ -347,4 +307,3 @@
         <!--End of footer-->
     </body>
 </html>
-
