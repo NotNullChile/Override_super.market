@@ -63,7 +63,7 @@ public class ProcesarCarro extends HttpServlet {
         catch(Exception e)
         {
             //Mandar Mensaje de "DEBES REGISTRARTE PARA COMPRAR"
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+            request.getRequestDispatcher("redirect_iniciar_sesion.jsp").forward(request, response);
         }
     }
 

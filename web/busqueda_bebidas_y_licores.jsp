@@ -121,7 +121,7 @@
                                 {
                                     out.println("<br>&nbsp;<br>");
                                     
-                                    out.println("<a class='btn btn-block btn-info' href='login.jsp'>");
+                                    out.println("<a class='btn btn-block btn-info' href='redirect_iniciar_sesion.jsp'>");
                                     out.println("<i class='fa fa-shopping-cart'></i>&nbsp;Carro de Compras");
                                     out.println("</a><br>");
                                     
