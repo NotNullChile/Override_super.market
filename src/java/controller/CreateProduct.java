@@ -112,8 +112,8 @@ public class CreateProduct extends HttpServlet {
         catch(Exception e)
         {
             //Error genérico
-            //request.getRequestDispatcher("redirect_index_intranet_error.jsp").forward(request, response);
-            out.print("error : " + e.getMessage());
+            request.getRequestDispatcher("redirect_index_intranet_error.jsp").forward(request, response);
+            //out.print("error : " + e.getMessage());
         }
     }
 

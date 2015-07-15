@@ -57,29 +57,32 @@ public class ModificarEliminarProducto extends HttpServlet {
             {
                 if(pro.updateProducto(p) == 1)
                 {
-                    out.print("Wena update");
-                    //request.getRequestDispatcher("")
+                    //out.print("Wena update");
+                    request.getRequestDispatcher("redirect_index_intranet_producto_modificado.jsp").forward(request, response);
                 }
                 else
                 {
-                     out.print(pro.updateProducto(p));
+                    //out.print(pro.updateProducto(p));
+                    request.getRequestDispatcher("redirect_index_intranet_error.jsp").forward(request, response);
                 }
             }
             if(request.getParameter("btn_eliminar") != null)
             {
                 if(pro.deleteProducto(p) == 1)
                 {
-                    out.print("Wena delete");
+                    //out.print("Wena update");
+                    request.getRequestDispatcher("redirect_index_intranet_producto_eliminado.jsp").forward(request, response);
                 }
                 else
                 {
-                     out.print(pro.deleteProducto(p));
+                    //out.print(pro.updateProducto(p));
+                    request.getRequestDispatcher("redirect_index_intranet_error.jsp").forward(request, response);
                 }
             }
         }
         catch(Exception e)
         {
-            out.print(e.getMessage());
+            request.getRequestDispatcher("redirect_index_intranet_error.jsp").forward(request, response);
         }
     }
 
